@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  /* random shit */
+  --outline-edges-theme: 0.04rem solid #8332ac;
+  /* --boxshadow: 0.1rem 0.1rem 1rem black; */
+  /* bg colors */
+  --body-bg-color: rgba(187, 119, 154, 0.5);
+  --overlay-color: rgba(45, 35, 46, 0.85);
+  /* fonts and paragraph related */
+  --font-family-not-header: "Gayathri", sans-serif;
+  --font-color: white;
+  --overall-line-height: 1.4;
+  --letterspacing: 0.15rem;
+  /*--------- unknown custom properties ---------*/
+  --menu-speed: 0.75s;
+  /* layout handling */
+  --section-fullheight: 100vh;
+}
+body {
+  /* background: var(--body-bg-color, rgba(187, 119, 154, 0.5)); */
+  font-family: var(--font-family-not-header);
+  line-height: var(--overall-line-height);
+}
+.logo {
+  width: 10vw;
+  /* The positioning is done relative to the first relatively (or absolutely) positioned parent element. In the case when there is no positioned parent element, it will be positioned related directly to the HTML element (the page itself).  */
+  position: absolute;
+  /* Positioning properties like bellow create a gap towards the left between the parent (body) and itself (logo) */
+  left: 87vw;
+  top: 2vh;
+  z-index: 2;
+}
+/* This is the section where the main image is  */
+.shakepic {
+  position: absolute;
+  height: var(--section-fullheight);
+  z-index: 0;
+}
+.container {
+  width: 100vw;
+  margin: auto;
+  overflow: hidden;
+  /* padding: 0 40vw; */
+  position: relative;
+  z-index: 1;
+  background: var(--body-bg-color);
+}
+.showcase {
+  color: var(--font-color);
+  height: var(--section-fullheight);
+  position: relative;
+}
+.showcase .showcase-inner {
+  /* display: flexbox; */
+  /* flex-direction: column; */
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  font-weight: bold;
+  letter-spacing: 0.15rem;
+  padding: 24vh 14vw 0 14vw;
+}
+.showcase h1 {
+  font-size: 3rem;
+}
+.showcase p {
+  letter-spacing: var(--letterspacing);
+}
+.btn {
+  /* --body-bg-color: rgba(187, 119, 154, 0.65); */
+  display: inline-block;
+  border: none;
+  background: var(--body-bg-color);
+  color: var(--font-color);
+  padding: 5vh 9vw;
+  margin-top: 9vh;
+  text-decoration: none;
+  border-radius: 7%;
+  border: var(--outline-edges-theme);
+  /* los dos primeros valores de sombras proyectan sombra sobre el mismo eje "Y", hacia abajo creando un efecto de blur y oscuridad mas marcados yque no se logra con un solo value de sombra, usando 3 valores inset se logra 3 colores distintos dentro     */
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19), 0 19px 19px rgba(0, 0, 0, 0.23),
+    inset 0 -15px 28px #a469c2;
+}
+/* Outline y Border */
+.one {
+  width: 80%;
+  margin: 1rem auto;
+  outline: 0.1rem solid red;
+  outline-offset: -0.2rem;
+}
+.two {
+  width: 80%;
+  margin: 1rem auto;
+  border: 0.1rem solid red;
+}
+[type="radio"] {
+  /*--------- Para dar estilo a los inputs del form ---------*/
+  margin: 20px 0px 20px 0px;
+}
