@@ -79,12 +79,86 @@ body {
   padding: 5vh 9vw;
   margin-top: 9vh;
   text-decoration: none;
-  border-radius: 25%;
+  border-radius: 8%;
   border: var(--outline-edges-theme);
-  /* los dos primeros valores de sombras proyectan sombra sobre el mismo eje "Y", hacia abajo creando un efecto de blur y oscuridad mas marcados yque no se logra con un solo value de sombra, usando 3 valores inset se logra 3 colores distintos dentro     */
+  /* el 1er valor es el eje horizontal, el 2do el vertical, el 3ro el blur, el 4to alarga las sombra hacia todas direcciones */
+  /* en esta propiedad los dos primeros valores de sombras proyectan sombra hacia abajo creando un efecto de blur y oscuridad mas marcados y que no se logra con un solo value de sombra */
+  /*tambien se puede usar 3 valores inset lo que logra 3 colores distintos dentro, hay que jugar bastante con el 4 value de las sombras para lograr esto */
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19), 0 19px 19px rgba(0, 0, 0, 0.23),
     inset 0 -15px 28px #a469c2;
 }
+
+/* Second section, just bellow landpage */
+.side-bar {
+  /* TODO cambiar color de background y seguir testeando con float y el layout de esta seccion */
+
+  width: 35vw;
+  /* opacity: 0.35; */
+  height: 20vh;
+  /* float: left; */
+  border-radius: 50%;
+  background: red;
+  position: relative;
+  z-index: 2;
+  /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.23); */
+}
+.content {
+  /* TODO cambiar color de background y seguir testeando con float y el layout de esta seccion */
+  width: 35vw;
+  /* opacity: 0.35; */
+  height: 20vh;
+  float: right;
+  position: relative;
+  border-radius: 50%;
+  background: orange;
+  z-index: 1;
+  margin: -2rem 1rem 0 0;
+  box-shadow: -10px 6px 7px 7px rgba(0, 0, 0, 0.23);
+}
+.upper-main {
+  /* TODO cambiar color de background  */
+  position: relative;
+  z-index: 2;
+  background: yellow;
+  height: 90vh;
+  width: 100vw;
+  border-radius: 50%;
+  margin: auto;
+  /* float: right; */
+  /* margin-top: -2em; */
+}
+.divfortesting-zindex {
+  /* TODO cambiar color de background  */
+  position: relative;
+  z-index: 3;
+  /* opacity: 1; */
+  background: blue;
+  /* background: linear-gradient(
+    180deg,
+    rgba(187, 119, 154, 0.85),
+    rgba(187, 119, 154, 0.65),
+    rgba(187, 119, 154, 0.03)
+  ); */
+  height: 65vh;
+  width: 70vw;
+  float: left;
+  border-radius: 50%;
+  margin: 1em 0 0 1em;
+}
+.main-container {
+  /* TODO cambiar color de background  */
+  background: linear-gradient(
+    180deg,
+    rgba(187, 119, 154, 0.85),
+    rgba(187, 119, 154, 0.65),
+    rgba(187, 119, 154, 0.03)
+  );
+  overflow: hidden;
+  height: 100vh;
+  /* con overflow hidden el texto debajo de esta seccion no se cola al inicio, recuerde q float saca los elementos del flow normal, los elementos siguientes tomarian su lugar, para que overflow hidden sea efectivo se tiene que usar en el papa de los hijos que estan flotando  */
+}
+/* End of second section */
+
 /* Outline y Border */
 .one {
   width: 80%;
