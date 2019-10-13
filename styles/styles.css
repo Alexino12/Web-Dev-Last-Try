@@ -127,11 +127,13 @@ body {
     inset -1px 1px 10px 0.5px rgb(250, 249, 247);
 }
 .upper-main {
-  /* TODO cambiar color de background  */
   position: relative;
   z-index: 2;
-  background: linear-gradient(328deg, rgba(69,189,252,1) 1%, rgba(107,29,253,1) 40%, rgba(253,29,173,1) 90%);
-
+  background: linear-gradient(
+    328deg,
+    rgba(69, 189, 252, 1) 1%,
+    rgba(107, 29, 253, 1) 40%,
+    rgba(253, 29, 173, 1) 90%
   );
   box-shadow: 0 19px 20px 3px rgba(0, 0, 0, 0.23),
     inset 10px -6px 10px 3px rgba(0, 0, 0, 0.23),
@@ -142,7 +144,6 @@ body {
   margin: auto;
 }
 .divfortesting-zindex {
-  /* TODO cambiar color de background  */
   position: relative;
   z-index: 3;
   background: #c58daa;
@@ -155,7 +156,6 @@ body {
   /* inset -1px 0 10px 0.5px rgb(0, 0, 0, 0.23); */
 }
 .main-container {
-  /* TODO cambiar color de background  */
   background: linear-gradient(
     180deg,
     rgba(187, 119, 154, 0.85),
