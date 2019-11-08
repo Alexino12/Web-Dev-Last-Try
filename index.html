@@ -47,7 +47,7 @@
               17- CTRL+ALT+J: Unsplits editor .
               18- CTRL+ALT+Y: Splits editor horizontally.
               19- Shift+ALT+UP/DOWN Arrow: Allows to quickly make copies of the code line where you are sitting on.
-              20- CTRL+ALT+A: Toggles activity Bar.
+              20- CTRL+ALT+X: Toggles activity Bar. COMMIT 'made a change on the snippet'
 
 			        UPDATING SNIPPETS
 			        1- Press COMMAND + SHIFT + P to open the command palette.
@@ -59,6 +59,8 @@
               1- Ctrl+Space: to trigger the INTELLISENSE Suggestions widget.
 
               TIPS
+              Los TAGS de TO-DO solo se muestran apropiadamente si se coloca cualquier texto, numero o caracter antes del tag.
+
               CSS Peek= Se usa pressing ctrl + click y te lleva de una clase o ID de HTML al código en CSS o con el cursor en el class' name presionar ALT+F2 y asi se abre una mini ventana de CSS donde se edita la clase.
 
               SETTINGS SYNC
@@ -103,6 +105,7 @@
       </div>
     </nav>
     <header class="showcase">
+      <!-- :TODO Play around with map tags on this background image bellow -->
       <img
         src="./Images/OptimizedPics/smoothie-320pxWidth-60quality.jpg"
         alt="shakepic"
@@ -119,16 +122,113 @@
     </header>
     <main>
       <div class="main-container">
-        <!-- section where I practice gradients and floats -->
+        <!-- Start section where I practice gradients and floats -->
         <div class="divfortesting-zindex"></div>
         <section class="upper-main">
           <!-- <div class="container-upper-main"> -->
           <div class="side-bar"></div>
           <div class="content"></div>
           <div class="footer"></div>
-          <!-- </div> -->
         </section>
+        <!-- End section where I practiced gradients and floats -->
       </div>
+      <!-- :COMMIT So here I practiced some map tags -->
+      <!-- :NOTE COMMIT Image Map Generated, 1ST Rule: Map tags only work with cursor, so It won't work on mobiles or tablets. 2ND Rule: Seems to not work on PNG or SVG images, so far it's worked on JPG only, 3RD Rule: Avoid using dashes, numbers or any kind of special caracters on map's name atribute, 4RD Rule: Don't repeat map names, 5TH Rule: Always include "#" on the "usemap" tag, at least on Chrome. -->
+
+      <!-- Small image map tag -->
+      <img
+        src="./Images/OptimizedPics/smoothie-320pxWidth-60quality.jpg"
+        usemap="#secondmaptag"
+        class="secondmaptag"
+      />
+      <map name="secondmaptag">
+        <area
+          target=""
+          alt=""
+          title=""
+          href=""
+          coords="208,174,77"
+          shape="circle"
+        />
+        <area
+          target=""
+          alt=""
+          title=""
+          href=""
+          coords="180,364,76"
+          shape="circle"
+        />
+        <area
+          target=""
+          alt=""
+          title=""
+          href=""
+          coords="169,37,185,52,168,93,140,93,132,79,142,51"
+          shape="poly"
+        />
+        <area
+          target=""
+          alt=""
+          title=""
+          href=""
+          coords="46,114,21,121,3,81,32,80,33,65,57,53,73,71,73,95,75,110,85,148,73,155"
+          shape="poly"
+        />
+        <area
+          target=""
+          alt=""
+          title=""
+          href=""
+          coords="40,202,64,206,83,198,98,231,114,231,117,216,103,196,122,194,120,163,95,168,73,159"
+          shape="poly"
+        />
+        <area
+          target=""
+          alt=""
+          title=""
+          href=""
+          coords="110,237,96,261,111,290,117,300,147,282,148,260,130,237"
+          shape="poly"
+        />
+        <area
+          target=""
+          alt=""
+          title=""
+          href=""
+          coords="82,205,88,229,98,244,78,265,49,272,19,256,32,228,54,214"
+          shape="poly"
+        />
+        <area
+          target=""
+          alt=""
+          title=""
+          href=""
+          coords="17,300,50,310,38,295"
+          shape="poly"
+        />
+        <area
+          target=""
+          alt=""
+          title=""
+          href=""
+          coords="5,320,60,347,62,380,18,383,2,349"
+          shape="poly"
+        />
+      </map>
+      <!-- Small image map tag -->
+      <!-- Big image map tag -->
+      <img src="./Images/OptimizedPics/pic.jpg" usemap="#firstmaptag" />
+      <map name="firstmaptag">
+        <area
+          target=""
+          alt=""
+          title=""
+          href=""
+          coords="567,1755,135,851"
+          shape="rect"
+        />
+      </map>
+      <!-- Big image map tag -->
       <h1 class="main-tittle">Lorem ipsum dolor sit amet.</h1>
       <h2>
         This one has outline, with outline-offset property and a negative value.
