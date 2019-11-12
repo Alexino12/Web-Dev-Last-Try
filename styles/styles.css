@@ -26,9 +26,9 @@ body {
 }
 .logo {
   width: 10vw;
-  /*:NOTE The positioning is done relative to the first relatively (or absolutely) positioned parent element. In the case when there is no positioned parent element, it will be positioned related directly to the HTML element (the page itself).  */
+  /*NOTE The positioning is done relative to the first relatively (or absolutely) positioned parent element. In the case when there is no positioned parent element, it will be positioned related directly to the HTML element (the page itself).  */
   position: absolute;
-  /*:NOTE Positioning properties like bellow create a gap towards the left between the parent (body) and itself (logo) */
+  /*NOTE Positioning properties like bellow create a gap towards the left between the parent (body) and itself (logo) */
   left: 87vw;
   top: 2vh;
   z-index: 2;
@@ -39,7 +39,7 @@ body {
   height: var(--section-fullheight);
   z-index: 0;
   width: 100vw;
-  /* :HACK width property fixes cross-scrolling */
+  /* HACK width property fixes cross-scrolling */
 }
 .container {
   width: 100vw;
@@ -50,13 +50,13 @@ body {
   background: var(--body-bg-color);
   box-shadow: inset 0 -2rem 1rem -1rem #c58daa,
     inset 0 -14rem 10rem -10rem #c58daa;
-  /*:HACK This Box Shadow is what makes a degraded between first and second sections */
+  /*  HACK This Box Shadow is what makes a degraded between first and second sections */
 }
+
 .showcase {
   color: var(--font-color);
   height: var(--section-fullheight);
-  /*:COMMIT removing showcase's position may cause errors
-  position: relative; */
+  /*  REVIEW removing showcase's position may cause errors position: relative; */
 }
 .showcase .showcase-inner {
   align-items: center;
@@ -84,9 +84,9 @@ body {
   text-decoration: none;
   border-radius: 8%;
   border: var(--outline-edges-theme);
-  /* :NOTE el 1er valor es el eje horizontal, el 2do el vertical, el 3ro el blur, el 4to alarga las sombra hacia todas direcciones */
-  /*:HACK en esta propiedad los dos primeros valores de sombras proyectan sombra hacia abajo creando un efecto de blur y oscuridad mas marcados y que no se logra con un solo value de sombra */
-  /*:HACK tambien se puede usar 3 valores inset lo que logra 3 colores distintos dentro, hay que jugar bastante con el 4 value de las sombras para lograr esto */
+  /*NOTE el 1er valor es el eje horizontal, el 2do el vertical, el 3ro el blur, el 4to alarga las sombra hacia todas direcciones */
+  /*HACK en esta propiedad los dos primeros valores de sombras proyectan sombra hacia abajo creando un efecto de blur y oscuridad mas marcados y que no se logra con un solo value de sombra */
+  /*HACK tambien se puede usar 3 valores inset lo que logra 3 colores distintos dentro, hay que jugar bastante con el 4 value de las sombras para lograr esto */
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19), 0 19px 19px rgba(0, 0, 0, 0.23),
     inset 0 -15px 28px #a469c2;
 }
@@ -163,7 +163,7 @@ body {
   );
   overflow: hidden;
   height: 100vh;
-  /*:HACK con overflow hidden el texto debajo de esta seccion no se cola al inicio, recuerde q float saca los elementos del flow normal, los elementos siguientes tomarian su lugar, para que overflow hidden sea efectivo se tiene que usar en el papa de los hijos que estan flotando  */
+  /*HACK con overflow hidden el texto debajo de esta seccion no se cola al inicio, recuerde q float saca los elementos del flow normal, los elementos siguientes tomarian su lugar, para que overflow hidden sea efectivo se tiene que usar en el papa de los hijos que estan flotando  */
 }
 /* End of second section */
 
@@ -184,6 +184,6 @@ body {
   border: 0.1rem solid red;
 }
 [type="radio"] {
-  /*:NOTE Para dar estilo a los inputs del form */
+  /*NOTE Para dar estilo a los inputs del form */
   margin: 20px 0px 20px 0px;
 }

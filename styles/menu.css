@@ -65,7 +65,7 @@
   /*HACK see line of code #129 or so */
   transform: rotate(135deg);
 }
-/*HACK Turns hamburger into X */
+/* Turns hamburger into X */
 .toggler:checked + .hamburger > div:before,
 .toggler:checked + .hamburger > div:after {
   transform: rotate(90deg);
