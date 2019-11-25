@@ -91,11 +91,14 @@ body {
     inset 0 -15px 28px #a469c2;
 }
 
-/* Second section, just bellow landpage */
+/* Second section, just bellow landpage Start First Part*/
+/* COMMIT En esta seccion se explica mediante comments como esta compuesta la seccion de los planetas*/
 .side-bar {
+  /* position: relative; */
+  /* z-index: -1; */
   width: 18vw;
   height: 13vh;
-  margin-left: 1vw;
+  margin-left: 5vw;
   border-radius: 50%;
   background: linear-gradient(
     130deg,
@@ -103,16 +106,17 @@ body {
     rgba(253, 228, 29, 1) 50%,
     rgba(252, 176, 69, 1) 100%
   );
-  position: relative;
-  z-index: 2;
   box-shadow: inset 10px -6px 10px 3px rgba(0, 0, 0, 0.23),
     inset -1px 1px 10px 0.5px rgb(250, 249, 247);
 }
+
 .content {
+  /* position: relative; */
+  /* z-index: -1; */
   width: 35vw;
   height: 20vh;
   float: right;
-  position: relative;
+  /* Sin float este elemento vuelve al flow normal como su hermano .side-bar, el cual es un bloque que es parte ya del flow normal como hijo de .upper-main, el div bloque de .side.bar que ocupa todo el ancho del viewport no permite otros elementos a la par, por eso este div se coloca justo por debajo al remover float */
   border-radius: 50%;
   background: linear-gradient(
     205deg,
@@ -120,15 +124,22 @@ body {
     rgba(253, 29, 29, 1) 50%,
     rgba(252, 176, 69, 1) 100%
   );
-  z-index: 1;
   margin: -2rem 1rem 0 0;
   box-shadow: -10px 6px 10px 3px rgba(0, 0, 0, 0.23),
     inset 10px -6px 10px 3px rgba(0, 0, 0, 0.23),
     inset -1px 1px 10px 0.5px rgb(250, 249, 247);
 }
+/* COMMIT Dentro de este Div padre de abajo tenemos dos hermanos ".content & .side-bar", pero queria probar poner estos hermanos detras de su padre, esto NO es posible si su padre .upper-main esta posicionado y con z-index con un valor que no sea auto, en otras . Una vez quitamos la posicion al padre, sus hijos pueden apilarse en un contexto diferente junto con el resto de elementos fuera del padre, siempre y cuando esten posicionados. Z-index no funciona si los elementos no estan posicionados y una vez   */
+
+/* NOTE Cuando se quiere manipular el Z-Axis de un elemento o la manera en que se apilan los elementos se usa Z-Index sin embargo esta propiedad funciona solamente cuando tal elemento esta posicionado con un valor aparte de "static: valor por defecto". Position property "entre otras" crea un contexto de apilacion local o local stacking context en tal elemento, lo cual rompe "al menos en ese elemento" el orden de apilamiento por defecto que el HTML root o global stacking context aplica a todo elemento, ocasionando que dicho elemento se convierta en root de sus hijos que proyectaran su Z-Axis en base al local stacking context, NO el HTML root. Un Stacking context es un elemento que contiene un grupo de capas o elementos apilados, vemos stacking context ya sea en el HTML root o cualquier otro elemento con cualquiera de las propiedades que activan su stacking context. Este concepto de orden de apilamiento o stacking order es el mismo al orden de los elementos en HTML. Por tanto, si un grupo de elementos con el mismo tamano y forma estuviera apilado uno encima de otro se podria ver solamente el ultimo elemento listado en el documento HTML, los anteriores quedan ocultos debajo de este, por otro lado hay que recordar que cuando se forma un stacking context en un elemento todos los hijos de este son confinados a este. That means that if an element is contained in a stacking context at the bottom of the stacking order, there is no way to get it to appear in front of another element in a different stacking context that is higher in the stacking order, even with a z-index of a billion!  */
+/* NOTE Stacking Order Within the Same Stacking Context Here are the basic rules to determine stacking order within a single stacking context (from back to front): 1- The stacking context’s root element. 2- Positioned elements (and their children) with negative z-index values (higher values are stacked in front of lower values; elements with the same value are stacked according to appearance in the HTML). 3- Non-positioned elements (ordered by appearance in the HTML). 4- Positioned elements (and their children) with a z-index value of auto (ordered by appearance in the HTML). 5- Positioned elements (and their children) with positive z-index values (higher values are stacked in front of lower values; elements with the same value are stacked according to appearance in the HTML)  */
+/* NOTE Stacking order es el orden en que los elementos se apilan encima de si dentro de un stacking context. */
+/* NOTE Links to learn how stacking context and Z-Index work: https://philipwalton.com/articles/what-no-one-told-you-about-z-index/  or  https://tiffanybbrown.com/2015/09/css-stacking-contexts-wtf/index.html  or  https://www.theguild.nl/how-the-css-stacking-context-works/ */
+/* NOTE Cabe destacar que todo elemento posicionado se posicionado sobre todo objeto no posicionado */
 .upper-main {
+  /* Esta es la luna menguante que es papa de los planetas pequenos ".content y .side-bar", es en realidad un planeta grande azul/fucsia que da la impresion de ser una luna menguante gracias al otro div redondo y rosado que es hermano de este */
   position: relative;
-  z-index: 2;
+  z-index: -4;
   background: linear-gradient(
     328deg,
     rgba(69, 189, 252, 1) 1%,
@@ -141,9 +152,12 @@ body {
   height: 90vh;
   width: 100vw;
   border-radius: 50%;
-  margin: auto;
+  margin: 5vh auto 5vh;
+  /* COMMIT Se agrego el margin on top and bottom */
 }
-.divfortesting-zindex {
+/* COMMIT Este div de abajo es el div redondo del mismo color rosado del background del papa de todos en la seccion de planetas ".main-container", que con z-index va encima de su hermana fucsia-azulada ".upper-main", dando a esta la apariencia de ser luna menguante  */
+/* COMMIT Sin float este toma su lugar normal en el flow, despeja hacia abajo a su hermano bloque .upper-main como debe ser usualmente */
+/* .divfortesting-zindex {
   position: relative;
   z-index: 3;
   background: #c58daa;
@@ -153,8 +167,13 @@ body {
   border-radius: 50%;
   margin: 1em 0 0 1em;
   box-shadow: 20px 10px 10px rgba(0, 0, 0, 0.23);
-}
+} */
+/* NOTE RECORDAR EXPANDIR ESTE COMENTARIO PQ ES EL PLANETA QUE DA EL EFECTO DE CUARTO MENGUANTE */
+/*HACK Width on ".main-container" kind of fixes side scrolling on a desktop viewport since the image was a bit wider than the actual size of my laptop screen was less than 1350px which is the size of the image */
 .main-container {
+  /* Papa de todos en la seccion de planetas */
+  /* position: relative; */
+  /* z-index: 4; */
   background: linear-gradient(
     180deg,
     rgba(187, 119, 154, 0.85),
@@ -162,14 +181,95 @@ body {
     rgba(187, 119, 154, 0.03)
   );
   overflow: hidden;
-  height: 100vh;
-  /*HACK con overflow hidden el texto debajo de esta seccion no se cola al inicio, recuerde q float saca los elementos del flow normal, los elementos siguientes tomarian su lugar, para que overflow hidden sea efectivo se tiene que usar en el papa de los hijos que estan flotando  */
+  height: 110vh;
+  width: 100vw;
 }
-/* End of second section */
+/*HACK con overflow hidden el texto debajo de esta seccion no se cola al inicio, recuerde q float saca los elementos del flow normal, los elementos siguientes tomarian su lugar, para que overflow hidden sea efectivo se tiene que usar en el papa de los hijos que estan flotando  */
+/* COMMIT Esto explica el primer set de planetas, el porque .upper-main junto a sus hijos quedan detras del papa de toda la seccion .main-container, el cual tiene una transparencia, lo cual deja ver a sus hijos detras: 1- Empezamos con el papa .main-container, el cual al no estar posicionado se ubica por encima de elementos con Z-Index negativo. 2- Su hijo directo, .upper-main se encuentra posicionado y tambien adquiere stacking context al tener Z-Index diferente a auto, lo cual arrastra a sus hijos con el. 3- Es indiferente si los hijos de .upper-main (.sidebar y .content) tienen stacking context o no, ya que su padre los confina dentro de el al tener stracking context. Como nota si se quisiera que otro elemento se sobreponga a .main-container tendria que ser un elemento hermano de .upper-main, en otras palabras un elemento fuera del stacking context de .upper-main, un elemento que reune esas especificaciones seria ".divfortesting-zindex", .divfortesting-zindex no requiere Z-Index para estar on top of everything else ya que el stacking order default del root HTML, lo posiciona encima de su padre directo .main-container     */
+/* Second section, just bellow landpage End First Part*/
+/* <<<<<<<<<<<<<<<<<--------------->>>>>>>>>>>>>>>>>>> */
+/* Second section, just bellow landpage Start Second Part*/
+.upper-main-II {
+  /* COMMIT aqui estamos estamos aplicando estilos en cascada a upper-main gracias a una segunda clase para la misma etiqueta, de esta forma me ahorro escribir estilos innecesarios solo sobrescribo los estilos que quiero cambiar como el background color, el resto lo mantengo igual con los estilos de la primer clase en esta etiqueta */
+  background: rgb(70, 39, 73);
+  background: linear-gradient(
+    0deg,
+    rgba(70, 39, 73, 1) 24%,
+    rgba(131, 50, 172, 1) 51%,
+    rgba(224, 134, 211, 1) 77%
+  );
+  /* COMMIT Cambiado el angulo de gradient y grandient transition entre 1ra y 2da parte */
+}
+.main-container-II {
+  /* NOTE cuando el angulo del gradient es 0 el primer color listado se renderiza abajo de todos. */
+  /* COMMIT notese que esta clase fue hecha solo para cambiar la direccion del gradient del .main-container de la 2da parte y que transicione suavemente con el tono transparente con el que termina el .main-container de la 1ra parte.  */
+  background: linear-gradient(
+    0deg,
+    rgba(187, 119, 154, 0.95),
+    rgba(187, 119, 154, 0.65),
+    rgba(187, 119, 154, 0.03)
+  );
+}
+.side-bar-II {
+  position: relative;
+  top: 73vh;
+}
+.content-II {
+  position: relative;
+  top: 5vh;
+}
+.divfortesting-zindex-II {
+  /* position: relative;
+  z-index: 3; */
+  background: rgba(187, 119, 154, 0.5);
+  height: 65vh;
+  width: 70vw;
+  float: left;
+  border-radius: 50%;
+  margin: 2em 0 0 1.8em;
+  box-shadow: 15px 10px 10px rgba(0, 0, 0, 0.23);
+}
+/* COMMIT En este otro set de planetas el .upper-main y sus hijos (.side-bar y .content) siguen detras del .main-container, entre las diferencias que hay esta: 1- La direccion del gradient se volteo 180 grados. 2- Se renderiza .divfortesting-zindex gracias a los estilos que estan justo encima de esta nota. 3- Notese que .divfortesting-zindex no necesita Z-Index para colocarse encima de todo, debido a que no esta posicionado esta bajo el stacking context del root HTML lo que lo coloca naturalmente encima del .main-container  */
+/* Second section, just bellow landpage End Second Part*/
+/* <<<<<<<<<<<<<<<<<--------------->>>>>>>>>>>>>>>>>>> */
+/* Second section, just bellow landpage Start Third Part*/
+.main-container-III {
+  background: linear-gradient(
+    180deg,
+    rgba(187, 119, 154, 0.95),
+    rgba(187, 119, 154, 0.65),
+    rgba(187, 119, 154, 0.03),
+    rgba(255, 255, 255, 1)
+  );
+  position: relative;
+  z-index: -5;
+}
+.upper-main-III {
+  position: static;
+  /* COMMIT This hack allows to revert what the original styles do, with this the original stacking context that .upper-main had was disabled */
+}
+.side-bar-III {
+  position: relative;
+  z-index: -1;
+  margin-left: 14vw;
+}
+.content-III {
+  /* position: relative;
+  z-index: 1; */
+}
+/* COMMIT Aqui explico como se logro tal distribucion en el 3er set de planetas: 1- Lo primero fue revertir el stacking context del upper-main original, lo que hice fue simplemente ponerle position: static (valor por defecto) y, asi pude sacar a los hijos de upper-main. 2- Segundo, queria colocar a .side-bar "el planeta mas peque" detras de su padre .upper-main, simplemente tenia que darle stacking context con Z-Index negativo, sin embargo .side-bar seguia colocandose detras de papa del papa de .side-bar (.main-container). Como solucione esto? Recuerde que un valor Z-Index negativo pone a los elementos en el fondo del stack "podia saber que .side-bar se colocaba detras de (.main-container) porque este era translucido" y mientras mas negativo sea el valor de Z-Index mas al fondo se situa "En caso de que hubiesen otros elementos con Z-Index negativo". En fin, simplemente tenia que darle un valor mas negativo a .main-container para que .side-bar estuviera encima, logrando asi que .main-container estuviera en el fondo, luego .side-bar "siendo hijo directo de .upper-main no de .main-container", luego upper-main y por ultimo; 4- .content: Este va encima de su padre, N O T E S E que justo arriba de esta nota puse estilos para dar a .content stacking context cuando en realidad no lo necesita, recuerde que elementos no posicionados se colocan uno encima de otro en el orden en que aparecen en HTML. */
+/* Second section, just bellow landpage End Third Part*/
 
+/* START map testing */
 .secondmaptag {
   display: block;
 }
+/* COMMIT los estilos de .maptesting borran las imagenes mapeadas */
+.maptesting {
+  display: none;
+  /* REVIEW Con esto quite las imagenes mapeadas */
+}
+/* End map testing */
 
 /* Outline y Border */
 .one {
@@ -183,6 +283,7 @@ body {
   margin: 1rem auto;
   border: 0.1rem solid red;
 }
+
 [type="radio"] {
   /*NOTE Para dar estilo a los inputs del form */
   margin: 20px 0px 20px 0px;

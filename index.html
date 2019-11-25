@@ -17,7 +17,7 @@
     <!-- Tambien se puede usar @import en CSS pero por performance es mejor con link  -->
     <!-- Link de Google fonts -->
     <link rel="stylesheet" type="text/css" href="styles/styles.css" />
-    <link rel="stylesheet" type="text/css" href="styles/menu.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="styles/menu.css" /> -->
     <link rel="icon" href="path/to/Icon-img" />
     <!--      Here is a list of Shortcuts, Snippets and Tips for better and faster coding
 
@@ -44,10 +44,13 @@
               14- Ctrl+Alt+Up or Ctrl+Alt+Down: To set cursors above or bellow the current cursor's position.
               15- CTRL+G: Looks through lines of code by their numbers.
               16- CTRL+ Splits editor vertically.
-              17- CTRL+ALT+J: Unsplits editor .
-              18- CTRL+ALT+Y: Splits editor horizontally.
+              17- CTRL+ALT+H: Splits editor horizontally.
+              18- CTRL+ALT+U: Unsplits editor .
               19- Shift+ALT+UP/DOWN Arrow: Allows to quickly make copies of the code line where you are sitting on.
               20- CTRL+ALT+X: Toggles activity Bar.
+              21- CTRL+ALT+B: Toggles Bookmark.
+              22- CTRL+ALT+N: Jumps to next Bookmark.
+							23- CTRL+ALT+P: Jumps to previous Bookmark.
 
 			        UPDATING SNIPPETS
 			        1- Press COMMAND + SHIFT + P to open the command palette.
@@ -88,13 +91,14 @@
               cambios en la otra PC se presiona CTRL + ALT + D, podría ser necesario resetear VSCode para que algunos cambios surjan efecto.
               Hay elementos como por ejemplo los fonts, los cuales no se suben al Gist, esto porque el font tiene que
               estar instalado en la PC, no basta con solo subir decirle a VSCode que tenga cierto font en settings. Los themes como Cobalt2 requiren de custom CSS files que ayudan a dar efectos extra a la interfaz de VScode, por lo cual hay que descargarlos. Por alguna razon misteriosa el custom CSS file no logro que el theme modificara el color de los dirty circle (la bolita que indica que hay guardar en los files), tras correr VSCode en modo administrador y determinar el absolute path hacia el custom file, lo cual se logra desde el browser tras presionar CTRL + O, lo cual abre el File explorer de Windows para asi buscar el custom CSS File desde el browser, la direccion que indica el browser tras haber encontrado el file es el absolute path que la configuracion (vscode_custom_css.imports) necesita. Nada funciono. -->
-              <!-- COMMIT Se agregaron datos al HTML snipet concerniente a las configuraciones de VSCode, em especial CObalt2 y hacks de como hacer que TO-DO funcione bien -->
-              <!-- COMMIT Se agrego al HTML snippet info acerca del icon de TO-DO tree y se cambio el icon para el tag notas -->
-
+    <!-- HACK Se agregaron datos al HTML snipet concerniente a las configuraciones de VSCode, em especial CObalt2 y hacks de como hacer que TO-DO funcione bien -->
+    <!-- NOTE Se agrego al HTML snippet info acerca del icon de TO-DO tree y se cambio el icon para el tag notas -->
+    <!-- COMMIT hice cambios en los snippets y keyboard shortcuts para crear bookmarks y partir el editor horizontalmente -->
+    <!-- COMMIT Agregue background para los bookmarks -->
   </head>
   <body>
     <img src="./Images/Logo/cherry.svg" alt="logo" class="logo" />
-    <nav class="menu-wrap">
+    <!-- <nav class="menu-wrap">
       <input type="checkbox" class="toggler" />
       <div class="hamburger"><div></div></div>
       <div class="menu">
@@ -109,13 +113,27 @@
           </div>
         </div>
       </div>
-    </nav>
+    </nav> -->
+    <!-- COMMIT Comente el menu y el link hacia los estilos del menu pq lo hice con la ayuda de un video de Youtube, quiero aprender a hacerlo -->
     <header class="showcase">
+      <!-- TODO Work on this background image -->
       <img
-        src="./Images/OptimizedPics/smoothie-320pxWidth-60quality.jpg"
+        src="/Images/Not-OptimizedPics/smoothie1350pxwidth.jpg"
         alt="shakepic"
         class="shakepic"
+        usemap="#landpage"
       />
+      <map name="landpage">
+        <area
+          target=""
+          alt=""
+          title=""
+          href=""
+          coords="769,1556,348"
+          shape="circle"
+        />
+      </map>
+      <!-- TODO End of work section -->
       <div class="container showcase-inner">
         <h1>Welcome</h1>
         <p>
@@ -128,21 +146,40 @@
     </header>
     <main>
       <div class="main-container">
-        <!-- Start section where I practice gradients and floats -->
+        <!-- Start section where I practice gradients and floats - First Part -->
         <div class="divfortesting-zindex"></div>
         <section class="upper-main">
-          <!-- <div class="container-upper-main"> -->
           <div class="side-bar"></div>
           <div class="content"></div>
-          <div class="footer"></div>
+          <!-- COMMIT Se borro un div vacio como .content y .side-bar que no estaba siendo usado -->
         </section>
-        <!-- End section where I practiced gradients and floats -->
+        <!-- End section where I practiced gradients and floats - First Part -->
+      </div>
+      <div class="main-container main-container-II">
+        <!-- Start section where I practice gradients and floats - Second Part -->
+        <div class="divfortesting-zindex divfortesting-zindex-II"></div>
+        <section class="upper-main upper-main-II">
+          <div class="side-bar side-bar-II"></div>
+          <div class="content content-II"></div>
+          <!-- COMMIT Se borro un div vacio como .content y .side-bar que no estaba siendo usado -->
+        </section>
+        <!-- End section where I practiced gradients and floats - Second Part -->
+      </div>
+      <div class="main-container main-container-III">
+        <!-- Start section where I practice gradients and floats - First Part -->
+        <div class="divfortesting-zindex"></div>
+        <section class="upper-main upper-main-III">
+          <div class="side-bar side-bar-III"></div>
+          <div class="content content-III"></div>
+          <!-- COMMIT Se borro un div vacio como .content y .side-bar que no estaba siendo usado -->
+        </section>
+        <!-- End section where I practiced gradients and floats - First Part -->
       </div>
       <!-- NOTE Image Map Generated, 1ST Rule: Map tags only work with cursor, so It won't work on mobiles or tablets. 2ND Rule: Seems to not work on PNG or SVG images, so far it's worked on JPG only, 3RD Rule: Avoid using dashes, numbers or any kind of special caracters on map's name atribute, 4RD Rule: Don't repeat map names, 5TH Rule: Always include "#" on the "usemap" tag, at least on Chrome -->
 
-      <!-- COMMIT Finally got it! Now it shows the tag Highlighted as well as on the tree -->
       <!-- Small image map tag -->
       <img
+        class="maptesting"
         src="./Images/OptimizedPics/smoothie-320pxWidth-60quality.jpg"
         usemap="#secondmaptag"
         class="secondmaptag"
@@ -223,7 +260,11 @@
       </map>
       <!-- Small image map tag -->
       <!-- Big image map tag -->
-      <img src="./Images/OptimizedPics/pic.jpg" usemap="#firstmaptag" />
+      <img
+        src="./Images/OptimizedPics/pic.jpg"
+        usemap="#firstmaptag"
+        class="maptesting"
+      />
       <map name="firstmaptag">
         <area
           target=""
