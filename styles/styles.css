@@ -266,7 +266,12 @@ body {
 }
 
 /* End map testing */
-
+@media only screen and (max-width: 350px) {
+  .maptesting {
+    display: none;
+  }
+}
+/* COMMIT Ln#269 Hecho para desaparecer mapped images en dispositivos con dimensiones menores a 350px */
 /* Outline y Border */
 .one {
   width: 80%;
