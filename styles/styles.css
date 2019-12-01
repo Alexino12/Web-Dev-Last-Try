@@ -243,6 +243,9 @@ body {
   );
   position: relative;
   z-index: -5;
+  box-shadow: inset 0 -2rem 1rem -1rem #ffcccc,
+    inset 0 -14rem 10rem -7rem #ffcccc;
+  /* COMMIT put this border for a smooth transition between third set of planets and linear strip gradient practice */
 }
 .upper-main-III {
   position: static;
@@ -265,13 +268,54 @@ body {
   display: block;
 }
 
-/* End map testing */
 @media only screen and (max-width: 350px) {
   .maptesting {
     display: none;
   }
 }
-/* COMMIT Ln#269 Hecho para desaparecer mapped images en dispositivos con dimensiones menores a 350px */
+/* End map testing */
+/* NOTE Ln#274 Hecho para desaparecer mapped images en dispositivos con dimensiones menores a 350px */
+
+/* Start gradient-stripe practice  */
+/* COMMIT aqui empieza con esta practica de gradient strips */
+.gradient-background {
+  /* background: linear-gradient(90deg, red, yellow, rgb(204, 204, 255)); */
+  height: 100vh;
+  padding: 3rem;
+  background: linear-gradient(360deg, #ccffff, #ffcccc);
+}
+.transparent-stripes {
+  height: 45vh;
+  width: 65vw;
+  margin: 0 0 0 2.94rem;
+  opacity: 0.8;
+  /* COMMIT (This note will become N O T E) recordemos que opacity "con valor menor a 1" nos da stacking context por lo cual las barras rojas se colocan encima de las barras amarillas a pesar de estar situadas antes de las amarillas en el stacking order de HTML root, N O T E S E que las barras amarillas se estan rigiendo por el stacking context de HTML root.  */
+  background: repeating-linear-gradient(
+    45deg,
+    red 0px,
+    red 40px,
+    black 40px,
+    black 80px
+  );
+  border-radius: 5%;
+  /* COMMIT (This note will become H A C K) needed position so I could move downwards  */
+}
+.transparent-stripes-background {
+  height: 45vh;
+  width: 65vw;
+  margin: -4.05rem 2.5rem 0 0;
+  /* COMMIT (This note will become H A C K) El truquito de poner las yellow bars debajo lo hace el margin negativo, gracias a que las barras rojas estan en otro stacking context gracias a opacity. */
+  border-radius: 5%;
+  background: repeating-linear-gradient(
+    135deg,
+    yellow 0px,
+    yellow 40px,
+    black 40px,
+    black 80px
+  );
+}
+/* End gradient-stripe practice  */
+
 /* Outline y Border */
 .one {
   width: 80%;
