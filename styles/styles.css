@@ -21,8 +21,9 @@
   --section-fullheight: 100vh;
 }
 body {
-  font-family: var(--font-family-not-header);
-  line-height: var(--overall-line-height);
+  /* NOTE Quite la estupidez de las variantes */
+  font-family: "Gayathri", sans-serif;
+  line-height: 1.4;
 }
 .logo {
   width: 10vw;
@@ -35,8 +36,9 @@ body {
 }
 /* This is the section where the main image is  */
 .shakepic {
+  /* NOTE quite la estupidez de las variantes */
   position: absolute;
-  height: var(--section-fullheight);
+  height: 100vh;
   z-index: 0;
   width: 100vw;
   /* HACK width property fixes cross-scrolling */
@@ -47,15 +49,17 @@ body {
   overflow: hidden;
   position: relative;
   z-index: 1;
-  background: var(--body-bg-color);
+  /* NOTE quite la estupidez de las variantes */
+  background: rgba(187, 119, 154, 0.5);
   box-shadow: inset 0 -2rem 1rem -1rem #c58daa,
     inset 0 -14rem 10rem -10rem #c58daa;
   /*  HACK This Box Shadow is what makes a degraded between first and second sections */
 }
 
 .showcase {
-  color: var(--font-color);
-  height: var(--section-fullheight);
+  /* NOTE quite la estupidez de las variantes */
+  color: white;
+  height: 100vh;
   /*  REVIEW removing showcase's position may cause errors position: relative; */
 }
 .showcase .showcase-inner {
@@ -69,27 +73,52 @@ body {
   font-size: 2.2rem;
 }
 .showcase p {
-  letter-spacing: var(--letterspacing);
+  letter-spacing: 0.15rem;
   padding-top: 4vh;
   text-align: justify;
 }
+/* Styling for the BUTTON */
 .btn {
   display: inline-block;
   font-weight: bold;
   border: none;
-  background: var(--body-bg-color);
-  color: var(--font-color);
+  /* NOTE quite estupidez de variantes */
+  background: rgba(187, 119, 154, 0.5);
+  color: white;
   padding: 5vh 9vw;
   margin-top: 14vh;
   text-decoration: none;
   border-radius: 8%;
-  border: var(--outline-edges-theme);
+  /* NOTE quite estupidez de variantes */
+  border: 0.04rem solid #8332ac;
   /*NOTE el 1er valor es el eje horizontal, el 2do el vertical, el 3ro el blur, el 4to alarga las sombra hacia todas direcciones */
   /*HACK en esta propiedad los dos primeros valores de sombras proyectan sombra hacia abajo creando un efecto de blur y oscuridad mas marcados y que no se logra con un solo value de sombra */
   /*HACK tambien se puede usar 3 valores inset lo que logra 3 colores distintos dentro, hay que jugar bastante con el 4 value de las sombras para lograr esto */
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.19), 0 19px 19px rgba(0, 0, 0, 0.23),
     inset 0 -15px 28px #a469c2;
 }
+/* Start of styles for landpage button */
+/* NOTE agregue pseudo clases para el boton "READ MORE" del landpage, utilize por primera vez transform property */
+.btn:link {
+  color: white;
+}
+.btn:visited {
+  color: rgb(247, 48, 81);
+}
+.btn:hover {
+  /* NOTE Recordemos que en mobiles el hover no renderiza, en mobiles el hover se acciona al hacer "tap" */
+  background: rgba(157, 119, 154, 0.5);
+}
+.btn:active {
+  /* NOTE La pseudo clase :active fue a la que mas propiedades se le dio, incluyendo Transform */
+  border: 0.04rem solid white;
+  background: #f1a5b7;
+  opacity: 0.65;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.59), 0 19px 19px rgba(0, 0, 0, 0.23),
+    inset 0 -15px 28px #be4a66;
+  transform: scale(1.06);
+}
+/* End of styles for landpage button */
 
 /* Second section, just bellow landpage Start First Part*/
 /* NOTE En esta seccion se explica mediante comments como esta compuesta la seccion de los planetas*/
@@ -221,7 +250,7 @@ body {
 .divfortesting-zindex-II {
   /* position: relative;
   z-index: 3; */
-  background: rgba(187, 119, 154, 0.5);
+  background: rgba(187, 119, 154, 0.1);
   height: 65vh;
   width: 70vw;
   float: left;
@@ -245,11 +274,11 @@ body {
   z-index: -5;
   box-shadow: inset 0 -2rem 1rem -1rem #ffcccc,
     inset 0 -14rem 10rem -7rem #ffcccc;
-  /* COMMIT put this border for a smooth transition between third set of planets and linear strip gradient practice */
+  /* NOTE put this border for a smooth transition between third set of planets and linear strip gradient practice */
 }
 .upper-main-III {
   position: static;
-  /* HACK This hack allows to revert what the original styles do, with this the original stacking context that .upper-main had was disabled */
+  /* HACK This hack allows to revert what the original styles do (this refers to .upper-main alone), with this the original stacking context that .upper-main had was disabled */
 }
 .side-bar-III {
   position: relative;
@@ -258,9 +287,66 @@ body {
 }
 .content-III {
   /* position: relative;
-  z-index: 1; */
+  z-index: 1;*/
+  /* display: block; */
+  width: 35vw;
+  height: 20vh;
+  float: right;
+  border-radius: 50%;
+  background: linear-gradient(
+    205deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(253, 29, 29, 1) 50%,
+    rgba(252, 176, 69, 1) 100%
+  );
+  margin: -2rem 1rem 0 0;
+  box-shadow: -10px 6px 10px 3px rgba(0, 0, 0, 0.23),
+    inset 10px -6px 10px 3px rgba(0, 0, 0, 0.23),
+    inset -1px 1px 10px 0.5px rgb(250, 249, 247);
 }
 /* NOTE Aqui explico como se logro tal distribucion en el 3er set de planetas: 1- Lo primero fue revertir el stacking context del upper-main original, lo que hice fue simplemente ponerle position: static (valor por defecto) y, asi pude sacar a los hijos de upper-main. 2- Segundo, queria colocar a .side-bar "el planeta mas peque" detras de su padre .upper-main, simplemente tenia que darle stacking context con Z-Index negativo, sin embargo .side-bar seguia colocandose detras de papa del papa de .side-bar (.main-container). Como solucione esto? Recuerde que un valor Z-Index negativo pone a los elementos en el fondo del stack "podia saber que .side-bar se colocaba detras de (.main-container) porque este era translucido" y mientras mas negativo sea el valor de Z-Index mas al fondo se situa "En caso de que hubiesen otros elementos con Z-Index negativo". En fin, simplemente tenia que darle un valor mas negativo a .main-container para que .side-bar estuviera encima, logrando asi que .main-container estuviera en el fondo, luego .side-bar "siendo hijo directo de .upper-main no de .main-container", luego upper-main y por ultimo; 4- .content: Este va encima de su padre, N O T E S E que justo arriba de esta nota puse estilos para dar a .content stacking context cuando en realidad no lo necesita, recuerde que elementos no posicionados se colocan uno encima de otro en el orden en que aparecen en HTML. */
+
+/* .content-III:link {
+width: 35vw;
+height: 20vh;
+float: right;
+border-radius: 50%;
+background: linear-gradient(
+  205deg,
+  rgba(131, 58, 180, 1) 0%,
+  rgba(253, 29, 29, 1) 50%,
+  rgba(252, 176, 69, 1) 100%
+);
+margin: -2rem 1rem 0 0;
+box-shadow: -10px 6px 10px 3px rgba(0, 0, 0, 0.23),
+  inset 10px -6px 10px 3px rgba(0, 0, 0, 0.23),
+  inset -1px 1px 10px 0.5px rgb(250, 249, 247);
+}
+.content-III:visited {
+width: 35vw;
+height: 20vh;
+float: right;
+border-radius: 50%;
+background: linear-gradient(
+  205deg,
+  rgba(131, 58, 180, 1) 0%,
+  rgba(253, 29, 29, 1) 50%,
+  rgba(252, 176, 69, 1) 100%
+);
+margin: -2rem 1rem 0 0;
+box-shadow: -10px 6px 10px 3px rgba(0, 0, 0, 0.23),
+  inset 10px -6px 10px 3px rgba(0, 0, 0, 0.23),
+  inset -1px 1px 10px 0.5px rgb(250, 249, 247);
+}
+.content-III:hover {
+cursor: pointer;
+background: red;
+}
+.content-III:active{
+border: 2px solid yellow;
+} */
+/* COMMIT (WILL BE A -->>N O T E) Date: Dec, 6. Los estilos aplicados al .content-III (Codigo comentado justo encima de esta nota) when hovering no estan aplicando, intentar aplicar link, visited, hover y active haber si agarra, Date: Dec,7 . Sin embargo, despues de aplicar LoVe HAte los estilos no aplican, se comento todo el segmento de pseudo elementos en .content-III. Para el pseudo class link del .content-III solo habia copiado los estilos del .content situado en el primer set de planetas pq no queria que el planeta cambiara su estilo a pesar de ser "link", los mismo para la pseudo class visited, las unicas pseudo clases que en realidad aplican un efecto diferente fueron :hover y :active, sin embargo nada funciono y se comentaron todos los estilos que intente usar para cambiar los colores de .content (the red, purple & orange planet) */
+
 /* Second section, just bellow landpage End Third Part*/
 
 /* START map testing */
@@ -277,19 +363,23 @@ body {
 /* NOTE Ln#274 Hecho para desaparecer mapped images en dispositivos con dimensiones menores a 350px */
 
 /* Start gradient-stripe practice  */
-/* COMMIT aqui empieza con esta practica de gradient strips */
 .gradient-background {
   /* background: linear-gradient(90deg, red, yellow, rgb(204, 204, 255)); */
   height: 100vh;
+  width: 100vw;
+  /* NOTE fixed side scrolling adding full width to the background  */
   padding: 3rem;
   background: linear-gradient(360deg, #ccffff, #ffcccc);
 }
 .transparent-stripes {
+  /* NOTE Despite having lots of exercices bellow on the animations/transitions section practice, these stripes were the last practice about animations/transitions that I made. Before trying transition properties on the color stripe divs I had altered the stacking context of the red stripes when used opacity on them, which placed them on top of the yellow stripes, even if the yellow stripes are located last on the HTML root stacking order, which would put the yellow ones on top of the red ones in normal circunstances. There was 2 ideas on using opacity: 1st Allow viewers to notice how red and yellow stripes were stacked on each other, 2nd Put red stripes on top the yellow stripes. But then I used transition on the yellow stripes which initially had a regular HTML stacking order (REASON WHY THEY WERE BENEATH THE RED STRIPES).. what happened then? The yellow stripes got back on top of the red stripes. Why?: As soon I used transition on the yellow stripes they adquired stacking context, just like the red stripes did when I used property opacity on them, so now that both red and yellow stripes have stacking context they both drop back on HTML stacking order rules! Which puts the yellow stripes back on top again because they are located later than the red ones (REMEMBER). Solution?: I had to give the red stripes a higher z-index value than the yellow ones, however since neither stripe color was positioned I had to position both first.  */
+  position: relative;
+  z-index: 2;
   height: 45vh;
   width: 65vw;
   margin: 0 0 0 2.94rem;
   opacity: 0.8;
-  /* COMMIT (This note will become N O T E) recordemos que opacity "con valor menor a 1" nos da stacking context por lo cual las barras rojas se colocan encima de las barras amarillas a pesar de estar situadas antes de las amarillas en el stacking order de HTML root, N O T E S E que las barras amarillas se estan rigiendo por el stacking context de HTML root.  */
+  /* NOTE recordemos que opacity "con valor menor a 1" nos da stacking context por lo cual las barras rojas se colocan encima de las barras amarillas a pesar de estar situadas antes de las amarillas en el stacking order de HTML root, N O T E S E que las barras amarillas se estan rigiendo por el stacking context de HTML root.  */
   background: repeating-linear-gradient(
     45deg,
     red 0px,
@@ -298,13 +388,21 @@ body {
     black 80px
   );
   border-radius: 5%;
-  /* COMMIT (This note will become H A C K) needed position so I could move downwards  */
+  transform: scale(1);
+  transition-property: transform;
+  transition-duration: 1000ms;
+}
+
+.transparent-stripes:hover {
+  transform: scale(1.4);
 }
 .transparent-stripes-background {
+  position: relative;
+  z-index: 1;
   height: 45vh;
   width: 65vw;
   margin: -4.05rem 2.5rem 0 0;
-  /* COMMIT (This note will become H A C K) El truquito de poner las yellow bars debajo lo hace el margin negativo, gracias a que las barras rojas estan en otro stacking context gracias a opacity. */
+  /* HACK El truquito de poner las yellow bars debajo lo hace el margin negativo, gracias a que las barras rojas estan en otro stacking context gracias a opacity. */
   border-radius: 5%;
   background: repeating-linear-gradient(
     135deg,
@@ -313,8 +411,308 @@ body {
     black 40px,
     black 80px
   );
+  transform: scale(1);
+  transition-property: transform;
+  transition-duration: 1000ms;
+}
+.transparent-stripes-background:hover {
+  transform: scale(1.4);
 }
 /* End gradient-stripe practice  */
+/* <<<<<<<<<<------>>>>>>>>>>> */
+/* Making a heart that has a common radial gradient (Transition & Animations Practice) - Start*/
+.heart-background {
+  height: 60vh;
+  width: 100vw;
+  /* NOTE had to add width to stop side scrolling */
+  background: linear-gradient(180deg, #ccffff, #ffcccc);
+  /* padding-top: 5vh; */
+}
+.square {
+  /* HACK Se descubrio que para hacer un gradient con transicion mas suave se pueden crear muchos puntos de transicion con la pagina "https://cssgradient.io/" */
+  background: linear-gradient(
+    225deg,
+    rgba(255, 204, 204, 1) 79%,
+    rgba(254, 197, 199, 1) 80%,
+    rgba(253, 190, 194, 1) 81%,
+    rgba(252, 183, 189, 1) 82%,
+    rgba(251, 176, 184, 1) 83%,
+    rgba(250, 169, 179, 1) 84%,
+    rgba(249, 162, 174, 1) 85%,
+    rgba(248, 155, 169, 1) 86%,
+    rgba(247, 148, 164, 1) 87%,
+    rgba(246, 141, 159, 1) 88%,
+    rgba(246, 134, 154, 1) 89%,
+    rgba(245, 127, 149, 1) 90%,
+    rgba(245, 120, 144, 1) 91%,
+    rgba(244, 113, 139, 1) 92%,
+    rgba(244, 106, 134, 1) 93%,
+    rgba(244, 106, 134, 1) 93%,
+    rgba(243, 99, 129, 1) 94%,
+    rgba(243, 92, 125, 1) 95%,
+    rgba(242, 85, 120, 1) 96%,
+    rgba(242, 78, 116, 1) 97%,
+    rgba(240, 55, 102, 1) 100%
+  );
+  width: 31.2vw;
+  height: 17.5vh;
+  margin: auto;
+  /* HACK The only property that pushed the heart down without pushing down its father as well was top: 15vh, the one bellow, I just didnt want to relay on its parent padding property to push it down, but margin-top would't let me to push it down because it was pushing its parent ".heart-background" as well and created a blank gap between the gradient backgrounds, as to why that happened, the property "tranform: rotate(-45deg)" and "margin: auto" property had to do with that, first, "margin: auto" helps to center the square by creating equally sized margins to the left and right but then tranform: rotate(-45deg) changes the orientation of the square's margins on both sides while keeping the squAre centered, however that pushes up the right side margin's top corner agaisnt the edge of its parent ".heart-background" (TO SEE THIS, USE CHROME DEVTOOLS AND HOVER OVER THIS ELEMENT SO YOU CAN SEE WHERE THE MARGIN POINTS AND HOW THAT ALONG WITH TRANFORM CREATES THE BLANK GAP ON TOP), beyond this point, the wider the right margin is (in this example) the more gap there will be between the 2 grandient backgrounds, so now.. the reason why margin-top was making this blank gap is because the right side margin's top corner will get further as margin right or top increase, therefore the gap gets larger. The other workaround I think is to make the whole heart smaller. */
+  top: 15vh;
+  transform: rotate(-45deg);
+  position: relative;
+  /* HACK descubri esta pagina que permite crear sombras facilmente "https://www.cssmatic.com/box-shadow", pero hay muchas opciones de paginas que crean efectos muy ingeniosos */
+  -webkit-box-shadow: -25px 25px 9px -19px rgba(0, 0, 0, 0.45);
+  -moz-box-shadow: -25px 25px 9px -19px rgba(0, 0, 0, 0.45);
+  box-shadow: -25px 25px 9px -19px rgba(0, 0, 0, 0.45);
+  animation-name: beat;
+  animation-duration: 1500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0, -0.29, 0.4, 0.5);
+}
+
+/* Making the heart beat - Start */
+@keyframes beat {
+  50% {
+    /* NOTE con "@keyframes beat" me di cuenta que no se ocupa transform: matrix, siempre y cuando la sintaxis de los values sea correcta. */
+    transform: scale(1.4) rotate(-45deg);
+  }
+}
+/* Making the heart beat - End */
+.square::before {
+  content: "";
+  background: #ffcccc;
+  width: 30vw;
+  height: 17.5vh;
+  /* margin-top: -15vh; */
+  border-radius: 50%;
+  position: absolute;
+  transform: rotate(45deg);
+  top: -8.5vh;
+  left: 0.4vw;
+  box-shadow: inset 13px 15px 15px -13px #f03766;
+}
+/* NOTE Without property content: "";, the pseudo elements ::before or ::after won't show. */
+/* NOTE If property content: "" is empty.. every part, including the parent as well as the children "::before & ::after" has to be positioned in order to render (Of course, it needs some other properties in order to show like height and background color), Then, once every part is rendered we can move them around the parent with top, bottom, left and right. If there is something in between the quotation marks like a bullet point E.g, it'll show elements before or after the selected element, like it was tested on the code bellow ".square::after" that was deleted. */
+/* HACK It would've been dificult to place the purple shades over the upper rounded parts of the heart, where I wanted and the way I wanted without transform: rotate().  */
+.square::after {
+  content: "";
+  background: #ffcccc;
+  width: 30vw;
+  height: 17.5vh;
+  border-radius: 50%;
+  position: absolute;
+  transform: rotate(137deg);
+  left: 15.7vw;
+  top: 0.08vh;
+  box-shadow: inset 11px 12px 15px -12px #f03766;
+}
+
+/* Making a heart that has a common radial gradient - End*/
+/* NOTE There was an element styled here, right before ".square::after" that was deleted at some point. The point was to see what a content: "" property does with something inside as content, E.g, a dot. */
+
+/* Here I practice transitions & animations - Start  */
+.trans-animation {
+  width: 100vw;
+  height: 150vh;
+  background: linear-gradient(0deg, #ccffff, #ffcccc);
+  perspective: 140px;
+  /* NOTE Perspective allows all direct children of any container to be 3D styled, in this case both children of .trans-animation (.simple-box & .shadow-box) will be 3D styled thanks to the perspective given to their parent .trans-animation. Then, there are 2 ways of using perspective: 1st As a property with a value like the one above, following the details in this comment. 2nd: As a value or function should I say of the property transform. (See: https://3dtransforms.desandro.com/perspective) */
+  animation-name: perspective;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+}
+/* HACK Transform-style: preserve-3d was not needed in this Box & Shadow section = There were no children of children needed to make this animation/transition practice or in other words .trans-animation has no grand-children, REMEMBER: Perspective only enables direct children of a given element to be 3D styled. So to fix that there is transform-style: preserve-3d, however in this case it was not needed. */
+@keyframes perspective {
+  0% {
+    perspective: 150px;
+  }
+  80% {
+    perspective: 200px;
+  }
+  100% {
+    perspective: 150px;
+  }
+}
+.simple-box {
+  width: 34vw;
+  height: 20vh;
+  background-color: #8332ac;
+  margin: 0vh auto 0vh;
+  border-radius: 50%;
+  animation-name: ok;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+  /* NOTE This "@keyframes ok" translates the div vertically (through y-axis) and scales it in different ways. So first, there is a "transform: matrix" property at 0% which changes nothing so it stays the same till it gets to the 80% of the animation within its duration of 1000ms or 1sec, towards the end of the animation the ball turns back to the same position and form.  */
+}
+/* HACK DO NOT USE "ALL" with transition, cause it hurts the performance */
+
+@keyframes ok {
+  0% {
+    background-color: #8332ac;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+  }
+  /* NOTE The comma between the x & y axis values is necessary for proper function of matrix transform properties. */
+  80% {
+    background-color: aquamarine;
+    /* transform: translate(0vw, 34vh); */
+    transform: matrix(1.3, 0, 0, 0.65, 0, 251);
+    /* HACK Found a page that helps with creating 2D transform matrixes. http://angrytools.com/css-generator/transform/ */
+  }
+  100% {
+    transform: matrix(1, 0, 0, 1, 0, 0);
+  }
+}
+.shadow-box {
+  opacity: 0.3;
+  background-color: rgba(0, 0, 0, 0.55);
+  margin: 0vh auto 0vh;
+  box-shadow: 2px 2px 11px 34px rgba(0, 0, 0, 0.55);
+  width: 24vw;
+  height: 13vh;
+  border-radius: 50%;
+  transform: translateY(70vh) rotateY(125deg);
+  animation-name: not-ok;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
+  /* HACK (Look for the 5 commented properties in .shadow-box) The next 5 properties bellow this "Hack|Comment" make a perfect isosceles trapezoid, the problem is that no shadow effects can be applied because box-shadow still outlines the squared shape of divs, instead of the trapezoid made thanks to the border properties, when making shapes with borders only there is no really a body in which a shadow can cast around. */
+  /* border-bottom: 100px solid rgba(0,0,0,0.55); */
+  /* border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  height: 0;
+  width: 44vw; */
+  /* HACK I continued searching other ways to input the isosceles trapezoid shape bellow the bouncing div, but then I saw this other hack that implies HTML unicode shapes, however I couldn't find an isosceles trapezoid on google, so I had to rely on the perspective property, which actually works perfectly, IMPORTANT: The perspective property goes on the father of the element we need to change (In this case .trans-animation) and then it trigers when applying transform to the child. */
+}
+@keyframes not-ok {
+  0% {
+    opacity: 0.3;
+    /* HACK Before I tried a negative value on the rotate's VALUE I was getting this weird issue with the shadow agaisnt or closer to the screen was going upwards at 80% of the animation or so, when it was supposed to go up while keeping the same degree on the X axis, since I was using the same VALUE for both, the animation and .shadow-box (TEST IT BY USING A POSITIVE VALUE ON THE ROTATE'S VALUE INSTEAD OF NEGATIVE */
+    transform: translateY(70vh) rotateX(-125deg) scale(1);
+  }
+  80% {
+    opacity: 0.6;
+    /* HACK Before I tried a negative value on the rotate's VALUE I was getting this weird issue with the shadow agaisnt or closer to the screen was going upwards at 80% of the animation or so, when it was supposed to go up while keeping the same degree on the X axis since I was using the same VALUE for both, the animation and .shadow-box (TEST IT BY USING A POSITIVE VALUE ON THE ROTATE'S VALUE INSTEAD OF NEGATIVE. */
+    transform: translateY(34.5vh) rotateX(-125deg) scale(1.1, 1.8);
+    box-shadow: 2px 2px 3px 22px rgba(1, 0, 0, 0.55);
+    /* HACK So.. this is the animation of the shadow but, initially it had a squared shape too and was given a perspective property to give it a 3D effect, so in order to make the shadow mimick both shape and actions of the bouncing ball I had to give the shadow a border-radius: 50% property so the shadow mimicks the ball's rounded shape when it is on the "air" as well as animation/transformation so the shadow mimicks the shape of the ball when it hits the "ground" and gets squished, however an animation with 2D transformation wouldn't help, I had to use an animation with 3D tranform and here's where I thought I had to use the matrix value to apply more than 1 transform value.. I was applying multiple transform values incorrectly, I was doing it this way: {transform: translate(x, x); transform: scale(x, x); That is wrong},but then I found out that when you need multiple values for transform you only need to type the transform property once and then add as many values as you need, like this: {transform: translate(x, x) scale(x, x)}. So i'm going to comment transform matrix bellow this hack/comment and continue with the easy way above. */
+    /* transform: matrix3d(1.2,0,0,0,0,0.9,0,-0.001,0,0,1,0,0,0,0,1); */
+    /* transform: translate(10vw -10vh); */
+    /* HACK The box-shadow property above is what I used to make the shadows' edges sharper as well as decreasing the size. */
+  }
+  100% {
+    opacity: 0.3;
+    /* HACK Before I tried a negative value on the rotate's VALUE I was getting this weird issue with the shadow agaisnt or closer to the screen was going upwards at 80% of the animation or so, when it was supposed to go up while keeping the same degree on the X axis since I was using the same VALUE for both, the animation and .shadow-box (TEST IT BY USING A POSITIVE VALUE ON THE ROTATE'S VALUE INSTEAD OF NEGATIVE */
+    transform: translateY(70vh) rotateX(-125deg) scale(1);
+  }
+}
+/* Cloud section - Start */
+/* NOTE This may be within the transition practice section but it works like a splitter from the bouncing ball and the stars. */
+/* HACK We can the get the cloud image between the dark and pink linear backgrounds in two ways: 1st: We can put the img tag with class .cloud above the div with class .nightsky so then we can kick the .cloud img tag off the normal HTML flow with the property float, upon that the .nightsky div will follow the normal flow and stick to the pink background above, creating the ilusion the .cloud figure tag is above both linear backgrounds as it is no longer part of the normal flow thanks to the property float. No position property needed in this way. 2nd: We can get the same results without "float" by putting the img tag .cloud inside .nightsky div which has a linear background that renders fine around the img .cloud (child) even though the figure tag .parent (parent) along its child are on top. So why does the linear background of the div .nightsky renders like that despite having two elements on top?  It is due to 3 reasons: a) The format given to the img .cloud (SVG). b) the fact that the parent element with class .parent is transparent due to lack of CSS height or background properties. c) Position: relative given to the img .cloud, which then got placed on the right place thanks to top & left. */
+.cloud {
+  /* position: absolute; */
+  position: relative;
+  /* float: left; */
+  top: -41.9vh;
+  left: -3.597vw;
+  margin: 0;
+  width: 100vw;
+  transform: scale(1.088);
+}
+/* NOTE It was necessary to apply position and drag up the figcaption so it followed the cloud image. */
+figcaption {
+  position: relative;
+  top: -11vh;
+  text-align: center;
+  opacity: 0.5;
+  color: white;
+}
+.nightsky {
+  /* position: relative; */
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(black, #000099, #66c2ff, #ffcccc, #ffeee6);
+}
+.stars {
+  position: relative;
+  width: 7vw;
+  height: 4vh;
+  border-radius: 50%;
+  background-color: aliceblue;
+  clip-path: polygon(
+    51% 18%,
+    58% 40%,
+    79% 46%,
+    59% 56%,
+    51% 78%,
+    42% 56%,
+    22% 47%,
+    43% 40%
+  );
+}
+.star-one {
+  top: 28%;
+  left: 85%;
+  animation-name: blink-one;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  transform: scale(0.7);
+  opacity: 0.5;
+}
+@keyframes blink-one {
+  50% {
+    transform: scale(1.7);
+    opacity: 1;
+  }
+}
+.star-two {
+  top: 40%;
+  left: 40%;
+  animation-name: blink-two;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  opacity: 0.7;
+}
+@keyframes blink-two {
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+.star-three {
+  top: 25%;
+  left: 20%;
+  animation-name: blink-three;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0, -0.29, 0.4, 0.5);
+  opacity: 0.9;
+}
+@keyframes blink-three {
+  50% {
+    transform: scale(1.3);
+    opacity: 1;
+  }
+}
+.star-black {
+  top: 55vh;
+  left: 75vw;
+  background-color: black;
+  animation-name: black-star;
+  animation-duration: 3000ms;
+  animation-iteration-count: infinite;
+  transform: scale(0.85);
+}
+@keyframes black-star {
+  50% {
+    transform: scale(1.4);
+  }
+}
+/* Cloud section - End */
+/* Here I practice transitions & animations - End  */
 
 /* Outline y Border */
 .one {

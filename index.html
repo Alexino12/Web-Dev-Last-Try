@@ -115,8 +115,9 @@
     </nav> -->
     <!-- REVIEW Comente el menu y el link hacia los estilos del menu pq lo hice con la ayuda de un video de Youtube, quiero aprender a hacerlo -->
     <header class="showcase">
+      <!-- COMMIT (Esto va a ser un N O T E) Fue necesario agregarle un punto a la ruta de la imagen de abajo /smoothie1350pxwidth para que el domain de webhost.com pudiera mostrar la imagen del landpage   -->
       <img
-        src="/Images/Not-OptimizedPics/smoothie1350pxwidth.jpg"
+        src="./Images/Not-OptimizedPics/smoothie1350pxwidth.jpg"
         alt="shakepic"
         class="shakepic"
         usemap="#landpage"
@@ -143,40 +144,41 @@
     </header>
     <main>
       <div class="main-container">
-        <!-- Start section where I practice gradients and floats - First Part -->
+        <!-- Start section where I practice gradients and floats - 1st First Part -->
         <div class="divfortesting-zindex"></div>
         <section class="upper-main">
           <div class="side-bar"></div>
           <div class="content"></div>
         </section>
-        <!-- End section where I practiced gradients and floats - First Part -->
+        <!-- End section where I practiced gradients and floats - 1st First Part -->
       </div>
       <div class="main-container main-container-II">
-        <!-- Start section where I practice gradients and floats - Second Part -->
+        <!-- Start section where I practice gradients and floats - 2nd Second Part -->
         <div class="divfortesting-zindex divfortesting-zindex-II"></div>
         <section class="upper-main upper-main-II">
           <div class="side-bar side-bar-II"></div>
           <div class="content content-II"></div>
         </section>
-        <!-- End section where I practiced gradients and floats - Second Part -->
+        <!-- End section where I practiced gradients and floats - 2nd Second Part -->
       </div>
       <div class="main-container main-container-III">
-        <!-- Start section where I practice gradients and floats - First Part -->
+        <!-- Start section where I practice gradients and floats -3rd First Part -->
         <div class="divfortesting-zindex"></div>
         <section class="upper-main upper-main-III">
           <div class="side-bar side-bar-III"></div>
+          <!-- COMMIT changed the element bellow ".content" to an anchor in order to apply visited pseudo class. Date: Dec, 7. Se intento aplicar los pseudo clases apropiadamente pero ya que no funciono se retorna a .content-III a DIV, tag original -->
           <div class="content content-III"></div>
         </section>
-        <!-- End section where I practiced gradients and floats - First Part -->
+        <!-- End section where I practiced gradients and floats - 3rd First Part -->
       </div>
       <!-- NOTE Image Map Generated, 1ST Rule: Map tags only work with cursor, so It won't work on mobiles or tablets. 2ND Rule: Seems to not work on PNG or SVG images, so far it's worked on JPG only, 3RD Rule: Avoid using dashes, numbers or any kind of special caracters on map's name atribute, 4RD Rule: Don't repeat map names, 5TH Rule: Always include "#" on the "usemap" tag, at least on Chrome -->
 
       <!-- Small image map tag -->
+      <!-- COMMIT There was a second class declaration named ".maptesting" for this mapped image, it was taken off and ut next to the other class name -->
       <img
-        class="maptesting"
         src="./Images/OptimizedPics/smoothie-320pxWidth-60quality.jpg"
         usemap="#secondmaptag"
-        class="secondmaptag"
+        class="secondmaptag maptesting"
       />
       <map name="secondmaptag">
         <area
@@ -277,106 +279,41 @@
         <div class="transparent-stripes-background"></div>
       </div>
       <!-- End gradient-stripe practice -->
-      <h1 class="main-tittle">Lorem ipsum dolor sit amet.</h1>
-      <h2>
-        This one has outline, with outline-offset property and a negative value.
-      </h2>
-      <p class="one">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, deleniti
-        suscipit ipsum voluptate cum nisi corrupti repudiandae id nulla quia!
-      </p>
-      <h2>This one has border.</h2>
-      <p class="two">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, deleniti
-        suscipit ipsum voluptate cum nisi corrupti repudiandae id nulla quia!
-      </p>
-      <ul>
-        <li>
-          <img src="#" alt="icon" />Lorem ipsum dolor sit amet, consectetur
-          adipisicing.
-        </li>
-        <li>
-          <img src="#" alt="icon" />Lorem ipsum dolor sit amet, consectetur
-          adipisicing.
-        </li>
-        <li>
-          <img src="#" alt="icon" />Lorem ipsum dolor sit amet, consectetur
-          adipisicing.
-        </li>
-        <li>
-          <img src="#" alt="icon" />Lorem ipsum dolor sit amet, consectetur
-          adipisicing.
-        </li>
-      </ul>
-      <section class="section-part">
-        <h2>Forms</h2>
-        <form action="/action_page.php" method="post" target="_blank">
-          <!-- Username or just plain FullName  -->
-          <label for="firstname"> First name:</label><br />
-          <input type="text" name="firstname" id="firstname" required /><br />
-          <label for="lastname"></label> Last name:<br />
-          <input type="text" name="lastname" id="lastname" /><br />
-          <!-- Password -->
-          <label for="password"></label> Password:<br />
-          <input type="password" name="psw" id="password" /><br />
-          <!-- Radio Buttons // The name atribute has to match -->
-          <label for="male">
-            <!-- the "for" attribute of label has to match the input id so the radio and the word associated with it work together as a whole  -->
-            <input type="radio" name="gender" value="male" id="male" checked />
-            Male <br />
-          </label>
-          <label for="female">
-            <!-- the "for" attribute of label has to match the input id so the radio and the word associated with it work together as a whole  -->
-            <input type="radio" name="gender" value="female" id="female" />
-            Female <br />
-          </label>
-          <label for="other">
-            <!-- the "for" attribute of label has to match the input id so the radio and the word associated with it work together as a whole  -->
-            <input type="radio" name="gender" value="other" id="other" /> other
-            <br />
-          </label>
-          <!-- Text Area -->
-          <textarea name="message" rows="10" cols="30"></textarea><br />
-          <!-- Checkbox -->
-          <input type="checkbox" name="vehicle1" value="Bike" checked /> I have
-          a bike<br />
-          <input type="checkbox" name="vehicle2" value="Car" /> I have a car<br />
-          <input type="checkbox" name="vehicle3" value="Boat" checked /> I have
-          a boat<br />
-          <!-- Select -->
-          <select name="" id="">
-            <option value="tu">tu</option>
-            <!-- Value is for backend -->
-            <option value="yo">yo</option>
-            <!-- Value is for backend -->
-            <option value="nosotros">nosotros</option>
-            <!-- Value is for backend -->
-          </select>
-          <!-- Useful Inputs -->
-          Enter a date before 1980-01-01:
-          <input type="date" name="bday" max="1979-12-31" /><br />
-          E-mail:
-          <input type="email" name="email" /><br />
-          Select a file:
-          <input type="file" name="myFile" autocomplete="on" /><br />
-          Enter your number:
-          <input
-            type="tel"
-            name="phone"
-            pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
-          /><br />
-          <!-- Input attributes -->
-          <!-- First name:<br />
-          <input type="text" name="firstname" value="John" disabled /><br />
-          First name:<br />
-          <input type="text" name="firstname" maxlength="10" /><br />
-          First name:<br />
-          <input type="text" name="firstname" value="John" size="40" /><br /> -->
-          <!-- Buttons -->
-          <input type="submit" value="Submit please" />
-          <input type="reset" />
-        </form>
-      </section>
+      <!-- <<<<<<ooooooo>>>>>> -->
+      <!-- Making a heart that has a common radial gradient - Start -->
+
+      <div class="heart-background">
+        <div class="square"></div>
+      </div>
+
+      <!-- Making a heart that has a common radial gradient - END -->
+      <!-- ------------------------------------------------------- -->
+      <!-- Here I practice transition & animation - Start -->
+      <div class="trans-animation">
+        <div class="simple-box"></div>
+        <div class="shadow-box"></div>
+        <!-- COMMIT (WILL BE A N O T E) had to add this div above to create some kind of shadow for the simple box animation -->
+      </div>
+      <!-- This section was used to change color pattern using a nice svg cloud image - Start -->
+      <!-- COMMIT (WILL BE A H A C K) We can the get the cloud image between the dark and pink linear backgrounds in two ways: 1st: We can put the img tag with class .cloud above the div with class .nightsky so then we can kick the .cloud img tag off the normal HTML flow with the property float, upon that the .nightsky div will follow the normal flow and stick to the pink background above, creating the ilusion the .cloud figure tag is above both linear backgrounds as it is no longer part of the normal flow thanks to the property float. No position property needed in this way. 2nd: We can get the same results without "float" by putting the img tag .cloud inside .nightsky div which has a linear background that renders fine around the img .cloud (child) even though the figure tag .parent (parent) along its child are on top. So why does the linear background of the div .nightsky renders like that despite having two elements on top?  It is due to 3 reasons: a) The format given to the img .cloud (SVG). b) the fact that the parent element with class .parent is transparent due to lack of CSS height or background properties. c) Position: relative given to the img .cloud, which then got placed on the right place thanks to top & left. -->
+      <div class="nightsky">
+        <div class="stars star-one"></div>
+        <div class="stars star-two"></div>
+        <div class="stars star-three"></div>
+        <div class="stars star-black"></div>
+        <figure class="parent">
+          <img
+            src="/Images/OptimizedPics/cloud.svg"
+            alt="a nice splitter"
+            class="cloud"
+          />
+          <figcaption>
+            <i>Nothing to say here..</i>
+          </figcaption>
+        </figure>
+      </div>
+      <!-- This section was used to change color pattern using a nice svg cloud image - End -->
+      <!-- Here I practice transition & animation - End -->
     </main>
     <footer></footer>
   </body>
