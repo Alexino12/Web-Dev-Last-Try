@@ -345,7 +345,7 @@ background: red;
 .content-III:active{
 border: 2px solid yellow;
 } */
-/* COMMIT (WILL BE A -->>N O T E) Date: Dec, 6. Los estilos aplicados al .content-III (Codigo comentado justo encima de esta nota) when hovering no estan aplicando, intentar aplicar link, visited, hover y active haber si agarra, Date: Dec,7 . Sin embargo, despues de aplicar LoVe HAte los estilos no aplican, se comento todo el segmento de pseudo elementos en .content-III. Para el pseudo class link del .content-III solo habia copiado los estilos del .content situado en el primer set de planetas pq no queria que el planeta cambiara su estilo a pesar de ser "link", los mismo para la pseudo class visited, las unicas pseudo clases que en realidad aplican un efecto diferente fueron :hover y :active, sin embargo nada funciono y se comentaron todos los estilos que intente usar para cambiar los colores de .content (the red, purple & orange planet) */
+/* NOTE Date: Dec, 6. Los estilos aplicados al .content-III (Codigo comentado justo encima de esta nota) when hovering no estan aplicando, intentar aplicar link, visited, hover y active haber si agarra, Date: Dec,7 . Sin embargo, despues de aplicar LoVe HAte los estilos no aplican, se comento todo el segmento de pseudo elementos en .content-III. Para el pseudo class link del .content-III solo habia copiado los estilos del .content situado en el primer set de planetas pq no queria que el planeta cambiara su estilo a pesar de ser "link", los mismo para la pseudo class visited, las unicas pseudo clases que en realidad aplican un efecto diferente fueron :hover y :active, sin embargo nada funciono y se comentaron todos los estilos que intente usar para cambiar los colores de .content (the red, purple & orange planet) */
 
 /* Second section, just bellow landpage End Third Part*/
 
@@ -470,6 +470,46 @@ border: 2px solid yellow;
   animation-iteration-count: infinite;
   animation-timing-function: cubic-bezier(0, -0.29, 0.4, 0.5);
 }
+/* COMMIT (Will be a H A C K) When there is a keyframe rule set in the middle of the animation duration (at 50%), it results in two identical animation progressions at the upward and downward movement of an element. */
+/* COMMIT (WILL BE A H A C K) In order to make a 3 dot loading indicator in which the dots move at different pace we need the code that is commented just bellow*/
+/* <style>
+  .balls {
+    border-radius: 50%;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    top: 60%;
+    animation-name: jump;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  #red {
+    background: red;
+    left: 25%;
+    animation-timing-function: linear;
+  }
+  #blue {
+    background: blue;
+    left: 50%;
+    animation-timing-function: ease-out;
+  }
+  #green {
+    background: green;
+    left: 75%;
+    animation-timing-function: cubic-bezier(1, 1, 2, 2);
+  }
+
+  @keyframes jump {
+    50% {
+      top: 10%;
+    }
+  }
+</style>
+<div class="balls" id="red"></div>
+<div class="balls" id="blue"></div>
+<div class="balls" id="green"></div> */
+
+/* <<<<<<<<<<<<<<<oooooo>>>>>>>>>>>>>>>> */
 
 /* Making the heart beat - Start */
 @keyframes beat {

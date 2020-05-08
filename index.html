@@ -115,7 +115,7 @@
     </nav> -->
     <!-- REVIEW Comente el menu y el link hacia los estilos del menu pq lo hice con la ayuda de un video de Youtube, quiero aprender a hacerlo -->
     <header class="showcase">
-      <!-- COMMIT (Esto va a ser un N O T E) Fue necesario agregarle un punto a la ruta de la imagen de abajo /smoothie1350pxwidth para que el domain de webhost.com pudiera mostrar la imagen del landpage   -->
+      <!-- NOTE Fue necesario agregarle un punto a la ruta de la imagen de abajo /smoothie1350pxwidth para que el domain de webhost.com pudiera mostrar la imagen del landpage   -->
       <img
         src="./Images/Not-OptimizedPics/smoothie1350pxwidth.jpg"
         alt="shakepic"
@@ -166,7 +166,7 @@
         <div class="divfortesting-zindex"></div>
         <section class="upper-main upper-main-III">
           <div class="side-bar side-bar-III"></div>
-          <!-- COMMIT changed the element bellow ".content" to an anchor in order to apply visited pseudo class. Date: Dec, 7. Se intento aplicar los pseudo clases apropiadamente pero ya que no funciono se retorna a .content-III a DIV, tag original -->
+          <!-- NOTE changed the element bellow ".content" to an anchor in order to apply visited pseudo class. Date: Dec, 7. Se intento aplicar los pseudo clases apropiadamente pero ya que no funciono se retorna a .content-III a DIV, tag original -->
           <div class="content content-III"></div>
         </section>
         <!-- End section where I practiced gradients and floats - 3rd First Part -->
@@ -174,7 +174,7 @@
       <!-- NOTE Image Map Generated, 1ST Rule: Map tags only work with cursor, so It won't work on mobiles or tablets. 2ND Rule: Seems to not work on PNG or SVG images, so far it's worked on JPG only, 3RD Rule: Avoid using dashes, numbers or any kind of special caracters on map's name atribute, 4RD Rule: Don't repeat map names, 5TH Rule: Always include "#" on the "usemap" tag, at least on Chrome -->
 
       <!-- Small image map tag -->
-      <!-- COMMIT There was a second class declaration named ".maptesting" for this mapped image, it was taken off and ut next to the other class name -->
+      <!-- NOTE There was a second class declaration named ".maptesting" for this mapped image, it was taken off and ut next to the other class name -->
       <img
         src="./Images/OptimizedPics/smoothie-320pxWidth-60quality.jpg"
         usemap="#secondmaptag"
@@ -292,10 +292,10 @@
       <div class="trans-animation">
         <div class="simple-box"></div>
         <div class="shadow-box"></div>
-        <!-- COMMIT (WILL BE A N O T E) had to add this div above to create some kind of shadow for the simple box animation -->
+        <!-- NOTE had to add this div above to create some kind of shadow for the simple box animation -->
       </div>
       <!-- This section was used to change color pattern using a nice svg cloud image - Start -->
-      <!-- COMMIT (WILL BE A H A C K) We can the get the cloud image between the dark and pink linear backgrounds in two ways: 1st: We can put the img tag with class .cloud above the div with class .nightsky so then we can kick the .cloud img tag off the normal HTML flow with the property float, upon that the .nightsky div will follow the normal flow and stick to the pink background above, creating the ilusion the .cloud figure tag is above both linear backgrounds as it is no longer part of the normal flow thanks to the property float. No position property needed in this way. 2nd: We can get the same results without "float" by putting the img tag .cloud inside .nightsky div which has a linear background that renders fine around the img .cloud (child) even though the figure tag .parent (parent) along its child are on top. So why does the linear background of the div .nightsky renders like that despite having two elements on top?  It is due to 3 reasons: a) The format given to the img .cloud (SVG). b) the fact that the parent element with class .parent is transparent due to lack of CSS height or background properties. c) Position: relative given to the img .cloud, which then got placed on the right place thanks to top & left. -->
+      <!-- HACK We can the get the cloud image between the dark and pink linear backgrounds in two ways: 1st: We can put the img tag with class .cloud above the div with class .nightsky so then we can kick the .cloud img tag off the normal HTML flow with the property float, upon that the .nightsky div will follow the normal flow and stick to the pink background above, creating the ilusion the .cloud figure tag is above both linear backgrounds as it is no longer part of the normal flow thanks to the property float. No position property needed in this way. 2nd: We can get the same results without "float" by putting the img tag .cloud inside .nightsky div which has a linear background that renders fine around the img .cloud (child) even though the figure tag .parent (parent) along its child are on top. So why does the linear background of the div .nightsky renders like that despite having two elements on top?  It is due to 3 reasons: a) The format given to the img .cloud (SVG). b) the fact that the parent element with class .parent is transparent due to lack of CSS height or background properties. c) Position: relative given to the img .cloud, which then got placed on the right place thanks to top & left. -->
       <div class="nightsky">
         <div class="stars star-one"></div>
         <div class="stars star-two"></div>
@@ -303,7 +303,7 @@
         <div class="stars star-black"></div>
         <figure class="parent">
           <img
-            src="/Images/OptimizedPics/cloud.svg"
+            src="/Images/OptimizedPics/storm2.png"
             alt="a nice splitter"
             class="cloud"
           />
