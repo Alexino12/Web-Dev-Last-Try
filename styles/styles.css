@@ -141,8 +141,6 @@ body {
 }
 
 .content {
-  /* position: relative; */
-  /* z-index: -1; */
   width: 35vw;
   height: 20vh;
   float: right;
@@ -182,15 +180,12 @@ body {
   margin: 5vh auto 5vh;
   /* Se agrego el margin on top and bottom */
 }
-/* HACK Este div de abajo es el div redondo del mismo color rosado del background del papa de todos en la seccion de planetas ".main-container", que con z-index va encima de su hermana fucsia-azulada ".upper-main", dando a esta la apariencia de ser luna menguante  */
+
 /* HACK Sin float este toma su lugar normal en el flow, despeja hacia abajo a su hermano bloque .upper-main */
-/* HACK Fue necesario comentar  el .divfortesting-zindex para dar el efecto del primer set de planetas */
 .divfortesting-zindex {
-  /* position: relative;
-  z-index: 3; */
   background: #c58daa;
   height: 65vh;
-  width: 70vw;
+  width: 80vw;
   float: left;
   border-radius: 50%;
   margin: 1em 0 0 1em;
@@ -284,13 +279,9 @@ body {
   /* NOTE put this border for a smooth transition between third set of planets and linear strip gradient practice */
 }
 .divfortesting-zindex-III {
-  /* top: 25vh;
-  left: 55vw; */
-  /* position: relative;
-  z-index: -4; */
   background-color: aqua;
 }
-/*NOTE En el futuro se echará de ver que el div de arriba .divfortesting-zindex-III, no sigue las reglas de stacking order dentro del stacking context del papa de los planetas .main-container-III, ya que sigue siendo renderizado por encima de su hermano .upper-main-III a pesar de ser mas viejo en el orden de aparición de HTML y, tras haber comentado el Position+Z-Index de ambas clases dando estilos a este elemento (por ambas clases me refiero a .divfortesting-zindex y .divfortesting-zindex-III), lo cual evita algun otro stacking context dentro de este stacking order dentro de .main-container-III. Sin embargo, aun tenemos float en .divfortesting-zindex, lo cual saca a  .divfortesting-zindex-III del flow normal, removiendo asi el espacio que ocupaba su renderizado para dar espacio a otros elementos como .upper-main-III, que ocupa el lugar que ocuparía  .divfortesting-zindex-III, solo que ahora está flotando encima de todo. SEARCH Debido a una casualidad podemos ver que .divfortesting-zindex-III está en medio de su hermano .upper-main-III y el planeta rojo (.content-III hijo de .upper-main-III), pero cómo?? Si divfortesting-zindex-III no tiene en ninguna de las 2 clases alguna propiedad que altere su stacking order o que le de stacking context, así que el primer sospechoso fué .content-III (planeta rojo) que  somehow tenia 2 floats, uno en .content-III, el cual comenté, pero el que no quize comentar fue en .content, ya que al comentar ese float provocaba conflictos en el layout de las otras secciones pasadas de planetas. En fin, pude deducir que los elementos flotantes siguen orden de aparición aunque ya no pertenezcan al flow normal del layout ya que tanto .divfortesting-zindex-III como .content-III se ven afectados por float properties de su contrapartes mas antiguas en el código (.divfortesting-zindex y .content), asi que flotan pero respetan el orden en el que aparecen en el código de HTML, primero estando .divfortesting-zindex-III y luego .content-III, ignoremos el papa de .content-III that just happens to be there, which creates the effect that .divfortesting-zindex-III got between father and son somehow. NOTE Ahora, volviendo a la nota si queremos ver el layout anterior tan solo...   */
+/*SEARCH Podemos ver que .divfortesting-zindex-III está en medio de su hermano .upper-main-III y el planeta rojo (.content-III hijo de .upper-main-III), pero cómo?? Si divfortesting-zindex-III no tiene en ninguna de las 2 clases alguna propiedad que altere su stacking order o que le de stacking context, así que el primer sospechoso fué .content-III (planeta rojo) que  somehow tenia 2 floats, uno en .content-III, el cual comenté, pero el que no quize comentar fue en .content, ya que al comentar ese float provocaba conflictos en el layout de las otras secciones de planetas pasadas. En fin, pude deducir que los elementos flotantes siguen orden de aparición aunque ya no pertenezcan al flow normal del layout ya que tanto .divfortesting-zindex-III como .content-III se ven afectados por float properties de su contrapartes mas antiguas en el código (.divfortesting-zindex y .content), asi que flotan pero respetan el orden en el que aparecen en el código de HTML, primero estando .divfortesting-zindex-III y luego .content-III, ignoremos el papa de .content-III that just happens to be there, which creates the effect that .divfortesting-zindex-III got between father and son somehow. When it actually just occupies the blank space left by its brother .divfortesting-zindex-III that now just hovers over it */
 .upper-main-III {
   position: static;
   /* HACK This hack allows to revert what the original styles do (this refers to the 1st .upper-main), with this the original stacking context that .upper-main had was disabled, ya que el value static es valor por defecto que no deja a Z-Index funcionar */
@@ -301,9 +292,6 @@ body {
   margin-left: 14vw;
 }
 .content-III {
-  /* position: relative;
-  z-index: 1;*/
-  /* display: block; */
   width: 35vw;
   height: 20vh;
   /* float: right; */
