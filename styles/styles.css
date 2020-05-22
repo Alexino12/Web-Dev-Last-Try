@@ -314,14 +314,13 @@ body {
 .secondmaptag {
   display: block;
 }
-
+/* NOTE @media below hecho para desaparecer mapped images en dispositivos con dimensiones menores a 350px */
 @media only screen and (max-width: 350px) {
   .maptesting {
     display: none;
   }
 }
 /* End map testing */
-/* NOTE Ln#274 Hecho para desaparecer mapped images en dispositivos con dimensiones menores a 350px */
 
 /* Start gradient-stripe practice  */
 .gradient-background {
@@ -332,8 +331,8 @@ body {
   padding: 3rem;
   background: linear-gradient(360deg, #ccffff, #ffcccc);
 }
-.transparent-stripes {
-  /* NOTE Despite having lots of exercices bellow on the animations/transitions section practice, these stripes were the last practice about animations/transitions that I made. Before trying transition properties on the color stripe divs I had altered the stacking context of the red stripes when used opacity on them, which placed them on top of the yellow stripes, even if the yellow stripes are located last on the HTML root stacking order, which would put the yellow ones on top of the red ones in normal circunstances. There was 2 ideas on using opacity: 1st Allow viewers to notice how red and yellow stripes were stacked on each other, 2nd Put red stripes on top the yellow stripes. But then I used transition on the yellow stripes which initially had a regular HTML stacking order (REASON WHY THEY WERE BENEATH THE RED STRIPES).. what happened then? The yellow stripes got back on top of the red stripes. Why?: As soon I used transition on the yellow stripes they adquired stacking context, just like the red stripes did when I used property opacity on them, so now that both red and yellow stripes have stacking context they both drop back on HTML stacking order rules! Which puts the yellow stripes back on top again because they are located later than the red ones (REMEMBER). Solution?: I had to give the red stripes a higher z-index value than the yellow ones, however since neither stripe color was positioned I had to position both first.  */
+.red-stripes {
+  /* NOTE Despite having lots of exercices bellow on the animations/transitions section practice, these stripes were the last practice about animations/transitions that I made. Before trying Transform + Transition properties on the color stripe divs I had altered the stacking context of the red stripes when used opacity on them, which placed them on top of the yellow stripes, even if the yellow stripes are located last on the HTML stacking order, which would put the yellow ones on top of the red ones in normal circunstances. There was 2 ideas on using opacity: 1st Allow viewers to notice how red and yellow stripes were stacked on each other, 2nd Put red stripes on top the yellow stripes. But then I used transition on the yellow stripes which initially had a regular HTML stacking order (REASON WHY THEY WERE BENEATH THE RED STRIPES).. what happened then? The yellow stripes got back on top of the red stripes. Why?: As soon I used transition on the yellow stripes they adquired stacking context, just like the red stripes did when I used property opacity on them, so now that both red and yellow stripes have stacking context they both drop back on HTML stacking order rules! Which puts the yellow stripes back on top again because they are located later than the red ones (REMEMBER THE SOURCE ORDER). Solution?: I had to give the red stripes a higher z-index value than the yellow ones, however since neither stripe color was positioned I had to position both first.  */
   position: relative;
   z-index: 2;
   height: 45vh;
@@ -354,10 +353,10 @@ body {
   transition-duration: 1000ms;
 }
 
-.transparent-stripes:hover {
+.red-stripes:hover {
   transform: scale(1.4);
 }
-.transparent-stripes-background {
+.yellow-stripes {
   position: relative;
   z-index: 1;
   height: 45vh;
@@ -376,7 +375,7 @@ body {
   transition-property: transform;
   transition-duration: 1000ms;
 }
-.transparent-stripes-background:hover {
+.yellow-stripes:hover {
   transform: scale(1.4);
 }
 /* End gradient-stripe practice  */
