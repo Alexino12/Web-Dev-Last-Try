@@ -598,7 +598,7 @@ body {
   }
   80% {
     opacity: 0.6;
-    /* HACK Before I tried a negative value on the rotate's X VALUE I was trying 50deg but I was getting a halo from the border outwards (which can be tested by adding a border property on .shadow-box, what is after the border is the shadow-box property), If you remove transparency on the shadow-box color you will see that the shadow takes a good portion of the ball' shadow, I decided to make use of shadow-box's values for the animation like the size and toogle the borders sharpeness, so there was some kind of halo between the actual body of the ball' shadow and the extended shadow made with the shadow-box's property, when I tried a negative value for rotationX the halo dissapeared and what's more I kept the same tilt for the shadow's animation.    */
+    /* HACK Before I tried a negative value on the rotate's X VALUE I was trying 50deg on each rule but I was getting a halo from the .shadow-box's border outwards (which can be tested by adding a border property on .shadow-box or by removing transparency on the shadow-box color), you will see that the shadow takes a good portion of the ball' shadow, I decided to make use of shadow-box properties so that I could toogle the borders sharpeness and control size, but I think that created the halo between the actual body of the ball' shadow and the extended shadow made with shadow-box's property, when I tried a negative value for rotationX the halo dissapeared and what's more I kept the same tilt for the shadow's animation.    */
     transform: translateY(37vh) rotateX(-130deg) scale(1.1, 1.8);
     box-shadow: 2px 2px 2px 18px rgba(1, 0, 3, 0.55);
   }
