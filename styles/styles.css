@@ -415,7 +415,7 @@ body {
   width: 31.2vw;
   height: 17.5vh;
   margin: auto;
-  /* HACK The only property that pushed the heart down without pushing down its father as well was top: 15vh, the one bellow, I just didnt want to relay on its parent padding property to push it down, but margin-top would't let me to push it down because it was pushing its parent ".heart-background" as well and created a blank gap between the gradient backgrounds, as to why that happened, the property "tranform: rotate(-45deg)" and "margin: auto" property had to do with that, first, "margin: auto" helps to center the square by creating equally sized margins to the left and right but then tranform: rotate(-45deg) changes the orientation of the square's margins on both sides while keeping the squAre centered, however that pushes up the right side margin's top corner agaisnt the edge of its parent ".heart-background" (TO SEE THIS, USE CHROME DEVTOOLS AND HOVER OVER THIS ELEMENT SO YOU CAN SEE WHERE THE MARGIN POINTS AND HOW THAT ALONG WITH TRANFORM CREATES THE BLANK GAP ON TOP), beyond this point, the wider the right margin is (in this example) the more gap there will be between the 2 grandient backgrounds, so now.. the reason why margin-top was making this blank gap is because the right side margin's top corner will get further as margin right or top increase, therefore the gap gets larger. The other workaround I think is to make the whole heart smaller. */
+  /* HACK The only property that pushed the heart down without pushing down its father as well, was top: 15vh, the one bellow, I just didnt want to relay on its parent padding property to push it down, but margin-top would't let me to push it down alone, because it was pushing its parent ".heart-background" as well and created a blank gap between the "heart section" and the stripes section above, as to why that happened, the property "tranform: rotate(-45deg)" and "margin: auto" property had to do with that, first, "margin: auto" helps to center the square by creating equally sized margins to the left and right but then tranform: rotate(-45deg) changes the orientation of the square's margins on both sides while keeping the squAre centered, however that makes the right side margin's top corner point upwards, BEYOND its parent and against the bottom edge of the "stripes section" (TO SEE THIS, USE CHROME DEVTOOLS AND HOVER OVER THIS ELEMENT SO YOU CAN SEE WHERE THE RIGHT SIDE MARGIN POINTS AND HOW THAT ALONG WITH TRANFORM CREATES THE BLANK GAP ON TOP), beyond this point, the wider the right margin is (in this example) the more gap there will be between this section and the stripes section above, so now.. the reason why margin-top was making this blank gap is because the right side margin's top corner will get further as margin right or top increase, therefore the gap gets larger. The other workaround I think is to make the whole heart smaller. */
   top: 15vh;
   transform: rotate(-45deg);
   position: relative;
@@ -428,8 +428,7 @@ body {
   animation-iteration-count: infinite;
   animation-timing-function: cubic-bezier(0, -0.29, 0.4, 0.5);
 }
-/* COMMIT (Will be a H A C K) When there is a keyframe rule set in the middle of the animation duration (at 50%), it results in two identical animation progressions at the upward and downward movement of an element. */
-/* COMMIT (WILL BE A H A C K) In order to make a 3 dot loading indicator in which the dots move at different pace we need the code that is commented just bellow*/
+/* HACK In order to make a 3 dot loading indicator in which the dots move at different pace we need the code that is commented just bellow*/
 /* <style>
   .balls {
     border-radius: 50%;
@@ -470,9 +469,10 @@ body {
 /* <<<<<<<<<<<<<<<oooooo>>>>>>>>>>>>>>>> */
 
 /* Making the heart beat - Start */
+/* HACK When there is a keyframe rule set in the middle of the animation duration (at 50%), it results in two identical animation progressions,one executing towards the 50% and he second towards the end of it. */
 @keyframes beat {
   50% {
-    /* NOTE con "@keyframes beat" me di cuenta que no se ocupa transform: matrix, siempre y cuando la sintaxis de los values sea correcta. */
+    /* NOTE con "@keyframes beat" me di cuenta que no se ocupa transform: matrix, siempre y cuando la sintaxis de los values sea correcta, justo como estan los valores de tranform debajo */
     transform: scale(1.4) rotate(-45deg);
   }
 }
@@ -491,7 +491,7 @@ body {
   box-shadow: inset 13px 15px 15px -13px #f03766;
 }
 /* NOTE Without property content: "";, the pseudo elements ::before or ::after won't show. */
-/* NOTE If property content: "" is empty.. every part, including the parent as well as the children "::before & ::after" has to be positioned in order to render (Of course, it needs some other properties in order to show like height and background color), Then, once every part is rendered we can move them around the parent with top, bottom, left and right. If there is something in between the quotation marks like a bullet point E.g, it'll show elements before or after the selected element, like it was tested on the code bellow ".square::after" that was deleted. */
+/* NOTE If property content: "" is empty.. every part, including the parent as well as the children "::before & ::after" has to be positioned in order to render (Of course, it needs some other properties in order to show like height and background color), Then, once every part is rendered we can move them around the parent with top, bottom, left and right. If there is something in between the quotation marks like a bullet point E.g, it'll show elements before or after the selected element. */
 /* HACK It would've been dificult to place the purple shades over the upper rounded parts of the heart, where I wanted and the way I wanted without transform: rotate().  */
 .square::after {
   content: "";
@@ -507,15 +507,15 @@ body {
 }
 
 /* Making a heart that has a common radial gradient - End*/
-/* NOTE There was an element styled here, right before ".square::after" that was deleted at some point. The point was to see what a content: "" property does with something inside as content, E.g, a dot. */
 
-/* Here I practice transitions & animations - Start  */
+/* Bouncing ball section - transitions & animations - Start  */
 .trans-animation {
   width: 100vw;
   height: 150vh;
   background: linear-gradient(0deg, #ccffff, #ffcccc);
-  perspective: 140px;
-  /* NOTE Perspective allows all direct children of any container to be 3D styled, in this case both children of .trans-animation (.simple-box & .shadow-box) will be 3D styled thanks to the perspective given to their parent .trans-animation. Then, there are 2 ways of using perspective: 1st As a property with a value like the one above, following the details in this comment. 2nd: As a value or function should I say of the property transform. (See: https://3dtransforms.desandro.com/perspective) */
+  /* perspective: 130px; */
+  /* NOTE There is no need for an animation to have a property like perspective (as I had above, in the element to be animated) as a start point from where the animation begins, All animations can have their properties' starting point on the keyframes  */
+  /* NOTE There are 2 ways of using perspective, 1st: As a property with a value like the one above, It gives the element depth quite notably, the smaller the value the greater the visual effect and also activates a 3D space on all direct children. 2nd: As a value or function of the property transform, it activates a 3D space so that other 3D transform values/functions can work well, it gives depth but at a much lower rate, the smaller the value the greater the visual effect. In this case both children of .trans-animation (.simple-box & .shadow-box) will adquire a 3D space in which 3D trasform values/functions can work well, because we chose the 1st option.  (See: https://3dtransforms.desandro.com/perspective) */
   animation-name: perspective;
   animation-duration: 1000ms;
   animation-iteration-count: infinite;
@@ -524,15 +524,19 @@ body {
 /* HACK Transform-style: preserve-3d was not needed in this Box & Shadow section = There were no children of children needed to make this animation/transition practice or in other words .trans-animation has no grand-children, REMEMBER: Perspective only enables direct children of a given element to be 3D styled. So to fix that there is transform-style: preserve-3d, however in this case it was not needed. */
 @keyframes perspective {
   0% {
-    perspective: 150px;
+    perspective: 130px;
   }
+  /*NOTE The rules at 0% and 100% for both @keyframes "perspective and not-ok" helped the ball' shadow mimic the behavior that a shadow has when projecting far from the object casting it, at the beginning and the end of the animation. The ball' shadow was intended to start and to end this animation blurred thanks to the shadow's blur value and the shadow's spread value further enlarged the size of the ball's shadow at the start/end of the animation as it is casted from far at the start/end of the animation. The perspective property at a low value gives the shadow a strong 3D effect at the start/end of the animation, which basically stretches the ball' shadow.  */
   80% {
-    perspective: 200px;
+    perspective: 180px;
   }
+  /*NOTE The rules at 80% from both @keyframes "perspective and not-ok" make the ball's shadow look sharper and darker because that is how shadows behave when they close the object casting them, that effect is thanks to property perspective at a high number which gives the shadow subtle 3D effect due that is right below the ball when it touches the "ground" and then the shadow-box effect helped control the shadow's size, as it got smaller through its course towards the ball, In fact the value scale of transform helped to control the size. Shadow-box also helped sharpen the shadow's edges as it got closer to the ball*/
   100% {
-    perspective: 150px;
+    perspective: 130px;
   }
 }
+/*NOTE Using perspective (with a value different from 0 or none) creates a new stacking context.*/
+
 .simple-box {
   width: 34vw;
   height: 20vh;
@@ -542,7 +546,6 @@ body {
   animation-name: ok;
   animation-duration: 1000ms;
   animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
   animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
   /* NOTE This "@keyframes ok" translates the div vertically (through y-axis) and scales it in different ways. So first, there is a "transform: matrix" property at 0% which changes nothing so it stays the same till it gets to the 80% of the animation within its duration of 1000ms or 1sec, towards the end of the animation the ball turns back to the same position and form.  */
 }
@@ -572,38 +575,33 @@ body {
   width: 24vw;
   height: 13vh;
   border-radius: 50%;
-  transform: translateY(70vh) rotateY(125deg);
+  /* transform: translateY(70vh) rotateY(130deg); */
+  /* NOTE There is no need for an animation to have a property like transform (as I had above, in the element to be animated) as a start point from where the animation begins, All animations can have their properties' starting point on the keyframes  */
   animation-name: not-ok;
   animation-duration: 1000ms;
   animation-iteration-count: infinite;
   animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
-  /* HACK (Look for the 5 commented properties in .shadow-box) The next 5 properties bellow this "Hack|Comment" make a perfect isosceles trapezoid, the problem is that no shadow effects can be applied because box-shadow still outlines the squared shape of divs, instead of the trapezoid made thanks to the border properties, when making shapes with borders only there is no really a body in which a shadow can cast around. */
+  /* HACK The next 5 commented properties bellow make a perfect isosceles trapezoid, the problem is that no shadow-box effects can be applied because box-shadow still outlines the squared shape of divs, instead of the trapezoid made thanks to the border properties tricks, when making shapes with borders only there is no really a body in which a shadow can cast around. */
   /* border-bottom: 100px solid rgba(0,0,0,0.55); */
   /* border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   height: 0;
   width: 44vw; */
-  /* HACK I continued searching other ways to input the isosceles trapezoid shape bellow the bouncing div, but then I saw this other hack that implies HTML unicode shapes, however I couldn't find an isosceles trapezoid on google, so I had to rely on the perspective property, which actually works perfectly, IMPORTANT: The perspective property goes on the father of the element we need to change (In this case .trans-animation) and then it trigers when applying transform to the child. */
+  /* HACK I continued searching other ways to input the isosceles trapezoid shape bellow the bouncing div, but then I saw this other hack that implies HTML unicode shapes, however I couldn't find an isosceles trapezoid on google, so I had to rely on the perspective property.*/
 }
 @keyframes not-ok {
   0% {
     opacity: 0.3;
-    /* HACK Before I tried a negative value on the rotate's VALUE I was getting this weird issue with the shadow agaisnt or closer to the screen was going upwards at 80% of the animation or so, when it was supposed to go up while keeping the same degree on the X axis, since I was using the same VALUE for both, the animation and .shadow-box (TEST IT BY USING A POSITIVE VALUE ON THE ROTATE'S VALUE INSTEAD OF NEGATIVE */
     transform: translateY(70vh) rotateX(-125deg) scale(1);
   }
   80% {
     opacity: 0.6;
-    /* HACK Before I tried a negative value on the rotate's VALUE I was getting this weird issue with the shadow agaisnt or closer to the screen was going upwards at 80% of the animation or so, when it was supposed to go up while keeping the same degree on the X axis since I was using the same VALUE for both, the animation and .shadow-box (TEST IT BY USING A POSITIVE VALUE ON THE ROTATE'S VALUE INSTEAD OF NEGATIVE. */
-    transform: translateY(34.5vh) rotateX(-125deg) scale(1.1, 1.8);
-    box-shadow: 2px 2px 3px 22px rgba(1, 0, 0, 0.55);
-    /* HACK So.. this is the animation of the shadow but, initially it had a squared shape too and was given a perspective property to give it a 3D effect, so in order to make the shadow mimick both shape and actions of the bouncing ball I had to give the shadow a border-radius: 50% property so the shadow mimicks the ball's rounded shape when it is on the "air" as well as animation/transformation so the shadow mimicks the shape of the ball when it hits the "ground" and gets squished, however an animation with 2D transformation wouldn't help, I had to use an animation with 3D tranform and here's where I thought I had to use the matrix value to apply more than 1 transform value.. I was applying multiple transform values incorrectly, I was doing it this way: {transform: translate(x, x); transform: scale(x, x); That is wrong},but then I found out that when you need multiple values for transform you only need to type the transform property once and then add as many values as you need, like this: {transform: translate(x, x) scale(x, x)}. So i'm going to comment transform matrix bellow this hack/comment and continue with the easy way above. */
-    /* transform: matrix3d(1.2,0,0,0,0,0.9,0,-0.001,0,0,1,0,0,0,0,1); */
-    /* transform: translate(10vw -10vh); */
-    /* HACK The box-shadow property above is what I used to make the shadows' edges sharper as well as decreasing the size. */
+    /* HACK Before I tried a negative value on the rotate's X VALUE I was trying 50deg but I was getting a halo from the border outwards (which can be tested by adding a border property on .shadow-box, what is after the border is the shadow-box property), If you remove transparency on the shadow-box color you will see that the shadow takes a good portion of the ball' shadow, I decided to make use of shadow-box's values for the animation like the size and toogle the borders sharpeness, so there was some kind of halo between the actual body of the ball' shadow and the extended shadow made with the shadow-box's property, when I tried a negative value for rotationX the halo dissapeared and what's more I kept the same tilt for the shadow's animation.    */
+    transform: translateY(37vh) rotateX(-130deg) scale(1.1, 1.8);
+    box-shadow: 2px 2px 2px 18px rgba(1, 0, 3, 0.55);
   }
   100% {
     opacity: 0.3;
-    /* HACK Before I tried a negative value on the rotate's VALUE I was getting this weird issue with the shadow agaisnt or closer to the screen was going upwards at 80% of the animation or so, when it was supposed to go up while keeping the same degree on the X axis since I was using the same VALUE for both, the animation and .shadow-box (TEST IT BY USING A POSITIVE VALUE ON THE ROTATE'S VALUE INSTEAD OF NEGATIVE */
     transform: translateY(70vh) rotateX(-125deg) scale(1);
   }
 }
