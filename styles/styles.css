@@ -515,7 +515,7 @@ body {
   background: linear-gradient(0deg, #ccffff, #ffcccc);
   /* perspective: 130px; */
   /* NOTE There is no need for an animation to have a property like perspective (as I had above, in the element to be animated) as a start point from where the animation begins, All animations can have their properties' starting point on the keyframes  */
-  /* NOTE There are 2 ways of using perspective, 1st: As a property with a value like the one above, It gives the element depth quite notably, the smaller the value the greater the visual effect and also activates a 3D space on all direct children. 2nd: As a value or function of the property transform, it activates a 3D space so that other 3D transform values/functions can work well, it gives depth but at a much lower rate, the smaller the value the greater the visual effect. In this case both children of .trans-animation (.simple-box & .shadow-box) will adquire a 3D space in which 3D trasform values/functions can work well, because we chose the 1st option.  (See: https://3dtransforms.desandro.com/perspective) */
+  /* NOTE There are 2 ways of using perspective, 1st: As a property with a value like the one above, It gives the element visual depth, the smaller the value the greater the visual effect and also activates a 3D space on all direct children. 2nd: As a value or function of the property transform, It gives the element visual depth but at a much lower rate, the smaller the value the greater the visual effect and also activates a 3D space so that other 3D transform values/functions work on the elements targeted by transform. In this case both (.simple-box & .shadow-box) will adquire a 3D space as they are direct children of .trans-animation. (See: https://3dtransforms.desandro.com/perspective) */
   animation-name: perspective;
   animation-duration: 1000ms;
   animation-iteration-count: infinite;
@@ -526,11 +526,11 @@ body {
   0% {
     perspective: 130px;
   }
-  /*NOTE The rules at 0% and 100% for both @keyframes "perspective and not-ok" helped the ball' shadow mimic the behavior that a shadow has when projecting far from the object casting it, at the beginning and the end of the animation. The ball' shadow was intended to start and to end this animation blurred thanks to the shadow's blur value and the shadow's spread value further enlarged the size of the ball's shadow at the start/end of the animation as it is casted from far at the start/end of the animation. The perspective property at a low value gives the shadow a strong 3D effect at the start/end of the animation, which basically stretches the ball' shadow.  */
+  /*NOTE The rules at 0% and 100% for both @keyframes "perspective and not-ok" helped the ball' shadow mimic the behavior that a shadow has when projecting far from the object casting it, at the beginning and the end of the animation. The ball' shadow was intended to start and to end this animation blurred, thanks to the shadow's blur value and the shadow' spread value that further increased the size of the ball' shadow as it is casted from far at the start/end of the animation, in fact, almost half the body' size of the ball' shadow is made with shadow-box property. The perspective property at a low value gives the shadow a strong 3D effect/visual depth at the start/end of the animation, which basically stretches the ball' shadow.  */
   80% {
     perspective: 180px;
   }
-  /*NOTE The rules at 80% from both @keyframes "perspective and not-ok" make the ball's shadow look sharper and darker because that is how shadows behave when they close the object casting them, that effect is thanks to property perspective at a high number which gives the shadow subtle 3D effect due that is right below the ball when it touches the "ground" and then the shadow-box effect helped control the shadow's size, as it got smaller through its course towards the ball, In fact the value scale of transform helped to control the size. Shadow-box also helped sharpen the shadow's edges as it got closer to the ball*/
+  /*NOTE The rules at 80% from both @keyframes "perspective and not-ok" make the ball' shadow look sharper and darker because that is how shadows behave when they approach the object casting them, that effect is thanks to property perspective at a high number which gives the shadow a subtle 3D effect due that the ball' shadow is just below the ball when it touches the "ground" and then, the shadow-box effect helped control the shadow's size, as the ball' shadow got smaller through its course towards the ball, In fact the scale value/function of transform helped to control the size as well. Shadow-box also helped sharpen the shadow's edges as it got closer to the ball. Finally, the ball' shadow darkened due to a higher rate of opacity property at the 80% rule, which is a shadow nature behavior, given the proximity to the object casting it. Then I had to tamper the rotateX value a bit at the 80% rule as the ball' shadow was tilting too much, NOTICE that before messing with rotateX i had the same value "-125deg" for all rules on @keyframe not-ok, however it was tilting too much at the 80% rule which I think It has to do with the visual depth added by perspective. */
   100% {
     perspective: 130px;
   }
@@ -581,14 +581,16 @@ body {
   animation-duration: 1000ms;
   animation-iteration-count: infinite;
   animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
-  /* HACK The next 5 commented properties bellow make a perfect isosceles trapezoid, the problem is that no shadow-box effects can be applied because box-shadow still outlines the squared shape of divs, instead of the trapezoid made thanks to the border properties tricks, when making shapes with borders only there is no really a body in which a shadow can cast around. */
-  /* border-bottom: 100px solid rgba(0,0,0,0.55); */
-  /* border-left: 15px solid transparent;
+}
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXX Start - This is a section dedicated at making triangles XXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
+/* HACK The next 5 commented properties bellow make a perfect isosceles trapezoid with borders, the problem is that no shadow-box can render when the element doenst have height, so it will ignore the trapezoid shape made with border tricks. See: https://css-tricks.com/snippets/css/css-triangle/ */
+/* border-bottom: 100px solid rgba(0,0,0,0.55); */
+/* border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   height: 0;
   width: 44vw; */
-  /* HACK I continued searching other ways to input the isosceles trapezoid shape bellow the bouncing div, but then I saw this other hack that implies HTML unicode shapes, however I couldn't find an isosceles trapezoid on google, so I had to rely on the perspective property.*/
-}
+/* HACK I continued searching other ways to input the isosceles trapezoid shape bellow the bouncing div, but then I saw this other hack that implies HTML unicode shapes, however I couldn't find an isosceles trapezoid on google, so I had to rely on the perspective property.*/
+/* XXXXXXXXXXXXXXXXXXXXXXXXXXXXX End - This is a section dedicated at making triangles XXXXXXXXXXXXXXXXXXXXXXXXXXXXX */
 @keyframes not-ok {
   0% {
     opacity: 0.3;
