@@ -711,21 +711,3 @@ figcaption {
 }
 /* Cloud section - End */
 /* Here I practice transitions & animations - End  */
-
-/* Outline y Border */
-.one {
-  width: 80%;
-  margin: 1rem auto;
-  outline: 0.1rem solid red;
-  outline-offset: -0.2rem;
-}
-.two {
-  width: 80%;
-  margin: 1rem auto;
-  border: 0.1rem solid red;
-}
-
-[type="radio"] {
-  /*NOTE Para dar estilo a los inputs del form */
-  margin: 20px 0px 20px 0px;
-}
