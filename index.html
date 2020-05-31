@@ -293,7 +293,7 @@
         <div class="shadow-box"></div>
         <!-- NOTE had to add this div above to create some kind of shadow for the simple box animation -->
       </div>
-      <!-- This section was used to change color pattern using a nice svg cloud image - Start -->
+      <!-- This section was used to change color pattern using a cloud image - Start -->
       <!-- HACK We can the get the cloud image between the dark and pink linear backgrounds in two ways: 1st: We can put the img tag with class .cloud above the div with class .nightsky so then we can kick the .cloud img tag off the normal HTML flow with the property float, upon that the .nightsky div will follow the normal flow and stick to the pink background above, creating the ilusion the .cloud figure tag is above both linear backgrounds as it is no longer part of the normal flow thanks to the property float. No position property needed in this way. 2nd: We can get the same results without "float" by putting the img tag .cloud inside .nightsky div which has a linear background that renders fine around the img .cloud (child) even though the figure tag .parent (parent) along its child are on top. So why does the linear background of the div .nightsky renders like that despite having two elements on top?  It is due to 3 reasons: a) The format given to the img .cloud (SVG). b) the fact that the parent element with class .parent is transparent due to lack of CSS height or background properties. c) Position: relative given to the img .cloud, which then got placed on the right place thanks to top & left. -->
       <div class="nightsky">
         <div class="stars star-one"></div>
@@ -311,8 +311,13 @@
           </figcaption>
         </figure>
       </div>
-      <!-- This section was used to change color pattern using a nice svg cloud image - End -->
+      <!-- This section was used to change color pattern using a cloud image - End -->
       <!-- Here I practice transition & animation - End -->
+      <!-- Audio section - Start -->
+      <audio controls>
+        <source src="/Audio-Video/Ridiculous.opus" />
+      </audio>
+      <!-- Audio section - End -->
     </main>
     <footer></footer>
   </body>

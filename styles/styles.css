@@ -631,7 +631,7 @@ figcaption {
 .nightsky {
   /* position: relative; */
   width: 100vw;
-  height: 100vh;
+  height: 175vh;
   background: linear-gradient(black, #000099, #66c2ff, #ffcccc, #ffeee6);
 }
 .stars {
