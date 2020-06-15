@@ -313,11 +313,51 @@
       </div>
       <!-- This section was used to change color pattern using a cloud image - End -->
       <!-- Here I practice transition & animation - End -->
+
       <!-- Audio section - Start -->
-      <audio controls>
-        <source src="/Audio-Video/Ridiculous.opus" />
-      </audio>
-      <!-- Audio section - End -->
+      <div class="video-audio-test">
+        <audio class="ridiculous" controls currentTime duration>
+          <source
+            src="/Audio-Video/Ridiculous.opus"
+            type="audio/ogg"
+            ;
+            codecs="opus"
+          />
+          <!-- It is not possible to have captions for the audio unless I use  library or framework or by using a video file container/type to hold the audio track, video element does support WebVTT, short for text track format that HTML5 uses. -->
+          <p>
+            Your browser doesn't support HTML5 video. Here is a
+            <a href="/Audio-Video/Ridiculous.opus">link to the video</a>
+            instead.
+          </p>
+          <!-- The paragraph above is a good accesability practice for people accesing our website with a non-compatible browser to the formats there are included -->
+        </audio>
+        <!-- Audio section - End -->
+        <!-- Video Section - Start -->
+        <video
+          controls
+          class="amorgatino"
+          poster="Audio-Video/Poster/poster1.jpg"
+          preload="metadata"
+          currentTime
+          duration
+        >
+          <!-- El valor "auto" del atributo de arriba "preload" no deja que el poster se vea, si no, el primer frame del video  -->
+          <source src="/Audio-Video/lechita.webm" />
+          <!-- Captions made by myself <3 -->
+          <track
+            src="/Audio-Video/Captions_es.vtt"
+            kind="captions"
+            label="Español"
+            srclang="es"
+          />
+          <p>
+            Your browser doesn't support HTML5 video. Here is a
+            <a href="/Audio-Video/lechita.webm">link to the video</a> instead.
+          </p>
+          <!-- Within the codecs there are AVC (h.264) or "Advanced Video Coding" a video codec and then AAC or Advanced Audio Coding an audio codec -->
+        </video>
+      </div>
+      <!-- Video Section - End -->
     </main>
     <footer></footer>
   </body>

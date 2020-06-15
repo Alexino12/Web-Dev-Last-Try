@@ -711,3 +711,32 @@ figcaption {
 }
 /* Cloud section - End */
 /* Here I practice transitions & animations - End  */
+/* --------------------------------------------------------------------------------------------------- */
+/* Audio and Video Sections - Start */
+.video-audio-test {
+  display: block;
+  width: 100vw;
+}
+/* Audio section -Start */
+.ridiculous {
+  display: block;
+  margin: auto;
+}
+/* Audio section - End */
+/* Video section - Start */
+.amorgatino {
+  height: 568px;
+  width: 320px;
+  display: block;
+}
+/* Text track (Captions) Start */
+::cue {
+  background-color: rgb(250, 249, 247, 0.3);
+  color: black;
+  font-weight: bold;
+  line-height: 1.4em;
+}
+/* Text track (Captions) End */
+
+/* Video section - End */
+/* Audio and Video Sections - End */
