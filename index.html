@@ -313,58 +313,63 @@
       </div>
       <!-- This section was used to change color pattern using a cloud image - End -->
       <!-- Here I practice transition & animation - End -->
-
+      <!-- NOTE The "user agent" is like a browser. -->
       <!-- Audio section - Start -->
-      <!-- SEARCH Nomenclatura de MPEG-1 AUDIO LAYER 3 o MP3. -->
-      <!-- SEARCH Nomenclatura para M4A o MPEG 4 Audio. -->
+      <!-- NOTE MPEG-1 AUDIO LAYER 3 commonly known as MP3 because of the extension given to MP3 files (.mp3). It is neither a container or codec, it’s an all-in-one lossy compressed audio file with metadata strategically inserted. However the MIME Type or "Container Type" for the type attribute will be type="audio/mpeg" -->
       <!-- NOTE MPEG-1 AUDIO LAYER 3 o MP3 no define como el audio stream se encodifica pero si como se decodifica.  -->
-      <!-- NOTE AAC y MP3 audio codecs pueden ir dentro de un MP4 container.  -->
-      <!-- NOTE Vorbis audio codec va normalmente dentro de OGG/OGV video container. -->
+      <!-- NOTE AAC y MP3 audio codecs pueden ir dentro de un MP4 container without any video codec embedded.  -->
+      <!-- NOTE M4A/MPEG 4 Audio is a file extension for an audio file encoded with advanced audio coding (AAC) which is a lossy compression codec. -->
+      <!-- NOTE Vorbis audio codec va normalmente dentro de OGG video container. -->
       <div class="video-audio-test">
-        <audio class="ridiculous" controls currentTime duration>
+        <audio class="ridiculous" controls currentTime preload="auto" duration>
           <source
             src="/Audio-Video/Ridiculous.opus"
             type="audio/ogg"
             ;
             codecs="opus"
           />
-          <!-- It is not possible to have captions for the audio unless I use  library or framework or by using a video file container/type to hold the audio track, video element does support WebVTT, short for text track format that HTML5 uses. -->
+          <!-- NOTE It is not possible to have captions for the audio unless I use  library or framework or by using a video file container/type to hold the audio track, video element does support WebVTT, short for text track format that HTML5 uses. -->
           <p>
             Your browser doesn't support HTML5 video. Here is a
             <a href="/Audio-Video/Ridiculous.opus">link to the video</a>
             instead.
           </p>
-          <!-- The paragraph above is a good accesability practice for people accesing our website with a non-compatible browser to the formats there are included -->
+          <!-- HACK The paragraph above is a good accesability practice for people accesing our website with a non-compatible browser to the formats there are included -->
         </audio>
         <!-- Audio section - End -->
         <!-- ----------------------------------------------------------------------------------------------------------------------------------------------- -->
         <!-- Video Section - Start -->
         <!-- NOTE Aclaracion en nomenclatura del Video container MP4 also known as ".M4V" a.k.a "MPEG 4" y el video codec H.264 also known as "AVC", a.k.a “MPEG-4 part 10,” a.k.a. “MPEG-4 AVC,” a.k.a. “MPEG-4 Advanced Video Coding”. -->
+        <!-- NOTE H.264 is not supported by Chrome. -->
         <!-- NOTE H.264+AAC+MP4 pareciera la mejor combinación de video codec, audio codec y video container para Android, Iphone, Safari y Windows. -->
         <!-- NOTE H.264 video codec en (baseline profile) y ACC en ("low complexity" profile) dentro de un MP4 container para Android y Iphone -->
         <!-- NOTE Android supports WebM too. -->
+        <!-- SEARCH H.264 can encode video files with diferent profiles that are not supported equally across Operating Systems (OS). The most common profiles are baseline, main, extended and high. E.g. Microsoft Supports all profiles, Safari just main but iOS and Android just baseline. -->
         <!-- NOTE H.265 or HEVC is a licensed video codec and the succesor of H.264 -->
+        <!-- SEARCH HLS or HTTP Live Streaming -->
         <!-- SEARCH AV1 video codec is the sucessor of VP9 video codec as license free video codec. Netflix quoted "AV1" is the primary next-gen codec and can be embedded in a MP4 container along with Opus audio codec. -->
-        <!-- NOTE Internet Explorer 9 supports H.264+AAC+MP4, MP3 audio codec could be used instead of AAC audio codec or WebM. -->
+        <!-- NOTE Internet Explorer 9 supports H.264+AAC+MP4, MP3 audio codec could be used instead of AAC audio codec. WebM is also supported. -->
         <!-- NOTE Internet Explorer 8 Only Adobe Flash which only supports H.264+AAC+MP4. -->
         <!-- NOTE Theora video and Vorbis audio in an OGG/OGV container or WebM work for modern versions of Google, Opera and Firefox, no se si para versiones antiguas. -->
         <!-- NOTE WebM video container tiene normalmente VP8 o VP9 video codecs o audio codecs such Vorbis or Opus. -->
-        <!-- NOTE OGG/OGV video container tiene normalmente Theora como video codec y audio codecs como Vorbis o Opus. -->
-        <!-- NOTE En algunos casos la palabra formato se refiere a container type y a su vez a file extension. Un ejemplo es un video en Windows, cuyo file name sea acompañado por un OGV file extension ".OGV", sin embargo el container type o formato sigue siengo OGG. -->
+        <!-- NOTE OGG video container tiene normalmente Theora como video codec y audio codecs como Vorbis o Opus. -->
+        <!-- NOTE En algunos casos la palabra formato se refiere a container type y a su vez a file extension. Un ejemplo es un video en Windows, cuyo file name sea acompañado por un OGV file extension ".OGV", sin embargo el container type o formato sigue siengo OGG. Lo mismo pasa con la extension M4A que sigue siendo MP4 as container of a AAC track (ONlY, no video track). -->
+        <!-- HACK La combinacion de formatos o file containers mas eficaz para temas de support across all modern and many old Web Browser and Operating Systems is MP4 and WebM. -->
+        <!-- SEARCH buscar los video codecs (y sus respectivos profiles en el caso de H.264) y audio codecs para el H A C K de arriba. -->
 
         <video
           controls
           class="amorgatino"
           poster="Audio-Video/Poster/poster1.jpg"
-          preload="metadata"
+          preload="auto"
           currentTime
           duration
         >
-          <!-- El valor "auto" del atributo de arriba "preload" no deja que el poster se vea, si no, el primer frame del video  -->
+          <!-- NOTE El valor "auto" del atributo de arriba "preload" no deja que el poster se vea, si no, el primer frame del video  -->
           <!-- TODO agregar Type y codecs atributtes al WebM video below -->
           <source src="/Audio-Video/lechita.webm" />
-          <!-- TODO Agregar los otros formatos de video -->
-          <!-- NOTE The type attribute It’s a combination of three pieces parts: the container format o MIME type, the video codec, and the audio codec. In that order. -->
+          <!-- TODO Agregar los otros formatos de video, en este caso MP4 con h.264 y AAC o MP3. OGG no hace falta por ya tengo WebM-->
+          <!-- NOTE The type attribute It’s a combination of three parts: the container format o MIME type, the video codec, and the audio codec. In that order. -->
           <!-- SEARCH Las etiquetas de abajo son para usar Adobe Flash en caso que el browser no soporte la etiqueta video de HTML5. -->
           <!-- <object
             width="320"
