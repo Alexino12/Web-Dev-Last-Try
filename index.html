@@ -334,7 +334,7 @@
             <a href="/Audio-Video/Ridiculous.opus">link to the video</a>
             instead.
           </p>
-          <!-- HACK The paragraph above is a good accesability practice for people accesing our website with a non-compatible browser to the formats there are included -->
+          <!-- HACK The paragraph above is a good accesability practice for people accesing our website with a non-compatible browser to the formats there are included or even if it doesnt support the video tag. -->
         </audio>
         <!-- Audio section - End -->
         <!-- ----------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -344,7 +344,7 @@
         <!-- NOTE H.264+AAC+MP4 pareciera la mejor combinación de video codec, audio codec y video container para Android, Iphone, Safari y Windows. -->
         <!-- NOTE H.264 video codec en (baseline profile) y ACC en ("low complexity" profile) dentro de un MP4 container para Android y Iphone -->
         <!-- NOTE Android supports WebM too. -->
-        <!-- SEARCH H.264 can encode video files with diferent profiles that are not supported equally across Operating Systems (OS). The most common profiles are baseline, main, extended and high. E.g. Microsoft Supports all profiles, Safari just main but iOS and Android just baseline. -->
+        <!-- SEARCH H.264 can encode video files with diferent profiles that are not supported equally across Operating Systems (OS). The most common profiles are baseline, main, extended and high. E.g. Microsoft Supports all profiles, Safari just main but iOS and Android just baseline. (This info comes from a 2005 blogPost so things may have changed a bit) -->
         <!-- NOTE H.265 or HEVC is a licensed video codec and the succesor of H.264 -->
         <!-- SEARCH HLS or HTTP Live Streaming -->
         <!-- SEARCH AV1 video codec is the sucessor of VP9 video codec as license free video codec. Netflix quoted "AV1" is the primary next-gen codec and can be embedded in a MP4 container along with Opus audio codec. -->
@@ -361,7 +361,7 @@
           controls
           class="amorgatino"
           poster="Audio-Video/Poster/poster1.jpg"
-          preload="auto"
+          preload="metadata"
           currentTime
           duration
         >
@@ -396,6 +396,8 @@
             label="Español"
             srclang="es"
           />
+          <!-- NOTE Note that to turn the subtitles on, you need to press the "CC" button and select an option — English, Deutsch, or Español. -->
+          <!-- NOTE Captions are a text version of the spoken part of a television, movie, or computer presentation. They are in the language of the medium rather than a translation to another language. -->
           <p>
             Your browser doesn't support HTML5 video. Here is a
             <a href="/Audio-Video/lechita.webm">link to the video</a> instead.
