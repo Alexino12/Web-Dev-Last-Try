@@ -315,10 +315,10 @@
       <!-- Here I practice transition & animation - End -->
       <!-- NOTE The "user agent" is like a browser. -->
       <!-- Audio section - Start -->
-      <!-- NOTE MPEG-1 AUDIO LAYER 3 commonly known as MP3 because of the extension given to MP3 files (.mp3). It is neither a container or codec, it’s an all-in-one lossy compressed audio file with metadata strategically inserted. However the MIME Type or "Container Type" for the type attribute will be type="audio/mpeg" -->
-      <!-- NOTE MPEG-1 AUDIO LAYER 3 o MP3 no define como el audio stream se encodifica pero si como se decodifica.  -->
+      <!-- NOTE The file extension given to a file container MPEG-1/MPEG wrapping an audio track encoded with MP3/MPEG-1 Audio Layer III audio codec is MP3/MPEG-1 Audio Layer III when technically should be MPEG-1/MPEG because containers are what file extension are named after. So, the MIME Type or "Container/File Type" for the type attribute of the source tag will be type="audio/mpeg". -->
+      <!-- NOTE El audio codec MP3/MPEG-1 Audio Layer III no define como el audio stream se encodifica pero si como se decodifica.  -->
       <!-- NOTE AAC y MP3 audio codecs pueden ir dentro de un MP4 container without any video codec embedded.  -->
-      <!-- NOTE M4A/MPEG 4 Audio is a file extension for an audio file encoded with advanced audio coding (AAC) which is a lossy compression codec. -->
+      <!-- NOTE M4A/MPEG 4 Audio is an audio-only file extension for an audio track encoded with advanced audio coding (AAC) inside of a MP4/MPEG 4 container. -->
       <!-- NOTE Vorbis audio codec va normalmente dentro de OGG video container. -->
       <div class="video-audio-test">
         <audio class="ridiculous" controls currentTime preload="auto" duration>
@@ -353,7 +353,7 @@
         <!-- NOTE Theora video and Vorbis audio in an OGG/OGV container or WebM work for modern versions of Google, Opera and Firefox, no se si para versiones antiguas. -->
         <!-- NOTE WebM video container tiene normalmente VP8 o VP9 video codecs o audio codecs such Vorbis or Opus. -->
         <!-- NOTE OGG video container tiene normalmente Theora como video codec y audio codecs como Vorbis o Opus. -->
-        <!-- NOTE En algunos casos la palabra formato se refiere a container type y a su vez a file extension. Un ejemplo es un video en Windows, cuyo file name sea acompañado por un OGV file extension ".OGV", sin embargo el container type o formato sigue siengo OGG. Lo mismo pasa con la extension M4A que sigue siendo MP4 as container of a AAC track (ONlY, no video track). -->
+        <!-- NOTE En algunos casos la palabra formato se refiere a container/file type y a su vez a file extension (Un punto "." separa al file extension del media file name, ya sea audio-only o audio/video media file). Un ejemplo es un video container/file type OGG en Windows, cuyo file name fuera acompañado por un OGV file extension ".OGV", sin embargo el container/file type o formato sigue siengo OGG. Lo mismo pasa con la extension M4A que sigue siendo MP4 as container of a AAC track (ONlY audio, no video track). Another example, an Ogg file with only an Opus audio track is sometimes referred to as an Opus file, and might even have the extension .opus. But it's still actually just an Ogg file.-->
         <!-- HACK La combinacion de formatos o file containers mas eficaz para temas de support across all modern and many old Web Browser and Operating Systems is MP4 and WebM. -->
         <!-- SEARCH buscar los video codecs (y sus respectivos profiles en el caso de H.264) y audio codecs para el H A C K de arriba. -->
 
