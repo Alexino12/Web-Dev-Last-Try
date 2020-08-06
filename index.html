@@ -318,6 +318,7 @@
       <!-- NOTE The file extension given to a file container MPEG-1/MPEG wrapping an audio track encoded with MP3/MPEG-1 Audio Layer III audio codec is MP3/MPEG-1 Audio Layer III when technically should be MPEG-1/MPEG because containers are what file extension are named after. So, the MIME Type or "Container/File Type" for the type attribute of the source tag will be type="audio/mpeg". -->
       <!-- NOTE El audio codec MP3/MPEG-1 Audio Layer III no define como el audio stream se encodifica pero si como se decodifica.  -->
       <!-- NOTE AAC y MP3 audio codecs pueden ir dentro de un MP4 container without any video codec embedded.  -->
+      <!-- NOTE Chrome supports AAC only in MP4 containers, and only supports AAC's Main Profile. In addition, AAC is not available in Chromium builds. -->
       <!-- NOTE M4A/MPEG 4 Audio is an audio-only file extension for an audio track encoded with advanced audio coding (AAC) inside of a MP4/MPEG 4 container. -->
       <!-- NOTE Vorbis audio codec va normalmente dentro de OGG video container. -->
       <div class="video-audio-test">
@@ -342,7 +343,7 @@
         <!-- NOTE Aclaracion en nomenclatura del Video container MP4 also known as ".M4V" a.k.a "MPEG 4" y el video codec H.264 also known as "AVC", a.k.a “MPEG-4 part 10,” a.k.a. “MPEG-4 AVC,” a.k.a. “MPEG-4 Advanced Video Coding”. -->
         <!-- NOTE H.264 is not supported by Chrome. -->
         <!-- NOTE H.264+AAC+MP4 pareciera la mejor combinación de video codec, audio codec y video container para Android, Iphone, Safari y Windows. -->
-        <!-- NOTE H.264 video codec en (baseline profile) y ACC en ("low complexity" profile) dentro de un MP4 container para Android y Iphone -->
+        <!-- SEARCH H.264 video codec en (baseline profile) y ACC en ("low complexity" profile) dentro de un MP4 container es mejor para Android y Iphone -->
         <!-- NOTE Android supports WebM too. -->
         <!-- SEARCH H.264 can encode video files with diferent profiles that are not supported equally across Operating Systems (OS). The most common profiles are baseline, main, extended and high. E.g. Microsoft Supports all profiles, Safari just main but iOS and Android just baseline. (This info comes from a 2005 blogPost so things may have changed a bit) -->
         <!-- NOTE H.265 or HEVC is a licensed video codec and the succesor of H.264 -->
@@ -350,11 +351,12 @@
         <!-- SEARCH AV1 video codec is the sucessor of VP9 video codec as license free video codec. Netflix quoted "AV1" is the primary next-gen codec and can be embedded in a MP4 container along with Opus audio codec. -->
         <!-- NOTE Internet Explorer 9 supports H.264+AAC+MP4, MP3 audio codec could be used instead of AAC audio codec. WebM is also supported. -->
         <!-- NOTE Internet Explorer 8 Only Adobe Flash which only supports H.264+AAC+MP4. -->
-        <!-- NOTE Theora video and Vorbis audio in an OGG/OGV container or WebM work for modern versions of Google, Opera and Firefox, no se si para versiones antiguas. -->
+        <!-- NOTE Theora video and Vorbis audio in an OGG/OGV container or WebM work for modern versions of Google, Opera and Firefox, para versiones antiguas de estos browsers es mejor incluir OGG instead of WebM. -->
         <!-- NOTE WebM video container tiene normalmente VP8 o VP9 video codecs o audio codecs such Vorbis or Opus. -->
         <!-- NOTE OGG video container tiene normalmente Theora como video codec y audio codecs como Vorbis o Opus. -->
         <!-- NOTE En algunos casos la palabra formato se refiere a container/file type y a su vez a file extension (Un punto "." separa al file extension del media file name, ya sea audio-only o audio/video media file). Un ejemplo es un video container/file type OGG en Windows, cuyo file name fuera acompañado por un OGV file extension ".OGV", sin embargo el container/file type o formato sigue siengo OGG. Lo mismo pasa con la extension M4A que sigue siendo MP4 as container of a AAC track (ONlY audio, no video track). Another example, an Ogg file with only an Opus audio track is sometimes referred to as an Opus file, and might even have the extension .opus. But it's still actually just an Ogg file.-->
-        <!-- HACK La combinacion de formatos o file containers mas eficaz para temas de support across all modern and many old Web Browser and Operating Systems is MP4 and WebM. -->
+        <!-- HACK La combinacion de formatos o file containers mas eficaz para temas de support across all modern and some old Web Browser and Operating Systems is MP4 and WebM. -->
+        <!-- HACK https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Containers#Ogg THIS SHOWS ALL THE VIDEO/AUDIO CODECS SUPPORTED BY EACH POPULAR AND NOT SO POPULAR CONTAINERS/FILE TYPES NOWADAYS. -->
         <!-- SEARCH buscar los video codecs (y sus respectivos profiles en el caso de H.264) y audio codecs para el H A C K de arriba. -->
 
         <video
