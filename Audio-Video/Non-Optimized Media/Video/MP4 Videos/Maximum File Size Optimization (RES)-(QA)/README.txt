@@ -1,0 +1,1 @@
+In all there videos the resolution was reduced first to  416x700 (because I noticed that is what reduces size the most) and then the QA

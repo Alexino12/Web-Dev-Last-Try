@@ -617,7 +617,7 @@ body {
   top: -41.9vh;
   left: -3.597vw;
   margin: 0;
-  width: 100vw;
+  width: 99vw;
   transform: scale(1.088);
 }
 /* NOTE It was necessary to apply position and drag up the figcaption so it followed the cloud image. */
@@ -716,8 +716,14 @@ figcaption {
 .video-audio-test {
   display: block;
   width: 100vw;
+  height: 700px;
+  /* FIXME agregar fixed width and height above messed the video */
+  background-color: #f1f3f4;
+  padding-bottom: 20px;
+  box-shadow: 0 -2rem 1rem 0.5rem #f1f3f4, 0 -14rem 10rem -10rem #f1f3f4;
 }
 /* Audio section -Start */
+/* NOTE Styling the audio menu without JavaScript seems not possible, so I had to work around it by using Color Picker to copy the greyish color of the menu and added it as background to the father above ".video-audio-test" so the menu seems like it has no edges. Then added shadow to the father ".video-audio-test" which is casted upwards and gracefully fades into the upper div's background color. */
 .ridiculous {
   display: block;
   margin: auto;
@@ -725,9 +731,10 @@ figcaption {
 /* Audio section - End */
 /* Video section - Start */
 .amorgatino {
-  height: 568px;
-  width: 320px;
   display: block;
+  width: 100vw;
+  height: 100vh;
+  margin: auto;
 }
 /* Text track (Captions) Start */
 ::cue {

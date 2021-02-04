@@ -1,0 +1,1 @@
+For WebM videos I didnt do the same that I did for MP4 videos as I had learnt how to rescale and decrease quality on videos simultaneously with a single command. So, I didnt have to go through two steps by 1st dropping quality and then rescaling.

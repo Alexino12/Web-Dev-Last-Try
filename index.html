@@ -117,7 +117,7 @@
     <header class="showcase">
       <!-- NOTE Fue necesario agregarle un punto a la ruta de la imagen de abajo /smoothie1350pxwidth para que el domain de webhost.com pudiera mostrar la imagen del landpage   -->
       <img
-        src="./Images/Not-OptimizedPics/smoothie1350pxwidth.jpg"
+        src="./Images/OptimizedPics/smoothie-320pxWidth-60quality.jpg"
         alt="shakepic"
         class="shakepic"
         usemap="#landpage"
@@ -322,17 +322,32 @@
       <!-- NOTE M4A/MPEG 4 Audio is an audio-only file extension for an audio track encoded with advanced audio coding (AAC) inside of a MP4/MPEG 4 container. -->
       <!-- NOTE Vorbis audio codec va normalmente dentro de OGG video container. -->
       <div class="video-audio-test">
-        <audio class="ridiculous" controls currentTime preload="auto" duration>
+        <audio class="ridiculous" controls preload="auto">
+          <!-- HACK Los audios van en orden descendente de mejor a peor. Los audios de codecs mas modernos, mas efectivos, livianos y con menor compatibilidad fueron situados encima de Los audios de codecs mas viejos, menos efectivos, pesados y con mayor compatibilidad con T O D O S los browsers, incluyendo los mas mierda como Safari y Explorer que son pickies con codecs modernos como opus o Vorbis. Asi que los browsers mas comunes como Chrome y Mozilla deberían tomar Opus que es el codec mas efectivo entre los 4 o si no Vorbis dependiendo de si la versión de Chrome o Mozilla es antigua. El resto de browsers toman lo primero de la lista que sea compatible en orden descendente. Las basuras de Safari y Explorer ignorarían los codecs modernos y pasan directo a los codecs viejos con mayor compatibilidad pero menos efectivos como AAC y MP3, que estan al final de la lista. Por supuesto hay formas mas efectivas y dinámicas de entregar el video/audio codec adecuado a cada browser con lenguajes de programación como Javascript o PHP no estoy seguro. -->
+          <!-- SEARCH Revisar el video de google sobre codec tips y MIME types ya que trae mas info sobre como testear la mejora de carga de media files al usar el parametro "type". -->
           <source
-            src="/Audio-Video/Ridiculous.opus"
-            type="audio/ogg"
-            ;
-            codecs="opus"
+            src="/Audio-Video/Optimized Audio/Ridiculous12K-48kHz.opus"
+            type="audio/ogg"; codecs="opus"
+          />
+          <source
+            src="/Audio-Video/Optimized Audio/Ridiculous16K-22.05kHz.ogg"
+            type="audio/ogg"; codecs="vorbis"
+          />
+          <source
+            src="/Audio-Video/Optimized Audio/Ridiculous32k-22.05kHz.aac"
+            type="audio/mp4"; codecs="mp4a.40.2"
+          />
+          <!-- NOTE I couldnt find out the codec parameter/configuration for AAC as container of the AAC codec (Is weird the codec serves as self-container, I don´t know why though). So, I had to change the container from AAC to MP4 in order to use the Firefox guide called (The "codecs" parameter in common media types) that shows how to determine what was AAC codec parameter when it´s inside of a MP4 container.-->
+          <source
+            src="/Audio-Video/Optimized Audio/Ridiculous45K-48kHz.mp3"
+            type="audio/mpeg"; codecs="mp3"
           />
           <!-- NOTE It is not possible to have captions for the audio unless I use  library or framework or by using a video file container/type to hold the audio track, video element does support WebVTT, short for text track format that HTML5 uses. -->
           <p>
-            Your browser doesn't support HTML5 video. Here is a
-            <a href="/Audio-Video/Ridiculous.opus">link to the video</a>
+            Your browser doesn't support HTML5 audio. Here is a
+            <a href="/Audio-Video/Optimized Audio/Ridiculous.aac"
+              >link to the audio</a
+            >
             instead.
           </p>
           <!-- HACK The paragraph above is a good accesability practice for people accesing our website with a non-compatible browser to the formats there are included or even if it doesnt support the video tag. -->
@@ -345,52 +360,35 @@
         <!-- NOTE H.264+AAC+MP4 pareciera la mejor combinación de video codec, audio codec y video container para Android, Iphone, Safari y Windows. -->
         <!-- SEARCH H.264 video codec en (baseline profile) y ACC en ("low complexity" profile) dentro de un MP4 container es mejor para Android y Iphone -->
         <!-- NOTE Android supports WebM too. -->
-        <!-- SEARCH H.264 can encode video files with diferent profiles that are not supported equally across Operating Systems (OS). The most common profiles are baseline, main, extended and high. E.g. Microsoft Supports all profiles, Safari just main but iOS and Android just baseline. (This info comes from a 2005 blogPost so things may have changed a bit) -->
+        <!-- NOTE H.264 can encode video files with diferent profiles that are not supported equally across Operating Systems (OS). The most common profiles are baseline, main, extended and high. E.g. Microsoft Supports all profiles, Safari just main but iOS and Android just baseline. (This info comes from a 2005 blogPost so things may have changed a bit) -->
         <!-- NOTE H.265 or HEVC is a licensed video codec and the succesor of H.264 -->
-        <!-- SEARCH HLS or HTTP Live Streaming -->
-        <!-- SEARCH AV1 video codec is the sucessor of VP9 video codec as license free video codec. Netflix quoted "AV1" is the primary next-gen codec and can be embedded in a MP4 container along with Opus audio codec. -->
+        <!-- NOTE AV1 video codec is the sucessor of VP9 video codec as license free video codec. Netflix quoted "AV1" is the primary next-gen codec and can be embedded in a MP4 container along with Opus audio codec. -->
         <!-- NOTE Internet Explorer 9 supports H.264+AAC+MP4, MP3 audio codec could be used instead of AAC audio codec. WebM is also supported. -->
         <!-- NOTE Internet Explorer 8 Only Adobe Flash which only supports H.264+AAC+MP4. -->
         <!-- NOTE Theora video and Vorbis audio in an OGG/OGV container or WebM work for modern versions of Google, Opera and Firefox, para versiones antiguas de estos browsers es mejor incluir OGG instead of WebM. -->
-        <!-- NOTE WebM video container tiene normalmente VP8 o VP9 video codecs o audio codecs such Vorbis or Opus. -->
+        <!-- NOTE WebM video container tiene normalmente VP8 o VP9 video codecs o audio codecs such Vorbis or Opus. VP8 always along Vorbis and VP9 with Opus. -->
         <!-- NOTE OGG video container tiene normalmente Theora como video codec y audio codecs como Vorbis o Opus. -->
         <!-- NOTE En algunos casos la palabra formato se refiere a container/file type y a su vez a file extension (Un punto "." separa al file extension del media file name, ya sea audio-only o audio/video media file). Un ejemplo es un video container/file type OGG en Windows, cuyo file name fuera acompañado por un OGV file extension ".OGV", sin embargo el container/file type o formato sigue siengo OGG. Lo mismo pasa con la extension M4A que sigue siendo MP4 as container of a AAC track (ONlY audio, no video track). Another example, an Ogg file with only an Opus audio track is sometimes referred to as an Opus file, and might even have the extension .opus. But it's still actually just an Ogg file.-->
-        <!-- HACK La combinacion de formatos o file containers mas eficaz para temas de support across all modern and some old Web Browser and Operating Systems is MP4 and WebM. -->
+        <!-- HACK La combinacion de formatos o file containers mas eficaz para temas de support across all modern and some old Web Browser and Operating Systems is MP4 (h.264+AAC) and WebM (VP8+VORBIS Or VP9+Opus) -->
         <!-- HACK https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Containers#Ogg THIS SHOWS ALL THE VIDEO/AUDIO CODECS SUPPORTED BY EACH POPULAR AND NOT SO POPULAR CONTAINERS/FILE TYPES NOWADAYS. -->
-        <!-- SEARCH buscar los video codecs (y sus respectivos profiles en el caso de H.264) y audio codecs para el H A C K de arriba. -->
 
         <video
           controls
           class="amorgatino"
-          poster="Audio-Video/Poster/poster1.jpg"
+          poster="/Audio-Video/Poster/Poster.jpg"
           preload="metadata"
-          currentTime
-          duration
         >
           <!-- NOTE El valor "auto" del atributo de arriba "preload" no deja que el poster se vea, si no, el primer frame del video  -->
-          <!-- TODO agregar Type y codecs atributtes al WebM video below -->
-          <source src="/Audio-Video/lechita.webm" />
-          <!-- TODO Agregar los otros formatos de video, en este caso MP4 con h.264 y AAC o MP3. OGG no hace falta por ya tengo WebM-->
+          <source
+          src="/Audio-Video/Optimized Video/LechitaSuperPremium.webm"
+          type="video/webm"; codecs="vp9, opus"
+        />
+          <source
+            src="/Audio-Video/Optimized Video/LechitaSuperPremium.mp4"
+            type="video/mp4"; codecs="avc1.64001e, mp4a.40.2"
+          />
           <!-- NOTE The type attribute It’s a combination of three parts: the container format o MIME type, the video codec, and the audio codec. In that order. -->
-          <!-- SEARCH Las etiquetas de abajo son para usar Adobe Flash en caso que el browser no soporte la etiqueta video de HTML5. -->
-          <!-- <object
-            width="320"
-            height="240"
-            type="application/x-shockwave-flash"
-            data="flowplayer-3.2.1.swf"
-          >
-            <param name="movie" value="flowplayer-3.2.1.swf" />
-            <param name="allowfullscreen" value="true" />
-            <param
-              name="flashvars"
-              value='config={"clip": {"url": "http://wearehugh.com/dih5/pr6.mp4", "autoPlay":false, "autoBuffering":true}}'
-            />
-            <p>
-              Download video as <a href="pr6.mp4">MP4</a>,
-              <a href="pr6.webm">WebM</a>, or <a href="pr6.ogv">Ogg</a>.
-            </p>
-          </object> -->
-          <!-- SEARCH Las etiquetas de arriba son para usar Adobe Flash en caso que el browser no soporte la etiqueta video de HTML5. -->
+
           <!-- Captions made by myself <3 -->
           <track
             src="/Audio-Video/Captions_es.vtt"
@@ -400,15 +398,35 @@
           />
           <!-- NOTE Note that to turn the subtitles on, you need to press the "CC" button and select an option — English, Deutsch, or Español. -->
           <!-- NOTE Captions are a text version of the spoken part of a television, movie, or computer presentation. They are in the language of the medium rather than a translation to another language. -->
+          <!-- Captions made by myself <3 -->
+
           <p>
             Your browser doesn't support HTML5 video. Here is a
             <a href="/Audio-Video/lechita.webm">link to the video</a> instead.
           </p>
           <!-- NOTE A bit is the measure unit for data in transit over a network. A kilobit (kb) is 1,024 bits. A megabit (Mb) is 1,024 kilobits.   -->
-          <!-- NOTE Byte is used for storaged data size. A Byte equals 8 Bits. -->
+          <!-- NOTE Byte is used for storaged data size. A Byte equals 8 Bits. You may often see MB which equals 1000KB -->
         </video>
       </div>
       <!-- Video Section - End -->
+      <!-- Forms | Start -->
+      <div>
+        <!-- TODO SEARCH Como funciona un script file? Para el action attribute -->
+        <!-- TODO SEARCH Como funciona el attribute method -->
+        <!-- NOTE Until I know how to make scripts for a server with PHP I'll keep using the GET method because the POST method can't render a submit request in HTML which is the type of file I'll use. The GET method allows this but the problem is that all the input submitted is appended and visible on the URL before reaching its destination, meaning that any sensitive input like password is more exposed than what it should. -->
+        <!-- NOTE The name attribute is really important so the email or any other input renders on the HTML page on submittion.   -->
+        <form action="submit.html" method="GET">
+          <div>
+            <input type="email" name="email" placeholder="You@example.com">
+          </div>
+          <div>
+            <input type="submit" value="Subscribe">
+          </div>
+        </form>
+        <!-- NOTE The use of the value attribute may vary according to the input type so: 1. For a button, reset, submit - sets the default text on the button. 2. For text, password - sets the default value of the input field. 3. For a checkbox, radio, image - sets the selected input value (the value that is submitted). -->
+      </div>
+      <!-- TODO SEARCH Averiguar para que es el attribute "dirname" -->
+      <!-- Forms | End -->
     </main>
     <footer></footer>
   </body>

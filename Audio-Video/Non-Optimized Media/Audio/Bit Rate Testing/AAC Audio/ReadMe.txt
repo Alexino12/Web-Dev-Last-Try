@@ -1,0 +1,1 @@
+The right amount of Bit Rate for AAC was 32k
