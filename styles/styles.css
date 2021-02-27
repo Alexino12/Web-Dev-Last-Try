@@ -21,9 +21,10 @@
   --section-fullheight: 100vh;
 }
 body {
-  /* NOTE Quite la estupidez de las variantes */
+  /* NOTE Quité la estupidez de las variantes */
   font-family: "Gayathri", sans-serif;
   line-height: 1.4;
+  width: 100vw;
 }
 .logo {
   width: 10vw;
@@ -713,25 +714,24 @@ figcaption {
 /* Here I practice transitions & animations - End  */
 /* --------------------------------------------------------------------------------------------------- */
 /* Audio and Video Sections - Start */
+
 .video-audio-test {
-  display: block;
   width: 100vw;
-  height: 700px;
-  /* FIXME agregar fixed width and height above messed the video */
+  height: 110vh;
+  /* HACK I had an issue that was fixed by giving this father element (.video-audio-test) a value of 110vh (viewport height) for the height attribute. Prior to this value it only had 100vh to cover the 10vh I had given its 1st child element named .Ridiculous (the audio) and 100vh given to its second child element named .amorgatino (the vidoe), making the second child overlap its father, lacking height. Resulting on the video covering the upper section of the form. */
   background-color: #f1f3f4;
-  padding-bottom: 20px;
-  box-shadow: 0 -2rem 1rem 0.5rem #f1f3f4, 0 -14rem 10rem -10rem #f1f3f4;
+  box-shadow: 0 -2rem 1rem 0.5rem #f1f3f4;
 }
 /* Audio section -Start */
-/* NOTE Styling the audio menu without JavaScript seems not possible, so I had to work around it by using Color Picker to copy the greyish color of the menu and added it as background to the father above ".video-audio-test" so the menu seems like it has no edges. Then added shadow to the father ".video-audio-test" which is casted upwards and gracefully fades into the upper div's background color. */
+/* NOTE Styling the audio menu without JavaScript seems not possible, so I had to work around it by using Color Picker to copy the greyish color of the audio menu and added it as background to the father above ".video-audio-test" so the audio menu seems like it has no edges. Then added shadow to the father ".video-audio-test" which is casted upwards and gracefully fades into the upper div's background color. */
 .ridiculous {
   display: block;
   margin: auto;
+  height: 10vh;
 }
 /* Audio section - End */
 /* Video section - Start */
 .amorgatino {
-  display: block;
   width: 100vw;
   height: 100vh;
   margin: auto;
@@ -747,3 +747,74 @@ figcaption {
 
 /* Video section - End */
 /* Audio and Video Sections - End */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* Forms sections || Start */
+
+.subscribe_legend {
+  display: none;
+  /* NOTE this removed the border and text from the HTML element */
+}
+
+.label_email {
+  display: block;
+  /* NOTE display:block made the label be on top of the input field */
+  margin-top: .5em;
+}
+
+.email {
+  /* NOTE Both the email and submit button inputs are together because their defualt display attribute is inline-block */
+  padding: .5em;
+  margin-top: .5em;
+}
+
+.radio {
+  /* NOTE This is the label */
+  align-items: flex-start;
+  display: inline-flex;
+  /* NOTE These 2 properties above need to be applied to this label element, which is the father wrapping the children so they(the custom radio button and the actual radio button that is hidden) are bunched and (regardless of their display type, even block elements) repositioned together with the property align-items property, through the cross axis (vertically).   */
+  cursor: pointer;
+  /* height: 4em; */
+  /* border: 2px solid red; */
+  /* NOTE The height and border properties commented above helped to easily visualize that the property align-items: center can reposition every element within the label but there was gap below the text (only visible after adding height) due to the line-height property (applied by default by the browser) that was not allowing a have perfect height simetry with its other siblings (the custom radio button and the actual radio button that was hidden). */
+  /* NOTE Remember that height can't be applied to a label element which is by default inline, but thanks to the property display: inline-flex you can, and also enables you to move its children with properties like align-items. */
+  /* line-height: 5px; */
+  /* NOTE The property line-height helps to further position the text vertically inside the label by either increasing or decreasing its browser's defaults. Basically, this property wraps the text inside a "line box" that acts like padding over the x-height which is an imaginary line just above every lower case (excluding letters like: l, h, t, f, etc) and below the baseline, which is an imaginary line below ALL letters (excluding letters like j, g, p, y). So, if you have a value of 10px for the property line-height, 5px will apply above the x-height and 5px below the baseline. See more at: https://css-tricks.com/how-to-tame-line-height-in-css/  */
+}
+
+.radio_input {
+  /* NOTE This is the actual radio input */
+  display: none;
+}
+
+.radio_ball {
+  /* NOTE This is the gray circle. */
+  height: 1.25em;
+  width: 1.25em;
+  border: 2px solid #d8e4e2;
+  border-radius: 50%;
+  padding: 2px;
+  /* NOTE The property commented below was already applied to the whole body so we dont need it here. Its function is to keep the same element size, regardless of either how much padding there is against the elements inside (in this case, the pseudo-element just below) or margin agaisnt its inner edge. */
+  /* box-sizing: border-box; */
+}
+
+.radio_ball::after {
+  /* NOTE This is the colored ball inside the gray circle. */
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #e262a2;
+  border-radius: 50%;
+  /* NOTE These 5 properties above render a colored ball which along the custom radio input just above conform the custom radio input.  */
+  /* NOTE I had to apply transform below to visually hide the colored ball by default. */
+  transform: scale(0);
+  transition: .6s;
+}
+
+.radio_input:checked + .radio_ball::after {
+  transform: scale(1);
+}
+
+
+
+/* TODO 1- Need to find out best layout for an imagine for each radio button corresponding an option for corito, corita and both */
