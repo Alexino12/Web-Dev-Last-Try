@@ -754,7 +754,7 @@ figcaption {
   display: none;
   /* NOTE this removed the border and text from the HTML element */
 }
-
+/* Email input section - Start */
 .label_email {
   display: block;
   /* NOTE display:block made the label be on top of the input field */
@@ -766,19 +766,27 @@ figcaption {
   padding: .5em;
   margin-top: .5em;
 }
+/* Email input section - END */
+/* Radio input section - Start */
+
+.radio_inputs_divfather {
+  padding: 1.5em;
+}
 
 .radio {
-  /* NOTE This is the label */
+  /* NOTE This is the label or text for the radio input/s*/
   align-items: flex-start;
   display: inline-flex;
   /* NOTE These 2 properties above need to be applied to this label element, which is the father wrapping the children so they(the custom radio button and the actual radio button that is hidden) are bunched and (regardless of their display type, even block elements) repositioned together with the property align-items property, through the cross axis (vertically).   */
   cursor: pointer;
+  font-size: 1.25rem;
   /* height: 4em; */
   /* border: 2px solid red; */
   /* NOTE The height and border properties commented above helped to easily visualize that the property align-items: center can reposition every element within the label but there was gap below the text (only visible after adding height) due to the line-height property (applied by default by the browser) that was not allowing a have perfect height simetry with its other siblings (the custom radio button and the actual radio button that was hidden). */
   /* NOTE Remember that height can't be applied to a label element which is by default inline, but thanks to the property display: inline-flex you can, and also enables you to move its children with properties like align-items. */
-  /* line-height: 5px; */
+  line-height: 33px;
   /* NOTE The property line-height helps to further position the text vertically inside the label by either increasing or decreasing its browser's defaults. Basically, this property wraps the text inside a "line box" that acts like padding over the x-height which is an imaginary line just above every lower case (excluding letters like: l, h, t, f, etc) and below the baseline, which is an imaginary line below ALL letters (excluding letters like j, g, p, y). So, if you have a value of 10px for the property line-height, 5px will apply above the x-height and 5px below the baseline. See more at: https://css-tricks.com/how-to-tame-line-height-in-css/  */
+  /* SEARCH By the way, the default line height value that every label/text had in chrome was 24.6px but increasing it to 27px helped to center the text for each label, I just dont get why increasing the value would pushed the labels down.. */
 }
 
 .radio_input {
@@ -786,18 +794,54 @@ figcaption {
   display: none;
 }
 
-.radio_ball {
+/* Custom input styles for coritO || START */
+.radio_ball_corito {
   /* NOTE This is the gray circle. */
   height: 1.25em;
   width: 1.25em;
   border: 2px solid #d8e4e2;
   border-radius: 50%;
   padding: 2px;
+  margin-right: .3em;
   /* NOTE The property commented below was already applied to the whole body so we dont need it here. Its function is to keep the same element size, regardless of either how much padding there is against the elements inside (in this case, the pseudo-element just below) or margin agaisnt its inner edge. */
   /* box-sizing: border-box; */
 }
 
-.radio_ball::after {
+.radio_ball_corito::after {
+  /* NOTE This is the colored ball inside the gray circle. */
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #0f40e0;
+  border-radius: 50%;
+  /* NOTE These 5 properties above render a colored ball which along the custom radio input just above conform the custom radio input.  */
+  /* NOTE I had to apply transform: scale(0) below to visually hide the colored ball by default. */
+  transform: scale(0);
+  transition: .4s;
+}
+
+.radio_input:checked + .radio_ball_corito::after {
+  /* NOTE This adjacent sibling combinator/selector and the property transform is what renders the colored ball inside the gray circle when clicking it or the label. This is all thanks to the label that is wrapping the gray circle (custom radio button) and the actual input (hidden) so, no matter where you click on (the gray circle or the label) you will click the label; therefore, you will trigger/check the actual radio button input that is hidden because the radio input and the label are linked through the ID. You can read this element like this: Apply transform: scale(1) to the element named .radio_ball::after that was VISUALLY hidden with transform: scale(0) IF the radio input (COMPLETEDLY hidden) is checked.*/
+  transform: scale(1);
+}
+/* Custom input styles for coritO || END */
+
+
+/* Custom input styles for coritA || START */
+.radio_ball_corita {
+  /* NOTE This is the gray circle. */
+  height: 1.25em;
+  width: 1.25em;
+  border: 2px solid #d8e4e2;
+  border-radius: 50%;
+  padding: 2px;
+  margin-right: .3em;
+  /* NOTE The property commented below was already applied to the whole body so we dont need it here. Its function is to keep the same element size, regardless of either how much padding there is against the elements inside (in this case, the pseudo-element just below) or margin agaisnt its inner edge. */
+  /* box-sizing: border-box; */
+}
+
+.radio_ball_corita::after {
   /* NOTE This is the colored ball inside the gray circle. */
   content: "";
   width: 100%;
@@ -806,15 +850,72 @@ figcaption {
   background-color: #e262a2;
   border-radius: 50%;
   /* NOTE These 5 properties above render a colored ball which along the custom radio input just above conform the custom radio input.  */
-  /* NOTE I had to apply transform below to visually hide the colored ball by default. */
+  /* NOTE I had to apply transform: scale(0) below to visually hide the colored ball by default. */
   transform: scale(0);
-  transition: .6s;
+  transition: .4s;
 }
 
-.radio_input:checked + .radio_ball::after {
+.radio_input:checked + .radio_ball_corita::after {
+  /* NOTE This adjacent sibling combinator/selector and the property transform is what renders the colored ball inside the gray circle when clicking it or the label. This is all thanks to the label that is wrapping the gray circle (custom radio button) and the actual input (hidden) so, no matter where you click on (the gray circle or the label) you will click the label; therefore, you will trigger/check the actual radio button input that is hidden because the radio input and the label are linked through the ID. You can read this element like this: Apply transform: scale(1) to the element named .radio_ball::after that was VISUALLY hidden with transform: scale(0) IF the radio input (COMPLETEDLY hidden) is checked.*/
   transform: scale(1);
 }
+/* Custom input styles for coritA || END */
+
+/* Custom input styles for BOTH || START */
+.radio_ball_both {
+  /* NOTE This is the gray circle. */
+  height: 1.25em;
+  width: 1.25em;
+  border: 2px solid #d8e4e2;
+  border-radius: 50%;
+  padding: 2px;
+  margin-right: .3em;
+  /* NOTE The property commented below was already applied to the whole body so we dont need it here. Its function is to keep the same element size, regardless of either how much padding there is against the elements inside (in this case, the pseudo-element just below) or margin agaisnt its inner edge. */
+  /* box-sizing: border-box; */
+}
+
+.radio_ball_both::after {
+  /* NOTE This is the colored ball inside the gray circle. */
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #6c11d3;
+  border-radius: 50%;
+  /* NOTE These 5 properties above render a colored ball which along the custom radio input just above conform the custom radio input.  */
+  /* NOTE I had to apply transform: scale(0) below to visually hide the colored ball by default. */
+  transform: scale(0);
+  transition: .4s;
+}
+
+.radio_input:checked + .radio_ball_both::after {
+  /* NOTE This adjacent sibling combinator/selector and the property transform is what renders the colored ball inside the gray circle when clicking it or the label. This is all thanks to the label that is wrapping the gray circle (custom radio button) and the actual input (hidden) so, no matter where you click on (the gray circle or the label) you will click the label; therefore, you will trigger/check the actual radio button input that is hidden because the radio input and the label are linked through the ID. You can read this element like this: Apply transform: scale(1) to the element named .radio_ball::after that was VISUALLY hidden with transform: scale(0) IF the radio input (COMPLETEDLY hidden) is checked.*/
+  transform: scale(1);
+  /* TODO aplicar font weight al label al hacer check on the input */
+}
+/* Custom input styles for BOTH || END */
 
 
+.radio:nth-child(-n+2) {
+  /* HACK This selector follows the pattern indicated by the formula within the parenthesis to apply the property margin to siblings or elements with the same hierarchy level that share the same class .radio. For this example the formula picks up the first two elements. */
+  /* NOTE The element selection logic used by the :nth-child pseudo-selector is based on the relationship between the targeted element/s with their parent and siblings. There is a couple of ways to construct the expresion or formula inside the parenthesis for the :nth-child selector. However, there are 2 simple keywords that you can input instead. First, (even) that selects even numbered elements like 2, 4, 6, etc. Then, (odd) that selects odd numbered elements like 1, 3, 5, etc. For more complex element selection you'll need to use formulas or expresions; however, you may want to know how they work so here is the most basic expresion: (3), which would only select the third element with the class of .radio (in this example). Then, going a bit further you can go like this (2n+1) which is the same as (odd) because you'd be selecting every other element, starting with the first element. The trick is understanding the “n” and the algebraic expression that represents every time the formula is executed in order to select every element matching the formula's pattern and the simple selector (in this case .radio), until there are no more elements to select. So, when the formula (for example 2n+1) is executed for the first time, the "n" would equal zero and the first coefficient (2) would multiply it, so what the browser would actually execute would be this (2*0)+1= 1 because (2*0)= 0 + 1= 1 which selects the 1st matching element, meaning that the second coefficient (1) determines where the :nth-child selector begins the selection pattern. The second time the browser executes the expresion would have a value of 1 for the "n" so the whole expresion would be (2*1)+1= 3, selecting the third matching element and thus, creating a selection pattern every other element starting from the 1st matching element. Another example for an expresion, requires to increase the second coefficient by 1, looking like this (2n+2), which is the same as (even) or (2n) because an expresion like (2n or 2*0) equals zero the first time the browser executes it and would select nothing as there is no 0th element; however, on the second execution the "n" becomes 1 and the expresion returns 2 because the expresion would read (2*1) instead, creating a selection pattern every other element starting from the 2nd element. You're not forced to use a positive operator on every expresion, you can also use a negative operator which again points out the 2nd coefficient's function to determine where the pattern begins as you'll see with this expresion (3n-2) which returns -2 because (3*0)= 0 + -2= -2 which does nothing as there is no -2th element for the browser so, the first matching element selection will happen only after the expression is executed a second time as the "n" becomes 1, returning a value of 1 because (3*1)= 3 -2= 1, the next expresion execution would return a value of 4 because (3*2)= 3 -2= 4 which creates a selection pattern every 3 elements, starting with the 1st one. Another type of expresions has a negative first coefficient which reverts the selection pattern which is by default based on source order (first the older elements above and then the newer ones below), meaning the selection pattern would go "upwards" per say (first the newer elements below then the older ones above). An example like this expresion (-n+3 OR -1n+3) would first select the third matching element upon the 1st execution thanks to the 2nd coefficient because -1*0= 0 + 3= 3 and then, upon the 2nd execution it would select the 2nd matching element and create a selection pattern to every single element before/above it because -1*1= -1 + 3= 2. To sum up, the last expresion helps to select all the element until a given element number determined by the 2nd coefficient. Remember, there is always a value of 1 when the variable "n" is alone as you see in this last example (-n+3) and also remember the result would always be negative when there is a multiplication between a positive and a negative factor. Finally,  The final example (-2n+4), would also have a negative first coefficient to revert the selection patterns; however, this time, the 4th would be selected first because -2*0= 0 + 4= 4 and then, upon the 2nd execution it would select the 2nd matching element and create a selection pattern every other element before/above it because -2*1= -2 + 4= 2. */
+  margin-right: 1em;
+}
 
-/* TODO 1- Need to find out best layout for an imagine for each radio button corresponding an option for corito, corita and both */
+/* .jo {
+  background-color: green;
+}
+
+.njo {
+  background-color: yellow;
+} */
+
+ul li:nth-child(-n+2) {
+  background-color: #f03766;
+}
+/* ul li:nth-child(5) {
+  background-color: black;
+} */
+
+/* Email input section - END */
+

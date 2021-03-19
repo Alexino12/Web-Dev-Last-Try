@@ -302,21 +302,21 @@ estar instalado en la PC, no basta con solo subir decirle a VSCode que tenga cie
         <fieldset>
           <!-- NOTE The fieldset tag + the legend tag allow you 1st to mark up your data (in this case a form) in the most semantic way available. 2nd it's helpful to accessibility (screen readers) and 3rd by using disabled attribute on the fieldset tag, it allows you to disable every input inside the fieldset tag.-->
           <legend class="subscribe_legend">For More of them!</legend>
-          <div>
+          <div class="radio_inputs_divfather">
             <label for="corito" class="radio">
               <input type="radio" name="coritos" value="corito" id="corito" class="radio_input">
-              <div class="radio_ball"></div>
+              <div class="radio_ball_corito"></div>
               Coro
             </label>
             <!-- NOTE Again, here the name attribute for the set of radio buttons need to match in every radio button input so they work together and the user can only pick one when submitting the form. Unlike the radio input, a set of checkboxes dont have to share the same value on the name attribute for each checkbox input. The same aplies for the select input element, as you can allow users to select more than one option (with the attribute "multiple") for submission but the value for the name attribute can or should vary for each option of the select input. -->
             <label for="corita" class="radio">
               <input type="radio" name="coritos" value="corita" id="corita" class="radio_input">
-              <div class="radio_ball"></div>
+              <div class="radio_ball_corita"></div>
               Cora
             </label>
             <label for="both" class="radio">
               <input type="radio" name="coritos" value="both" id="both" class="radio_input">
-              <div class="radio_ball"></div>
+              <div class="radio_ball_both"></div>
               Both
             </label>
           </div>
@@ -332,6 +332,14 @@ estar instalado en la PC, no basta con solo subir decirle a VSCode que tenga cie
     </div>
     <!-- TODO SEARCH Averiguar para que es el attribute "dirname" -->
     <!-- Foms | End -->
+    <ul>
+      <li class="njo"></li>
+      <li class="jo"></li>
+      <li class="njo"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
   </main>
   <footer></footer>
 </body>
