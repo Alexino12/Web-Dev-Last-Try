@@ -6,16 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <meta name="description" content="This page is my last attempt to get somewhere in life" />
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/Images/favicon.ico" type="image/x-icon" sizes="16x16" />
+  <!-- HACK The favicon only worked when I put it inside the "Images" folder -->
   <title>Tester</title>
   <link href="https://fonts.googleapis.com/css?family=Gayathri&display=swap" rel="stylesheet" />
-  <!-- Tambien se puede usar @import en CSS pero por performance es mejor con link  -->
-  <!-- Link de Google fonts -->
+  <!-- Link de Google fonts ||| Tambien se puede usar @import en CSS pero por performance es mejor con link  -->
   <link rel="stylesheet" type="text/css" href="styles/styles.css" />
-  <!-- <link rel="stylesheet" type="text/css" href="styles/menu.css" /> -->
-  <link rel="icon" href="path/to/Icon-img" />
-  <!--Here is a list of Shortcuts, Snippets and Tips for better and faster coding
+  <!-- NOTE arriba esta el link para el main css-->
+  <link rel="stylesheet" href="/FontAwesone-Icons/all.min.css">
+  <!-- NOTE arriba el link hacia la libreria local descargada de fontawesome para acceso aun sin acceso internet  -->
+  <!-- NOTE abajo el script que es muy sencillo para usar la libreria de fontawesome aunque solo con acceso internet -->
+  <!-- <script src="https://kit.fontawesome.com/3d4dc46048.js" crossorigin="anonymous"></script> -->
+  <!-- NOTE i dont know what the link below is so i just commented it. -->
+  <!-- <link rel="icon" href="path/to/Icon-img" /> -->
 
+  <!--Here is a list of Shortcuts, Snippets and Tips for better and faster coding
 SNIPPETS
 * hb: Creates the whole HTML body we need.
 * hm: Creates a menu.
@@ -298,40 +303,59 @@ estar instalado en la PC, no basta con solo subir decirle a VSCode que tenga cie
       <!-- NOTE Until I know how to make scripts for a server with PHP I'll keep using the GET method because the POST method can't render a submit request in HTML which is the type of file I'll use to render the inputs I submit. The GET method allows this but the problem is that all the input submitted is appended and visible on the URL before reaching its destination (wheter a server or a HTML file), meaning that any sensitive input like password is more exposed than what it should. -->
       <!-- NOTE The name attribute is really important so the email or any other input is properly addresed by the server or rendered on the HTML page on submittion. However, the function that the name attribute has for a set of radio button inputs is to connect them so the users can pick one to submit. What makes a radio button render on a HTML file or get addressed by a server is the Value attribute.  -->
       <!-- NOTE To help user know what the inputs use is, do not replace the label element for the placeholder attribute because it looks more minimalistic, it is a bad practice. -->
-      <form action="submit.html" method="GET">
+      <form action="https://formsubmit.co/halexjsv@gmail.com" method="POST">
         <fieldset>
           <!-- NOTE The fieldset tag + the legend tag allow you 1st to mark up your data (in this case a form) in the most semantic way available. 2nd it's helpful to accessibility (screen readers) and 3rd by using disabled attribute on the fieldset tag, it allows you to disable every input inside the fieldset tag.-->
           <legend class="subscribe_legend">For More of them!</legend>
           <div class="radio_inputs_divfather">
+            <h2>Want to see more? <br> Pick one <i class="fas fa-cat"></i></h2>
+            <!-- HACK It's important to point that the expression execution or counting of the pseudo-selector (:nth-child) doesn't change when adding a new sibling because it is generic and counts every child/sibling present; however, the styling may vary if the new element/s added don't match the simple selector (in this case class .radio) preceding the pseudo-selector :nth-child(-n+2) so, In this there was a change upon adding the h2 above the label tags; however, the selector still styled the 2nd element which has the class .radio but didnt do the same for the 1st element (h2) now as it did before because it doens't have the class .radio. So, to fix this I had to increase the second coefficient of the expression from 2 to 3 (-n+3) so the second label tag with class .radio also got styled which became the third sibling element upon adding the h2 tag; therefore, it wouldn't get targeted by the previous expression (-n+2). -->
             <label for="corito" class="radio">
-              <input type="radio" name="coritos" value="corito" id="corito" class="radio_input">
+              <input type="radio" name="coritos" value="corito" id="corito" class="radio_input" required>
               <div class="radio_ball_corito"></div>
               <span>Coro</span>
             </label>
             <!-- NOTE Again, here the name attribute for the set of radio buttons need to match in every radio button input so they work together and the user can only pick one when submitting the form. Unlike the radio input, a set of checkboxes dont have to share the same value on the name attribute for each checkbox input. The same aplies for the select input element, as you can allow users to select more than one option (with the attribute "multiple") for submission but the value for the name attribute can or should vary for each option of the select input. -->
             <label for="corita" class="radio">
-              <input type="radio" name="coritos" value="corita" id="corita" class="radio_input">
+              <input type="radio" name="coritos" value="corita" id="corita" class="radio_input" required>
               <div class="radio_ball_corita"></div>
               <span>Cora</span>
             </label>
             <label for="both" class="radio">
-              <input type="radio" name="coritos" value="both" id="both" class="radio_input">
+              <input type="radio" name="coritos" value="both" id="both" class="radio_input" required>
               <div class="radio_ball_both"></div>
               <span>Both</span>
             </label>
           </div>
-          <div>
+          <div class="email_divfather">
+            <!-- NOTE This subscribe with email section below became functional thanks to the free service of "FormSubmit" that allowed any data submitted from this form to be sent into my actual email address.   -->
             <label for="email" class="label_email">Email:</label>
-            <input type="email" name="email" id="email" class="email">
-            <input type="submit" value="Subscribe">
+            <input type="email" name="email" id="email" class="email" required>
+            <input type="submit" value="Submit" class="submit">
             <!-- NOTE using the email input is useful as it has a validation that forces the user to submit an email that includes the "@" symbol and the domain. Furthermore, it helps mobile users to input the email easier as it pulls a keyboard that is more suitted to input emails instead of the generic text keyboard. -->
+            <input type="hidden" name="_next" value="https://coritos.000webhostapp.com/thankyou.html">
+            <!-- HACK This hidden input above allows to have a customized thank you page, for which you need to have your domain hosted somewhere, in my case "000webhost". So, if weren't because I wanted a customized thank you page I wouldn't have needed my page hosted in 000webhost. -->
+            <!-- <input type="hidden" name="_captcha" value="false"> -->
+            <!-- NOTE This hidden input above removes the reCAPTCHA; HOWEVER, IT IS NOT RECOMENDED TO REMOVE IT... -->
+            <!-- NOTE the value attribute has multiple functions depending on what input element it's used on: 1- For a button, reset, submit - sets the default text on the button. 2- For text, password - sets the default value of the input field. 3- For a checkbox, radio, image - sets the selected input value (the value that is submitted to a server or rendered in a HTML file).  -->
           </div>
-          <!-- NOTE the value attribute has multiple functions depending on what input element it's used on: 1- For a button, reset, submit - sets the default text on the button. 2- For text, password - sets the default value of the input field. 3- For a checkbox, radio, image - sets the selected input value (the value that is submitted to a server or rendered in a HTML file).  -->
         </fieldset>
       </form>
     </div>
     <!-- TODO SEARCH Averiguar para que es el attribute "dirname" -->
     <!-- Foms | End -->
+    <!-- -------------------------------------- -->
+    <!-- Flexbox | Start -->
+
+    <div class="flexbox">
+      <div class="primer_grupo">
+        <p class="primer_parrafo"></p>
+        <p class="segundo_parrafo"></p>
+        <p class="tercer_parrafo"></p>
+      </div>
+    </div>
+
+    <!-- Flexbox | Start -->
   </main>
   <footer></footer>
 </body>

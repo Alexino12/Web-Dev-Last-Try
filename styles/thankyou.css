@@ -1,0 +1,64 @@
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+
+body {
+ font-family: "Gayathri", sans-serif;
+ color:rgb(252, 130, 225);
+ /* NOTE the color property also affected the icon's color :) */
+}
+
+h1 {
+position: absolute;
+/* NOTE It was necessary to use position:absolute instead of relative cause absolute removes the elements from the flow and put them on top of non-positioned elements like the img tag, so now the gap occupied by the h1 dissapeared and the img slided underneath the h1 which made it look like a background */
+top: 6vh;
+left: 13vw;
+padding: .5em;
+/* NOTE padding fixed the heart edges getting cut on the right side. */
+}
+
+.gordo {
+ display: block;
+ /* NOTE Given that I am styling an img tag I had to turn its default display from inline to block in order to fix it completedly to the edges of its direct parent "body" and avoid any scrolling around. */
+ height: 100vh;
+ width: 100vw;
+ /* NOTE If you have an idea of the viewport size range, there is no need for a CSS property like background-image to input your images when you can edit your image beforehand to kinda fit them into the viewport of your choice which in this case was a mobile's viewport, then you can refine the looks with CSS properties like width or height with viewports units (vh, vw). It's fine as long as the original picture's size doens't stretch too much. */
+}
+
+h2 {
+ width: 30vw;
+ padding: .2em;
+ position: absolute;
+ bottom: 33vh;
+ left: 65vw;
+ border: solid .3em rgb(104, 247, 247);
+ border-radius: 0% 8% 8% 8%;
+/* NOTE the 0% on border-radius made the upper left corner pointy */
+ background-color: rgba(252, 130, 225, 0.1);
+}
+
+h2::before {
+ content: "";
+ width: 0;
+ height: 0;
+ border-top: 2vh solid rgb(104, 247, 247);
+ border-left: 4vw solid transparent;
+ /* NOTE These 5 properties above made a triangle that was positioned close to the h2 element with the 3 properties below, which enhances the idea the link "Want to go Back?" is a comment made by the cat <3 */
+ position: absolute;
+ left: -6vw;
+ top: -1.15vh;
+}
+
+a {
+ text-decoration: none;
+}
+
+a:link {
+ color: beige;
+}
+
+a:visited {
+ color: azure;
+}

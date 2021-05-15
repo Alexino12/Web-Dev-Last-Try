@@ -750,27 +750,22 @@ figcaption {
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* Forms sections || Start */
 
+h2 {
+  padding: 1em 0 0 0;
+  font-size: 2em;
+  letter-spacing: .2rem;
+  /* NOTE Chrome added bold to this element with the user agent stylesheet (check with chrome developer tools). */
+}
+
 .subscribe_legend {
   display: none;
   /* NOTE this removed the border and text from the HTML element */
 }
-/* Email input section - Start */
-.label_email {
-  display: block;
-  /* NOTE display:block made the label be on top of the input field */
-  margin-top: .5em;
-}
 
-.email {
-  /* NOTE Both the email and submit button inputs are together because their defualt display attribute is inline-block */
-  padding: .5em;
-  margin-top: .5em;
-}
-/* Email input section - END */
 /* Radio input section - Start */
 
 .radio_inputs_divfather {
-  padding: 1.5em;
+  padding: 1.5em 1.5em 2em;
 }
 
 .radio {
@@ -780,6 +775,7 @@ figcaption {
   /* NOTE These 2 properties above need to be applied to this label element, which is the father wrapping the children so they(the custom radio button and the actual radio button that is hidden) are bunched and (regardless of their display type, even block elements) repositioned together with the property align-items property, through the cross axis (vertically).   */
   cursor: pointer;
   font-size: 1.25rem;
+  margin-top: .6em;
   /* height: 4em; */
   /* border: 2px solid red; */
   /* NOTE The height and border properties commented above helped to easily visualize that the property align-items: center can reposition every element within the label but there was gap below the text (only visible after adding height) due to the line-height property (applied by default by the browser) that was not allowing a have perfect height simetry with its other siblings (the custom radio button and the actual radio button that was hidden). */
@@ -895,20 +891,70 @@ figcaption {
 /* Custom input styles for BOTH || END */
 
 
-/* HACK The text that is now between span tags was initially between the label tags when I wanted to target it when the radio input  " .radio_input" was checked. The problem I kept facing was the lack of parent selector in CSS for the non-obvious relationship between the text that was between the label tags and the radio input so, despite the hierarchy looked the same for both (and the custom input between them), the text was another part of the label tag which is the father surrounding the input siblings, meaning that a general sibling selector like  .radio_input:checked ~ label was not targetting the text below the input (when checked) as it was not a sibling until it was wrapped between the span tags. Ideally you'd achieved this without interacting with the markup as I did here because in the real world you may not always have access to the HTML file; however, Javascript is needed to workaround this and I knew nothing at the time of making these notes. */
+/* HACK The text that is now between span tags was initially between the label tags when I wanted to target it when the radio input  " .radio_input" was checked. The problem I kept facing was the lack of parent selector in CSS for the non-obvious relationship between the text that was between the label tags and the radio input so, despite the hierarchy looked the same for both (and the custom input between them), the text was another part of the label tag which is the father surrounding the input siblings, meaning that a general sibling selector like  .radio_input:checked ~ label was not targetting the text below the input (when checked) as it was not a sibling until it was wrapped between the span tags. Ideally you'd achieved this without interacting with the markup as I did here because in the real world you may not always have access to the HTML file; however, Javascript is needed to workaround this and I knew nothing about it at the time of making these notes. */
 .radio_input:checked ~ span {
   font-weight: bold;
   /* NOTE BTW this selector will just apply bold text to the label text of the radio input checked. */
 }
 
-
-
-.radio:nth-child(-n+2) {
+.radio:nth-child(-n+3) {
   /* HACK This selector follows the pattern indicated by the formula within the parenthesis to apply the property margin to siblings or elements with the same hierarchy level that share the same class .radio. For this example the formula picks up the first two elements. */
-  /* NOTE The element selection logic used by the :nth-child pseudo-selector is based on the relationship between the targeted element/s with their parent and siblings. There is a couple of ways to construct the expresion or formula inside the parenthesis of the :nth-child selector. However, there are 2 no-brainer keywords that you can input instead. First, (even) that selects even numbered elements like 2, 4, 6, etc. Then, (odd) that selects odd numbered elements like 1, 3, 5, etc. For more complex element selection you'll need to use formulas or expresions; however, you may want to know how they work so here is the most basic expresion: (3), which would only select the third element with the class of .radio (in this example). Then, going a bit further you can go like this (2n+1) which is the same as (odd) because you'd be selecting every other element, starting with the first element. The trick is understanding the “n” and the algebraic expression that it represents every time the formula is executed by the browser and thus, every time that an element matching the formula's pattern and the simple selector is selected, until there are no more elements to select. So, when the formula (for example 2n+1) is executed for the first time, the "n" would equal zero and the first coefficient (2) would multiply it, so what the browser would actually execute the 1st time would be this (2*0)+1= 1 because (2*0)= 0 + 1= 1 which in turn selects the 1st matching element, meaning that the second coefficient (1) determines where the :nth-child selector begins. The variable "n" would become 1 the next time the expresion (2n+1) gets executed by the browser, meaning the expresion would change to (2*1)+1= 3, selecting the third matching element and thus, creating a selection pattern every other element starting from the 1st matching element. Here is another example (2n+2) which 2nd coefficient has a value of 2, which is the same as using (even) or (2n) within the parenthesis, because an expresion like (2n or 2*0) equals zero on the first execution and would select nothing as there is no 0th element; however, on the second execution the value of the variable "n" becomes 1 and the expresion returns 2 because (2*1)= 2, selecting the 2nd matching element and then starting the selection pattern every other element with a third execution that selects a 4th matching element as the variable "n" goes up again (2*2)= 4. You're not forced to use a positive operator on every expresion as you can also use a negative operator which again points out the 2nd coefficient's function to determine where the pattern begins as you'll see with this expresion (3n-2) which returns -2 because (3*0)= 0 + -2= -2 which does nothing as a -2th element doesn't exit, the first matching element selection will happen only after the 2nd execution as the "n" becomes 1, returning a value of 1 because (3*1)= 3 -2= 1 and the next expresion execution would return a value of 4 because (3*2)= 3 -2= 4 which creates a selection pattern every 3 elements, starting with the 1st one.                                                                       The first coefficient can be negative, which reverts the selection pattern that by default is based on source order (first the older elements above and then the newer ones below), meaning the selection pattern would go "upwards" per say (first the newer elements below then the older ones above); for example, upon the first execution, this expresion (-n+3 OR -1n+3) would select the third matching element thanks to the 2nd coefficient because -1*0= 0 + 3= 3 and then, upon the 2nd execution it would select the 2nd matching element because -1*1= -1 + 3= 2, creating a selection pattern to every single element before/above on a third execution onwards. The take-away of expresions with a first coefficient equal to -1 is the selection range created from the first matching element determined by the second coefficient to all prior matching element above. Remember, there is always a value of 1 when the variable "n" is alone as you see in this last example (-n+3) and also remember the result would always be negative when there is a multiplication between a positive and a negative factor. Finally, the last example (-2n+4) also has a negative first coefficient to revert the selection patterns; however, this time, the 4th matching element would be selected first because -2*0= 0 + 4= 4 and then, since the variable "n" goes up to 1 the second matching element is selected upon the 2nd execution because -2*1= -2 + 4= 2, creating a selection pattern every other element before/above it but, since there are no more matching elements to select before/above the 2nd one it stops there. */
-  margin-right: 1em;
+  /* NOTE The element selection logic used by the :nth-child pseudo-selector is based on the relationship between the targeted element/s with their parent and siblings. There is a couple of ways to construct the expresion or formula inside the parenthesis of the :nth-child selector. However, there are 2 no-brainer keywords that you can input instead. First, (even) that selects even numbered elements like 2, 4, 6, etc. Then, (odd) that selects odd numbered elements like 1, 3, 5, etc. For more complex element selection you'll need to use formulas or expresions; however, you may want to know how they work so here is the most basic expresion: (3), which would only select the third element with the class of .radio (in this example). Then, going a bit further you can go like this (2n+1) which is the same as (odd) because you'd be selecting every other element, starting with the first element. The trick is understanding the “n” and the algebraic expression that it represents every time the formula is executed by the browser and thus, the selection/style application to every element matching the formula's pattern and the simple selector like the class selector in this case (.radio), until there are no more elements to select. So, when the formula (for example 2n+1) is executed for the first time, the "n" would equal zero and the first coefficient (2) would multiply it, so what the browser would actually execute the 1st time would be this (2*0)+1= 1 because (2*0)= 0 + 1= 1 which in turn selects the 1st matching element, meaning that the second coefficient (1) determines where the :nth-child selector begins. The variable "n" would become 1 the next time the expresion (2n+1) gets executed by the browser, meaning the expresion would change to (2*1)+1= 3, selecting the third matching element and thus, creating a selection pattern every other element starting from the 1st matching element. Here is another example (2n+2) which 2nd coefficient has a value of 2, which is the same as using (even) or (2n) within the parenthesis, because an expresion like (2n or 2*0) equals zero on the first execution and would select nothing as there is no 0th element; however, on the second execution the value of the variable "n" becomes 1 and the expresion returns 2 because (2*1)= 2, selecting the 2nd matching element and then starting the selection pattern every other element with a third execution that selects a 4th matching element as the variable "n" goes up again (2*2)= 4. You're not forced to use a positive operator on every expresion as you can also use a negative operator which again points out the 2nd coefficient's function to determine where the pattern begins as you'll see with this expresion (3n-2) which returns -2 because (3*0)= 0 + -2= -2 which does nothing as a -2th element doesn't exit, the first matching element selection will happen only after the 2nd execution as the "n" becomes 1, returning a value of 1 because (3*1)= 3 -2= 1 and the next expresion execution would return a value of 4 because (3*2)= 3 -2= 4 which creates a selection pattern every 3 elements, starting with the 1st one.                                                                       The first coefficient can be negative, which reverts the selection pattern that by default is based on source order (first the older elements above and then the newer ones below), meaning the selection pattern would go "upwards" per say (first the newer elements below then the older ones above); for example, upon the first execution, this expresion (-n+3 OR -1n+3) would select the third matching element thanks to the 2nd coefficient because -1*0= 0 + 3= 3 and then, upon the 2nd execution it would select the 2nd matching element because -1*1= -1 + 3= 2, creating a selection pattern to every single element before/above on a third execution onwards. The take-away of expresions with a first coefficient equal to -1 is the selection range created from the first matching element determined by the second coefficient to all prior matching element above. Remember, there is always a value of 1 when the variable "n" is alone as you see in this last example (-n+3) and also remember the result would always be negative when there is a multiplication between a positive and a negative factor. Finally, the last example (-2n+4) also has a negative first coefficient to revert the selection patterns; however, this time, the 4th matching element would be selected first because -2*0= 0 + 4= 4 and then, since the variable "n" goes up to 1 the second matching element is selected upon the 2nd execution because -2*1= -2 + 4= 2, creating a selection pattern every other element before/above it but, since there are no more matching elements to select before/above the 2nd one it stops there. */
+  /* HACK It's important to point that the expression execution or counting of the pseudo-selector (:nth-child) doesn't change when adding a new sibling because it is generic and counts every child/sibling present; however, the styling may vary if the new element/s added don't match the simple selector (in this case class .radio) preceding the pseudo-selector :nth-child(-n+2) so, In this there was a change upon adding the h2 above the label tags; however, the selector still styled the 2nd element which has the class .radio but didnt do the same for the 1st element (h2) now as it did before because it doens't have the class .radio. So, to fix this I had to increase the second coefficient of the expression from 2 to 3 (-n+3) so the second label tag with class .radio also got styled which became the third sibling element upon adding the h2 tag; therefore, it wouldn't get targeted by the previous expression (-n+2).  */
+  margin-right:.7em;
 }
 
+/* Email input section - Start */
+.label_email {
+  display: block;
+  /* NOTE display:block made the label be on top of the input field */
+  padding: .5em 0 0 0;
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: .2rem;
+}
 
+.email_divfather {
+  width: 90vw;
+  margin: auto;
+  padding: .75em .75em 1.5em;
+  border-top: solid .1em black;
+}
+
+.email {
+  padding: .15em;
+  width: 100%;
+  height: 2em;
+  font-size: 1.25rem
+}
+
+.submit {
+  margin: .05em 0 0 0;
+  padding: .15em;
+  width: 100%;
+  height: 2em;
+  font-size: 1.25rem;
+  background-color: #0f40e0;
+  color: white;
+  font-weight: bold;
+  letter-spacing: .2rem;
+  border: solid .1em black;
+  border-radius: 3%;
+}
+
+fieldset {
+  height: 90vh;
+}
 /* Email input section - END */
 
+/* Flexbox section - Start */
+
+.flexbox {
+  height: 100vh;
+}
+
+.primergrupo {
+  display: flexbox;
+}
+
+/* Flexbox section - END */
