@@ -48,6 +48,7 @@ body {
   width: 100vw;
   margin: auto;
   overflow: hidden;
+  /*  */
   position: relative;
   z-index: 1;
   /* NOTE quite la estupidez de las variantes */
@@ -209,7 +210,7 @@ body {
   width: 100vw;
 }
 /* NOTE I just tried to uncomment position & Z-Index properties for the div above, .main-container or "the father of them all" to try on it a even lower Z-Index (lower than .upper-main), in order to put the translucid pinky background behind .upper-main and its two children, the problem lies in giving back a stacking context to .main-container which confines all its children and, therefore not allowing the trick of negative values on Z-Index which lets you put children behind parents. */
-/*HACK con overflow hidden el texto debajo de esta seccion no se cola al inicio, recuerde q float saca los elementos del flow normal, los elementos siguientes tomarian su lugar, para que overflow hidden sea efectivo se tiene que usar en el papa de los hijos que estan flotando  */
+/*HACK con overflow hidden el texto debajo de esta seccion no se cola al inicio, recuerde q float saca los elementos del flow normal, los elementos siguientes tomarian su lugar, para que overflow hidden sea efectivo se tiene que usar en el papa de los hijos que estan flotando. Acá un link https://www.youtube.com/watch?v=E5ANuFo-Wno  */
 /* NOTE Esto explica el primer set de planetas: el porque .upper-main junto a sus hijos quedan detras del papa de toda la seccion .main-container, el cual tiene una transparencia, lo cual deja ver a sus hijos detras: 1- Empezamos con el papa .main-container, que al no estar posicionado se ubica por encima de elementos con Z-Index negativo. 2- Su hijo directo, .upper-main se encuentra posicionado y tambien adquiere stacking context al tener Z-Index diferente a auto, lo cual arrastra a sus hijos con el. 3- Es indiferente si los hijos de .upper-main (.sidebar y .content) tienen stacking context o no, ya que su padre los confina dentro de el al tener stracking context. Como nota si se quisiera que otro elemento se sobreponga a .main-container tendria que ser un elemento hermano de .upper-main, en otras palabras un elemento fuera del stacking context de .upper-main, un elemento que reune esas especificaciones seria ".divfortesting-zindex", .divfortesting-zindex no requiere Z-Index para estar on top of everything else ya que el stacking order default del root HTML, lo posiciona encima de su padre directo .main-container     */
 /* Second section, just bellow landpage End First Part*/
 /* <<<<<<<<<<<<<<<<<--------------->>>>>>>>>>>>>>>>>>> */
@@ -800,7 +801,6 @@ h2 {
   padding: 2px;
   margin-right: .3em;
   /* NOTE The property commented below was already applied to the whole body so we dont need it here. Its function is to keep the same element size, regardless of either how much padding there is against the elements inside (in this case, the pseudo-element just below) or margin agaisnt its inner edge. */
-  /* box-sizing: border-box; */
 }
 
 .radio_ball_corito::after {
@@ -834,7 +834,6 @@ h2 {
   padding: 2px;
   margin-right: .3em;
   /* NOTE The property commented below was already applied to the whole body so we dont need it here. Its function is to keep the same element size, regardless of either how much padding there is against the elements inside (in this case, the pseudo-element just below) or margin agaisnt its inner edge. */
-  /* box-sizing: border-box; */
 }
 
 .radio_ball_corita::after {
@@ -867,7 +866,6 @@ h2 {
   padding: 2px;
   margin-right: .3em;
   /* NOTE The property commented below was already applied to the whole body so we dont need it here. Its function is to keep the same element size, regardless of either how much padding there is against the elements inside (in this case, the pseudo-element just below) or margin agaisnt its inner edge. */
-  /* box-sizing: border-box; */
 }
 
 .radio_ball_both::after {
@@ -949,12 +947,47 @@ fieldset {
 
 /* Flexbox section - Start */
 
-.flexbox {
+.primer_grupo {
+  display: flex;
+  background-color: lightblue;
   height: 100vh;
 }
 
-.primergrupo {
-  display: flexbox;
-}
+/* NOTE By default, the "flex items" or direct children of a container with display:flex or "flex container" stack from left to right as they have a row or horizontal orientation, which can be changed with the flex-direction:column property so they stack from top to bottom. Both, row and column flex items have a main axis and a cross axis through which they can be moved. The main axis for row flex items is an imaginary line going through them, from left to right. For column flex items, the main axis is an imaginary line crossing them, from top to bottom. So, depending of the flex items direction you can move them through their main axis with the property justify-content; whether that is horizontally or vertically. Then, you have the cross axis which is another imaginary line that is perpendicular to the main axis that crosses the column flex items from left to right and the row flex items from top to bottom. So, depending of the flex items direction you can move them through their cross axis with the property align-items, whether that is horizontally or vertically. The default value for the align-items property is "stretch" meaning that row flex items get vertically stretched over their cross axis to fill whatever height their flex container (parent) has and the column flex items get their width stretched across their cross axis to fill whatever width their flex container has (parent); however, this stretching over the cross axis can be overridden for both directions, when the width value for column flex items is other than "auto" or when the height property value for row flex items is other than "auto", which is the default value when you DON'T specify any value for an element's width or the height so the elements size is based on the content. In other words, the stretching over the cross axis is overridden by flex items aiming their cross axis with height or width property values different to "auto". Also, when the flex item/s value for height or width that aims the cross axis is equal to "auto" and the value for align-items or align-content (which I'll explain later) is different to stretch, the cross size of each flex item would tighly surround its content IF THERE IS ANY; otherwise the flex item would be invisible (Assuming the flex item/s width or height is also set to "auto" throughout the main axis). Another way to override the stretch value of align-items is by using another property called "align-self" which is meant to be used on the flex items, not the flex container like align-items. Align-self only targets the position of the flex item you apply it to and it can use the same values than align-items. For the past 16 or 17 lines above I've talked about the properties that affect the cross axis and its cross size but now I'll retake and further the main axis description started on the first 4-5 lines of this note. There is another property exclusive for flex items called flex-basis that determines their BASE size over the main axis, meaning that it can change the size for both, HEIGHT: if flex-direction's value is column or WIDTH: if flex-direction's value is row. You can still use the old width or height for sizing flex items over the main axis; however, in this flexbox section I'll use flex-basis for the main axis. Whether sizing is done with flex-basis or not, the flex items' base size may vary thanks to 2 properties and their default values that both flex container and flex items have. <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<For the examples's sake you'll assume the flex container has an absolute measure unit for its main size (not responsive), so the base size of each flex item over the main axis wouldn't change unless their full-extent (including margin and border) is above the flex container's dimensions (including padding), causing every flex item to equally shrink over the main axis due to the default value of flex-shrink which is 1 on every flex item. If the full-extent of the flex items (including margin and border) is below the flex container's dimensions (including padding) you may want to stretch the extent of every flex item to fill the gap by changing the default value of flex-grow, from 0 to 1 to equally spread the extent of every flex item throughout the remaining blank room of the main axis. It's worth noticing that both flex-shrink and flex-grow are meant to be used on the flex items not the flex container and also that both properties can lock the flex items' growth or shrinking when their values are zero or kind of the opposite when boosting their growth or shrinking of some flex items more than others by upping their values above 1. Therefore, these 2 properties only stretch or shrink the flex items equally over the main axis when their values are 1. <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<Now I'll explain how the flex-grow property figures how to stretch every flex-item based on the remaining blank space over the main axis. So, for this example suppose there are 4 flex-items (including margin and border) that only took 400px out of 500px from the flex container (including padding), meaning the blank space is 100px. If they all had a growth factor of 1 "flex-grow:1" every flex item would share the blank space equally and grow 25px; however, in this example there are 3 flex items with a growth factor of 1 and the other one has a growth factor of 2, meaning the flex item with growth factor of 2 would multiply twice with the growth unit (20px) which is the result of dividing the blank space (100px) between whatever number comes upon summing the growth factor of each flex item (5). To sum up, the flex item with growth factor of 2 would grow 40px out of the 100px in blank, leaving 60px to be taken for the 3 remaining flex items with a growth factor of 1. The equation for flex-shrink is the same that flex-grow; however, for flex-shrink to kick in, the full-extent of the flex items has to surpass the flex container's dimensions. The flex container's dimension is again 500px (including padding) but the full-extent of the SAME (4) flex items is now 800px (including margin and border), meaning there is a 300px surplus. If they all had a shrink factor of 1 "flex-shrink:1" every flex item would squish into the flex container with the same size, losing 75px as you can't fit 4 elements of 200px within a 500px container; however, in this example there are 3 flex items with a shrink factor of 1 and the other one has a shrink factor of 2, meaning the flex item with shrink factor of 2 would multiply twice with the shrink unit (60px) which is the result of dividing the surplus (300px) between whatever number comes upon summing the shrink factor of each flex item (5). To sum up, the 300px surplus will be deducted from the size of each flex item so, the flex item with shrink factor of 2 would shrink 120px, leaving a 180px surplus to deduct from the 3 remaining flex items with a shrink factor of 1.  */
+
+/* NOTE There is another property exclusive for flex items and it's a shorthand for the 3 sizing properties, it's called "Flex" and its default is "flex: 0 1 auto" where "zero" represents the default of flex-grow, the number "one" is flex-shrink's default and "auto" the default for flex-basis; however, if you were to change the defaults it's not mandatory to specify the 3 values, you can get away with the 1st value for flex grow (using unitless integers) and omit the 2nd and 3rd values as long as you remember that omitting the 2nd value (flex-shrink) wouldn't change its default but omitting the 3rd value (flex-basis) turns its default (auto) into "zero" so the flex items's sizing becomes ABSOLUTE instead of RELATIVE to their content's size. When flex-basis is 0, flex-grow ignores the size of the content within the flex items and equally splits the main size across the main axis between the number of flex items, assuming the growth factor was 1 on every flex item but of course you can set the growth factor higher for some flex items so they're not slit equally but the sizing is based on the growth factor; however, depending on how large the content is, there is a limit to how small a flex item can be along the main axis, due to the default values of 2 properties: min-width:auto & min-height:auto, they both set the items to not shrink past the content size unless you change them to min-width:0 OR min-height:0 OR overflow:hidden (or any other value, except visible). This workaround should work unless the flex container is also a flex item too, in that case just override the min-width and min-height defaults.   */
+/* TODO LISTAR TODAS LAS FORMAS EN QUE SE PUEDE SETEAR FLEX Y SUS IMPLICACIONES, TAMBIEN MENCIONAR QUE SE PUEDE USAR EL PRIMER VALUE DE FLEX CON ALGUNA UNIDAD DE MEDIDA O PORCENTUAL, LO CUAL OMITIRÍA LOS PRIMEROS DOS VALORES DE FLEX-GROW Y FLEX-SHRINK Y QUEDARÍAN SUS VALORES POR DEFECTO. */
+/* HACK Ejemplo de flex item content puede ser una letra o palabra dentro y nada tiene que ver con padding or sizing mediante absolute unit or percentage units texto dentro de algún tag  */
+/* HACK flex: auto is the same as flex: 1 1 auto */
+/* HACK If you have a FLEX: 0 0 100PX; you are setting flex item/s (including margin and border) that don't grow, don't shrink and stay fixed at 100px */
+/* NOTE It's worth mentioning that the values for flex-grow and flex-shrink only take unitless integers */
+/* NOTE It's worth mentioning that the properties width or height can override flex-basis:auto but not flex-basis with a value of 0 or any other absolute or percentage size value. */
+/* NOTE It's worth mentioning that "flex: auto" is not the same as the default values of flex, because it breaks down to "flex: 1 1 auto". */
+/* TODO mencionar que align-items is for flex items wrapped en una sola fila y align-content for 2 o mas filas de flex items, creo que acá entra el FLEX-WRAP QUE TAMBIÉN TENGO QUE MENCIONAR. */
+/* HACK Every time a flex container has plain text as direct child it wraps the text with an invisible tag so it becomes a flex item. */
+
+.parrafo:nth-child(1) {
+  background-color: red;
+ }
+
+ .parrafo:nth-child(2) {
+  background-color: green;
+ }
+
+ .parrafo:nth-child(3) {
+  background-color: blue;
+ }
+
+ .parrafo {
+  font-size: 3rem;
+  color:aliceblue;
+  font-weight: bold;
+  flex: 1;
+
+  /* overflow: hidden; */
+  /* min-width: 0; */
+  /* min-height: 0; */
+ }
+
 
 /* Flexbox section - END */
